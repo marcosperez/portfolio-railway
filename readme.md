@@ -26,3 +26,19 @@ docker container rm node-portfolio -f
 ```sh
 docker logs node-portfolio -f
 ```
+
+## RUN FRONTEND
+
+**Install packages first**
+
+```
+cd frontend && npm start
+```
+
+## RUN BACKEND
+
+**Install packages first**
+
+```
+cd backend && npm run generate && npm run dev
+```

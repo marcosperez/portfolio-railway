@@ -1,0 +1,31 @@
+.button {
+  cursor: pointer;
+  outline: none;
+  font-weight: 600;
+  &.outline {
+    position: relative;
+    z-index: 3;
+    background: transparent;
+    color: #df2a2a;
+    font-size: 14px;
+    border-color: #df2a2a;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 22px;
+    padding: 10px 40px;
+    text-transform: uppercase;
+    transition: all 0.2s linear;
+    a {
+      text-decoration: none;
+    }
+  }
+  &.outline:hover {
+    color: white;
+    background: #df2a2a;
+    border-color: rgb(202 12 202 / 60%);
+    transition: all 0.2s linear;
+  }
+  &.outline:active {
+    border-radius: 22px;
+  }
+}

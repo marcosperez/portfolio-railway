@@ -5,20 +5,26 @@ import { useState } from "react";
 import Profile from "../components/AboutMe/Profile";
 import MiddleContainer from "../components/AboutMe/MiddleContainer";
 import Experiences from "../components/AboutMe/Experiences";
+import DownloadCV from "../components/AboutMe/DownloadCV";
 
 function Home() {
   const [step, setStep] = useState(1);
-  const [auto, setAuto] = useState(true);
+  const [auto, setAuto] = useState(false);
 
   const next = (nextValue: number) => {
     setStep(nextValue);
   };
   return (
     <div className="Home">
-      {/* <div className="background-back" /> */}
-      {/* <div className="background" /> */}
       <div className="app-container">
-        {step > 0 && <IAm next={next} auto={auto} currentStep={step}></IAm>}
+        {step > 0 && (
+          <IAm
+            next={next}
+            auto={auto}
+            currentStep={step}
+            setAuto={setAuto}
+          ></IAm>
+        )}
         {step > 1 && (
           <Profile next={next} auto={auto} currentStep={step}></Profile>
         )}
@@ -34,6 +40,8 @@ function Home() {
             ></Experiences>
           </MiddleContainer>
         )}
+
+        <DownloadCV></DownloadCV>
       </div>
     </div>
   );

@@ -6,10 +6,11 @@ import Button from "../shared/Button";
 interface IAmProps {
   next: (nextValue: number) => void;
   auto?: boolean;
+  setAuto: (v: boolean) => void;
   currentStep: number;
 }
 
-function IAm({ next, auto }: IAmProps) {
+function IAm({ next, auto, setAuto }: IAmProps) {
   const controls = useAnimation();
   let middle = Math.min(window.innerWidth, 1200) / 2 - 225;
   const startDelay = auto ? 5 : 0;
@@ -34,6 +35,7 @@ function IAm({ next, auto }: IAmProps) {
       fontSize: "22px",
       transition: { ease: "easeOut", duration: 1.2 },
     });
+    setAuto(true);
     next(2);
   };
 
