@@ -1,24 +1,24 @@
-FROM node:16 AS webbuild
+FROM node:16 AS frontend-build
 
 WORKDIR /usr/src/app
-COPY ./portfolio-mdperez/ /usr/src/app/
+COPY ./frontend/ /usr/src/app/
 
 RUN npm install 
 RUN npm run build
 
-FROM node:16 AS appbuild
+FROM node:16 AS app-build
 
 WORKDIR /usr/src/app
-COPY ./express-ts-videos/prisma /usr/src/app/
-COPY ./express-ts-videos/src /usr/src/app/
-COPY ./express-ts-videos/package.json /usr/src/app/
-COPY ./express-ts-videos/tsconfig.json /usr/src/app/
+COPY ./backend/prisma /usr/src/app/
+COPY ./backend/src /usr/src/app/
+COPY ./backend/package.json /usr/src/app/
+COPY ./backend/tsconfig.json /usr/src/app/
 
 RUN npm install 
 RUN npm run generate
 RUN npm run build
 
-COPY --from=webbuild /usr/src/app/build/ /usr/src/app/dist/web/
+COPY --from=frontend-build /usr/src/app/build/ /usr/src/app/dist/web/
 
 # Configure environment variables
 ARG PORT  \
