@@ -1,0 +1,47 @@
+.aboutMe {
+  color: white;
+  font-size: 20px;
+  text-align: left;
+  position: absolute;
+  top: 30px;
+  right: 20px;
+  opacity: 0;
+}
+
+.aboutMeDescription {
+  font-size: 15px;
+  width: 239px;
+  opacity: 0;
+}
+
+.aboutMeTitle {
+  //   color: #df2a2a;
+  text-shadow: 4px 4px 2px rgba(202, 12, 202, 0.6);
+  width: 110px;
+  opacity: 0;
+}
+.divider {
+  border-bottom: 2px solid #df2a2a;
+  opacity: 0;
+}
+
+.label {
+  font-weight: 600;
+  margin-top: 10px;
+  //   color: white;
+}
+
+.textData {
+  //   color: white;
+}
+
+.social-buttons {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.social-icon {
+  filter: brightness(0) invert(1);
+  height: 40px;
+  padding: 8px;
+}

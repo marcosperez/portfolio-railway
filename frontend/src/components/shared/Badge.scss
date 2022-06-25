@@ -1,0 +1,47 @@
+// .badge {
+//   display: inline-block;
+//   min-width: 1em; /* em unit */
+//   padding: 0.3em; /* em unit */
+//   border-radius: 50%;
+//   font-size: 75px;
+//   text-align: center;
+//   background: #1779ba;
+//   color: #fefefe;
+// }
+
+$color1: white;
+$color2: #aa0000;
+$color3: #b94d4d;
+$color4: white;
+
+.badge {
+  margin-bottom: 5px;
+  font-size: 1rem;
+  color: $color1;
+  text-shadow: 1px 0px 0px $color2, 0px 1px 0px $color2, 2px 1px 0px $color2,
+    1px 2px 0px $color2, 3px 2px 0px $color2, 2px 3px 0px $color2,
+    4px 3px 0px $color2, 3px 4px 0px $color2, 5px 4px 0px $color2,
+    4px 5px 0px $color2, 6px 5px 0px $color2;
+  &:before,
+  &:after {
+    content: attr(data-heading);
+    position: absolute;
+    overflow: hidden;
+    left: 0;
+    top: 0;
+  }
+  &:before {
+    color: $color3;
+    width: 100%;
+    z-index: 5;
+    font-family: "CoreCircus2DIn";
+    font-weight: normal;
+  }
+  &:after {
+    z-index: -1;
+    text-shadow: -1px -1px 0 $color3, 1px -1px 0 $color3, -1px 1px 0 $color3,
+      1px 1px 0 $color3, -3px 3px 2px #6c9d9e, -5px 5px 2px #6c9d9e,
+      -7px 7px 2px #6c9d9e, -8px 8px 2px #6c9d9e, -9px 9px 2px #6c9d9e,
+      -11px 11px 2px #6c9d9e;
+  }
+}
