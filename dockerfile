@@ -1,7 +1,7 @@
 FROM node:16 AS frontend-build
 
 WORKDIR /usr/src/app
-COPY ./frontend/ /usr/src/app/
+COPY ./frontend/ /usr/src/app
 
 RUN npm install && npm run build
 
