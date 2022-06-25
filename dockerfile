@@ -1,8 +1,7 @@
 FROM node:16 AS webbuild
 
 WORKDIR /usr/src/app
-# COPY ./portfolio-mdperez/ /usr/src/app/
-RUN git clone git@github.com:marcosperez/portfolito-react.git
+COPY ./portfolio-mdperez/ /usr/src/app/
 
 RUN npm install 
 RUN npm run build
@@ -10,11 +9,10 @@ RUN npm run build
 FROM node:16 AS appbuild
 
 WORKDIR /usr/src/app
-RUN git clone git@github.com:marcosperez/prueba-express-ts-test-clean-arc.git
-# COPY ./express-ts-videos/prisma /usr/src/app/
-# COPY ./express-ts-videos/src /usr/src/app/
-# COPY ./express-ts-videos/package.json /usr/src/app/
-# COPY ./express-ts-videos/tsconfig.json /usr/src/app/
+COPY ./express-ts-videos/prisma /usr/src/app/
+COPY ./express-ts-videos/src /usr/src/app/
+COPY ./express-ts-videos/package.json /usr/src/app/
+COPY ./express-ts-videos/tsconfig.json /usr/src/app/
 
 RUN npm install 
 RUN npm run generate
