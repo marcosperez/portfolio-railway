@@ -69,7 +69,7 @@ function Profile({ next, auto }: ProfileProps) {
 
         <motion.div
           animate={{ x: [-80, 20], y: [58, 58], opacity: [0, 0.2, 1] }}
-          transition={{ ease: "easeOut", duration: 1, delay: 2 }}
+          transition={{ ease: "easeOut", duration: 0.5, delay: 2 }}
           className="profileDescription"
           onAnimationComplete={() => auto && goNext()}
         >
@@ -88,7 +88,7 @@ function Profile({ next, auto }: ProfileProps) {
 
         <motion.div
           animate={{ x: [-80, 30], y: [70, 70], opacity: [0, 0.2, 1] }}
-          transition={{ ease: "easeOut", duration: 1, delay: 2.3 }}
+          transition={{ ease: "easeOut", duration: 0.5, delay: 2.1 }}
         >
           <div className="social-buttons">
             <a
@@ -100,6 +100,8 @@ function Profile({ next, auto }: ProfileProps) {
                   scale: 1.2,
                   transition: { ease: "easeOut", duration: 0.5 },
                 }}
+                animate={{ y: [50, 0], opacity: [0, 0.2, 1] }}
+                transition={{ ease: "easeOut", duration: 0.5, delay: 2.5 }}
                 className="social-icon"
                 src={linkedin}
               ></motion.img>
@@ -110,6 +112,8 @@ function Profile({ next, auto }: ProfileProps) {
                   scale: 1.2,
                   transition: { ease: "easeOut", duration: 0.5 },
                 }}
+                animate={{ y: [50, 0], opacity: [0, 0.2, 1] }}
+                transition={{ ease: "easeOut", duration: 0.5, delay: 2.7 }}
                 className="social-icon"
                 src={github}
               ></motion.img>

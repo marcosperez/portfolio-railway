@@ -33,7 +33,7 @@ function IAm({ next, auto, setAuto }: IAmProps) {
       // opacity: [0, 0.4, 1],
       width: "200px",
       fontSize: "22px",
-      transition: { ease: "easeOut", duration: 1.2 },
+      transition: { ease: "easeOut", duration: 0.8 },
     });
     setAuto(true);
     next(2);
