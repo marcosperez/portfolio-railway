@@ -8,7 +8,7 @@
   left: calc(50% - 100px);
   position: absolute;
   z-index: 3;
-  background: #df2a2a;
+  background: #ac0057;
   color: white;
   font-size: 25px;
   border-color: #c4008c;
@@ -21,13 +21,13 @@
   text-decoration: none;
   perspective-origin: 25% 75%;
   box-shadow: 1px 1px 0px #9e0071, 2px 2px 0px #9e0071, 3px 3px 0px #9e0071,
-    4px 4px 0px #9e0071, 5px 5px 0px #9e0071;
+    4px 4px 0px #9e0071, 12px 2px 0px #9e0071;
 }
 
 .downloadCurriculumBtn:hover {
   color: white;
-  background: #df2a2a;
-  border-color: rgb(202 12 202 / 60%);
+  // background: #df2a2a;
+  // border-color: rgb(202 12 202 / 60%);
   transition: all 0.2s linear;
 }
 

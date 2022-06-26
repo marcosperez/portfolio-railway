@@ -11,9 +11,9 @@ function DownloadCV({}: DownloadCVProps) {
         href="/curriculum.pdf"
         className="downloadCurriculumBtn"
         whileHover={{ bottom: -150 }}
-        transition={{ duration: 0.2, type: "spring", bounce: 0.25 }}
+        transition={{ duration: 0.1, type: "tween" }}
       >
-        Download CV
+        Download PDF
       </motion.a>
     </>
   );
