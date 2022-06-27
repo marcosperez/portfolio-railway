@@ -1,5 +1,5 @@
 @import "../../theme/mixins";
-$width: 100px;
+$width: 160px;
 $height: 30px;
 
 .Slider {
@@ -18,7 +18,7 @@ $height: 30px;
     position: absolute;
     top: 2%;
     left: 4px;
-    width: calc(($width / 100) * 28);
+    width: calc(($width / 100) * 16);
     height: calc($height - ($height / 100) * 10);
     @include theme-aware("background-color", "secondary-color");
     @include theme-aware("box-shadow", "box-shadow");
@@ -28,18 +28,20 @@ $height: 30px;
   .SliderOn {
     position: absolute;
     @include theme-aware("color", "text-color");
-    top: 8%;
-    left: 20%;
+    top: 3px;
+    right: 26px;
     font-size: 1.2em;
     font-weight: 600;
+    width: 100px;
   }
 
   .SliderOff {
     position: absolute;
     @include theme-aware("color", "text-color");
-    top: 8%;
-    left: 47%;
+    top: 3px;
+    right: 26px;
     font-size: 1.2em;
     font-weight: 600;
+    width: 100px;
   }
 }

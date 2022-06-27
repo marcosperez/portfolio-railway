@@ -1,13 +1,16 @@
 import "./Slider.scss";
 import { motion, useAnimation } from "framer-motion";
 import { useEffect, useState } from "react";
+import i18n from "../../locales/i18n";
 
 interface SliderProps {
   onChange: (v: boolean) => void;
   defaultValue?: boolean;
+  value1: string;
+  value2: string;
 }
 
-function Slider({ onChange, defaultValue }: SliderProps) {
+function Slider({ onChange, defaultValue, value1, value2 }: SliderProps) {
   const [value, setValue] = useState(defaultValue);
 
   const onClick = () => {
@@ -23,7 +26,7 @@ function Slider({ onChange, defaultValue }: SliderProps) {
       });
     } else {
       controls.start({
-        left: 68,
+        left: 130,
         transition: { duration: 0.3 },
       });
     }
@@ -41,7 +44,7 @@ function Slider({ onChange, defaultValue }: SliderProps) {
           initial={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
         >
-          On
+          {value1}
         </motion.div>
       )}
       {!value && (
@@ -51,7 +54,7 @@ function Slider({ onChange, defaultValue }: SliderProps) {
           initial={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
         >
-          OFF
+          {value2}
         </motion.div>
       )}
     </motion.div>

@@ -9,11 +9,12 @@ import DownloadCV from "../components/AboutMe/DownloadCV";
 import Slider from "../components/shared/Slider";
 import { useAppContext } from "../context/AppContext";
 import { motion } from "framer-motion";
+import i18n from "../locales/i18n";
 
 function Home() {
   const [step, setStep] = useState(1);
   const [auto, setAuto] = useState(false);
-  const { setTheme } = useAppContext();
+  const { setTheme, setLanguaje } = useAppContext();
 
   const next = (nextValue: number) => {
     setStep(nextValue);
@@ -21,6 +22,11 @@ function Home() {
   const changeTheme = (v: boolean) => {
     setTheme(v ? "dark" : "light");
   };
+
+  const changeLanguage = (v: boolean) => {
+    setLanguaje(!v ? "en" : "es");
+  };
+
   return (
     <div className="Home">
       <div className="app-container">
@@ -52,9 +58,25 @@ function Home() {
         <motion.div
           animate={{ right: 90, opacity: [0, 0.2, 1] }}
           transition={{ duration: 0.5, delay: 3 }}
-          initial={{ position: "absolute", right: 50, top: 15, opacity: 0 }}
+          initial={{ position: "absolute", right: 50, top: 5, opacity: 0 }}
         >
-          <Slider onChange={changeTheme}></Slider>
+          <Slider
+            onChange={changeLanguage}
+            value2={"English"}
+            value1={"Español"}
+          ></Slider>
+        </motion.div>
+
+        <motion.div
+          animate={{ right: 90, top: 47, opacity: [0, 0.2, 1] }}
+          transition={{ duration: 0.5, delay: 3 }}
+          initial={{ position: "absolute", right: 50, top: 47, opacity: 0 }}
+        >
+          <Slider
+            onChange={changeTheme}
+            value1={i18n.t("off")}
+            value2={i18n.t("on")}
+          ></Slider>
         </motion.div>
       </div>
     </div>

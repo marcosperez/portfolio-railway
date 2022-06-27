@@ -1,5 +1,6 @@
 import "./DownloadCV.scss";
 import { motion } from "framer-motion";
+import i18n from "../../locales/i18n";
 
 interface DownloadCVProps {}
 
@@ -14,7 +15,7 @@ function DownloadCV({}: DownloadCVProps) {
         transition={{ duration: 1, type: "tween", delay: 3 }}
         animate={{ bottom: -173, opacity: 1 }}
       >
-        Download PDF
+        {`${i18n.t("downloadCV")}`}
       </motion.a>
     </>
   );

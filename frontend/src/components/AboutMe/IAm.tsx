@@ -2,6 +2,7 @@ import "./IAm.scss";
 import { motion, useAnimation } from "framer-motion";
 import { useEffect, useState } from "react";
 import Button from "../shared/Button";
+import i18n from "../../locales/i18n";
 
 interface IAmProps {
   next: (nextValue: number) => void;
@@ -65,7 +66,7 @@ function IAm({ next, auto, setAuto }: IAmProps) {
           }}
           className="iAmText1"
         >
-          <span className="iAmText2">Hi</span>
+          <span className="iAmText2">{`${i18n.t("hi")}`}</span>
         </motion.div>
         <motion.div
           custom={1}
@@ -81,8 +82,7 @@ function IAm({ next, auto, setAuto }: IAmProps) {
           }}
           className="iAmText1"
         >
-          I'm Marcos!
-          {/* Fullstack Developer */}
+          {`${i18n.t("Im")}`}
         </motion.div>
         <motion.div
           custom={2}
@@ -97,8 +97,7 @@ function IAm({ next, auto, setAuto }: IAmProps) {
           }}
           className="iAmText2"
         >
-          Fullstack Developer
-          {/* Based in Argentina */}
+          {`${i18n.t("FullstackDev")}`}
         </motion.div>
 
         {!hiddenButton && (
@@ -117,7 +116,7 @@ function IAm({ next, auto, setAuto }: IAmProps) {
             onAnimationComplete={() => auto && goNext()}
           >
             <Button onClick={goNext}>
-              <div>You want to know more</div>
+              <div>{`${i18n.t("youWantMore")}`}</div>
             </Button>
           </motion.div>
         )}
