@@ -5,6 +5,7 @@ import github from "./img/git_icono.png";
 import TextReveal from "../shared/TextReveal";
 import { useState } from "react";
 import Badge from "../shared/Badge";
+import { useAppContext } from "../../context/AppContext";
 
 interface AboutMeProps {
   next: (nextValue: number) => void;
@@ -19,11 +20,12 @@ function AboutMe({ next, auto }: AboutMeProps) {
   const rightYStart = window.innerWidth;
   const [showText, setShowText] = useState(false);
   const [showHobbies, setShowHobbies] = useState(false);
+  const { theme } = useAppContext();
 
   return (
     <>
       <motion.div
-        className="aboutMe"
+        className={`aboutMe theme--${theme}`}
         animate={{ opacity: [0, 0.2, 1] }}
         transition={{ ease: "easeOut", duration: 1, when: "beforeChildren" }}
       >

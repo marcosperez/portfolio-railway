@@ -1,14 +1,25 @@
+@import "../../theme/mixins";
+
 .button {
   cursor: pointer;
   outline: none;
   font-weight: 600;
+  user-select: none;
   &.outline {
+    user-select: none;
     position: relative;
     z-index: 3;
     background: transparent;
-    color: #df2a2a;
+    // color: #df2a2a;
+    // border-color: #df2a2a;
+    // @include theme-aware("background", "primary-color");
+    // @include theme-aware("color", "primary-color");
+    // @include theme-aware("border-color", "primary-color");
+    @include theme-aware("color", "text-color");
+    @include theme-aware("background", "primary-color");
+    @include theme-aware("border-color", "secondary-color");
     font-size: 14px;
-    border-color: #df2a2a;
+
     border-style: solid;
     border-width: 2px;
     border-radius: 22px;
@@ -20,12 +31,15 @@
     }
   }
   &.outline:hover {
-    color: white;
-    background: #df2a2a;
-    border-color: rgb(202 12 202 / 60%);
+    @include theme-aware("color", "text-color");
+    @include theme-aware("background", "primary-color");
+    @include theme-aware("border-color", "secondary-color");
+    // color: white;
+    // background: #df2a2a;
+    // border-color: rgb(202 12 202 / 60%);
     transition: all 0.2s linear;
   }
-  &.outline:active {
-    border-radius: 22px;
-  }
+  // &.outline:active {
+  //   border-radius: 22px;
+  // }
 }

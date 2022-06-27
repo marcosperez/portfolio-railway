@@ -10,8 +10,9 @@ function DownloadCV({}: DownloadCVProps) {
         download="curriculum.pdf"
         href="/curriculum.pdf"
         className="downloadCurriculumBtn"
-        whileHover={{ bottom: -150 }}
-        transition={{ duration: 0.1, type: "tween" }}
+        whileHover={{ bottom: -150, transition: { duration: 0.1 } }}
+        transition={{ duration: 1, type: "tween", delay: 3 }}
+        animate={{ bottom: -173, opacity: 1 }}
       >
         Download PDF
       </motion.a>

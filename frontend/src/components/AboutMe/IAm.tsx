@@ -117,7 +117,7 @@ function IAm({ next, auto, setAuto }: IAmProps) {
             onAnimationComplete={() => auto && goNext()}
           >
             <Button onClick={goNext}>
-              <div>I want to know more</div>
+              <div>You want to know more</div>
             </Button>
           </motion.div>
         )}

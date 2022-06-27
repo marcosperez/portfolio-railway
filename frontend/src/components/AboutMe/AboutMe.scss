@@ -1,11 +1,13 @@
+@import "../../theme/mixins";
+
 .aboutMe {
-  color: white;
   font-size: 20px;
   text-align: left;
   position: absolute;
-  top: 30px;
+  top: 160px;
   right: 20px;
   opacity: 0;
+  @include theme-aware("color", "text-color");
 }
 
 .aboutMeDescription {
@@ -16,12 +18,15 @@
 
 .aboutMeTitle {
   //   color: #df2a2a;
-  text-shadow: 4px 4px 2px rgba(202, 12, 202, 0.6);
+  // text-shadow: 4px 4px 2px rgb(202 12 202 / 60%);
+
+  @include theme-aware("text-shadow", "text-shadow-secondary");
   width: 110px;
   opacity: 0;
 }
 .divider {
-  border-bottom: 2px solid #df2a2a;
+  border-bottom: 2px solid;
+  @include theme-aware("border-color", "primary-color");
   opacity: 0;
 }
 

@@ -1,5 +1,8 @@
+@import "../../theme/mixins";
+
 .profile {
-  color: white;
+  // color: white;
+  @include theme-aware("color", "text-color");
   font-size: 20px;
   text-align: left;
   position: absolute;
@@ -15,10 +18,13 @@
 
 .profileTitle {
   //   color: #df2a2a;
-  text-shadow: 4px 4px 2px rgba(202, 12, 202, 0.6);
+  // text-shadow: 2px 2px 2px rgba(202, 12, 202, 0.6);
+  font-weight: 700;
+  @include theme-aware("text-shadow", "text-shadow-secondary");
 }
 .divider {
-  border-bottom: 2px solid #df2a2a;
+  border-bottom: 2px solid;
+  @include theme-aware("border-color", "primary-color");
   //   opacity: 0;
 }
 

@@ -1,16 +1,20 @@
-$color1: white;
-$color2: #aa0000;
-$color3: #b94d4d;
-$color4: white;
+// $color1: white;
+// $color2: #aa0000;
+// $color3: #b94d4d;
+// $color4: white;
+@import "../../theme/mixins";
 
 .badge {
   margin-bottom: 5px;
   font-size: 1rem;
-  color: $color1;
-  text-shadow: 1px 0px 0px $color2, 0px 1px 0px $color2, 2px 1px 0px $color2,
-    1px 2px 0px $color2, 3px 2px 0px $color2, 2px 3px 0px $color2,
-    4px 3px 0px $color2, 3px 4px 0px $color2, 5px 4px 0px $color2,
-    4px 5px 0px $color2, 6px 5px 0px $color2;
+  font-weight: 700;
+  @include theme-aware("color", "text-color");
+  @include theme-aware("text-shadow", "text-shadow-3d");
+  // color: $color1;
+  // text-shadow: 1px 0px 0px $color2, 0px 1px 0px $color2, 2px 1px 0px $color2,
+  //   1px 2px 0px $color2, 3px 2px 0px $color2, 2px 3px 0px $color2,
+  //   4px 3px 0px $color2, 3px 4px 0px $color2, 5px 4px 0px $color2,
+  //   4px 5px 0px $color2, 6px 5px 0px $color2;
   &:before,
   &:after {
     content: attr(data-heading);
@@ -20,7 +24,8 @@ $color4: white;
     top: 0;
   }
   &:before {
-    color: $color3;
+    // color: $color3;
+    @include theme-aware("color", "text-color");
     width: 100%;
     z-index: 5;
     font-family: "CoreCircus2DIn";
@@ -28,9 +33,10 @@ $color4: white;
   }
   &:after {
     z-index: -1;
-    text-shadow: -1px -1px 0 $color3, 1px -1px 0 $color3, -1px 1px 0 $color3,
-      1px 1px 0 $color3, -3px 3px 2px #6c9d9e, -5px 5px 2px #6c9d9e,
-      -7px 7px 2px #6c9d9e, -8px 8px 2px #6c9d9e, -9px 9px 2px #6c9d9e,
-      -11px 11px 2px #6c9d9e;
+    // text-shadow: -1px -1px 0 $color3, 1px -1px 0 $color3, -1px 1px 0 $color3,
+    //   1px 1px 0 $color3, -3px 3px 2px #6c9d9e, -5px 5px 2px #6c9d9e,
+    //   -7px 7px 2px #6c9d9e, -8px 8px 2px #6c9d9e, -9px 9px 2px #6c9d9e,
+    //   -11px 11px 2px #6c9d9e;
+    @include theme-aware("text-shadow", "text-shadow-3d");
   }
 }

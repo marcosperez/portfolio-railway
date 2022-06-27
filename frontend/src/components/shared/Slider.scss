@@ -1,0 +1,45 @@
+@import "../../theme/mixins";
+$width: 100px;
+$height: 30px;
+
+.Slider {
+  position: relative;
+  width: $width;
+  height: $height;
+  @include theme-aware("background", "primary-color");
+  @include theme-aware("border-color", "secondary-color");
+  @include theme-aware("box-shadow", "box-shadow");
+  border-radius: 15px;
+  border: solid 2px;
+  cursor: pointer;
+  user-select: none;
+
+  .SliderDot {
+    position: absolute;
+    top: 2%;
+    left: 4px;
+    width: calc(($width / 100) * 28);
+    height: calc($height - ($height / 100) * 10);
+    @include theme-aware("background-color", "secondary-color");
+    @include theme-aware("box-shadow", "box-shadow");
+    border-radius: 15px;
+  }
+
+  .SliderOn {
+    position: absolute;
+    @include theme-aware("color", "text-color");
+    top: 8%;
+    left: 20%;
+    font-size: 1.2em;
+    font-weight: 600;
+  }
+
+  .SliderOff {
+    position: absolute;
+    @include theme-aware("color", "text-color");
+    top: 8%;
+    left: 47%;
+    font-size: 1.2em;
+    font-weight: 600;
+  }
+}

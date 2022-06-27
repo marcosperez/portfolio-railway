@@ -1,0 +1,64 @@
+$themes: (
+  light: (
+    color-background: #fafafa,
+    color-card: #fff,
+    text-color: black,
+    text-shadow-secondary: 2px 2px 2px rgba(208, 255, 237, 0.6),
+    text-shadow-3d: (
+      1px 1px 0 #5fc2e9,
+      2px 2px 0 #5fc2e9,
+      3px 3px 0 #5fc2e9,
+      4px 4px 0 #3b9ec5,
+      5px 5px 0px #3b9ec5,
+    ),
+    primary-color: #6ab9d8,
+    secondary-color: rgba(208, 255, 237, 0.6),
+    box-shadow: (
+      1px 1px 0px #55a3c2,
+      2px 2px 2px #55a3c2,
+      3px 3px 3px #55a3c2,
+    ),
+    box-shadow-3d: (
+      1px 1px 0px #55a3c2,
+      2px 2px 0px #55a3c2,
+      3px 3px 0px #55a3c2,
+      4px 4px 0px #55a3c2,
+    ),
+    background-svg: (
+      url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1440' height='560' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1058%26quot%3b)' fill='none'%3e%3crect width='1440' height='560' x='0' y='0' fill='rgba(209%2c 222%2c 255%2c 1)'%3e%3c/rect%3e%3cpath d='M1488 560L0 560 L0 370.54Q31.15 329.69%2c 72 360.84Q96.28 265.12%2c 192 289.39Q240 265.39%2c 264 313.39Q335.5 264.89%2c 384 336.4Q438.72 319.12%2c 456 373.84Q458.89 304.73%2c 528 307.62Q616.06 275.68%2c 648 363.74Q717.51 313.25%2c 768 382.76Q778.01 320.77%2c 840 330.79Q883.82 302.62%2c 912 346.44Q941.23 255.66%2c 1032 284.89Q1082.84 263.73%2c 1104 314.56Q1170.47 309.03%2c 1176 375.51Q1228.53 308.04%2c 1296 360.57Q1375.02 319.59%2c 1416 398.61Q1446.63 357.25%2c 1488 387.88z' fill='rgba(177%2c 204%2c 249%2c 1)'%3e%3c/path%3e%3cpath d='M1488 560L0 560 L0 401.21Q103.19 384.39%2c 120 487.58Q162 409.57%2c 240 451.57Q262.47 402.04%2c 312 424.51Q403.06 395.57%2c 432 486.64Q440.03 374.67%2c 552 382.7Q620.94 331.64%2c 672 400.58Q738.17 346.75%2c 792 412.93Q867.25 368.18%2c 912 443.42Q963.55 422.98%2c 984 474.53Q1009.67 428.2%2c 1056 453.87Q1110.91 388.78%2c 1176 443.7Q1213.38 361.08%2c 1296 398.46Q1344.96 327.42%2c 1416 376.38Q1477.09 365.47%2c 1488 426.55z' fill='rgba(72%2c 123%2c 187%2c 1)'%3e%3c/path%3e%3cpath d='M1536 560L0 560 L0 559.98Q18.84 458.82%2c 120 477.66Q187.16 424.82%2c 240 491.98Q300.36 480.34%2c 312 540.7Q353.95 462.65%2c 432 504.6Q482.71 435.31%2c 552 486.02Q634.33 448.35%2c 672 530.68Q747.09 485.76%2c 792 560.85Q807.14 455.99%2c 912 471.13Q981.36 420.49%2c 1032 489.84Q1106.02 491.86%2c 1104 565.87Q1169.53 511.4%2c 1224 576.93Q1257.38 490.32%2c 1344 523.7Q1353.5 461.21%2c 1416 470.71Q1489.39 424.11%2c 1536 497.5z' fill='rgba(37%2c 70%2c 125%2c 1)'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1058'%3e%3crect width='1440' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e"),
+    ),
+  ),
+  dark: (
+    color-background: #37474f,
+    color-card: #000000,
+    text-color: white,
+    text-shadow-secondary: (
+      2px 2px 2px rgba(202, 12, 202, 0.6),
+      4px 4px 4px rgba(202, 12, 202, 0.6),
+    ),
+    text-shadow-3d: (
+      1px 1px 0 #b94d4d,
+      2px 2px 0 #b94d4d,
+      3px 3px 0 #aa0000,
+      4px 4px 0 #aa0000,
+    ),
+    primary-color: #df2a2a,
+    secondary-color: rgb(202 12 202 / 60%),
+    box-shadow: (
+      1px 1px 0px rgba(141, 24, 141, 0.6),
+      2px 2px 2px rgba(141, 24, 141, 0.6),
+      3px 3px 3px rgba(141, 24, 141, 0.6),
+    ),
+    box-shadow-3d: (
+      1px 1px 0px #9e0071,
+      2px 2px 0px #9e0071,
+      3px 3px 0px #9e0071,
+      4px 4px 0px #9e0071,
+      12px 2px 0px #9e0071,
+    ),
+    background-svg: (
+      // url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'%3E%3Cpolygon fill='%23cc0000' points='957 450 539 900 1396 900'/%3E%3Cpolygon fill='%23aa0000' points='957 450 872.9 900 1396 900'/%3E%3Cpolygon fill='%23d6002b' points='-60 900 398 662 816 900'/%3E%3Cpolygon fill='%23b10022' points='337 900 398 662 816 900'/%3E%3Cpolygon fill='%23d9004b' points='1203 546 1552 900 876 900'/%3E%3Cpolygon fill='%23b2003d' points='1203 546 1552 900 1162 900'/%3E%3Cpolygon fill='%23d3006c' points='641 695 886 900 367 900'/%3E%3Cpolygon fill='%23ac0057' points='587 900 641 695 886 900'/%3E%3Cpolygon fill='%23c4008c' points='1710 900 1401 632 1096 900'/%3E%3Cpolygon fill='%239e0071' points='1710 900 1401 632 1365 900'/%3E%3Cpolygon fill='%23aa00aa' points='1210 900 971 687 725 900'/%3E%3Cpolygon fill='%23880088' points='943 900 1210 900 971 687'/%3E%3C/svg%3E"),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 800 400'%3E%3Cdefs%3E%3CradialGradient id='a' cx='396' cy='281' r='514' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%23D18'/%3E%3Cstop offset='1' stop-color='%23330000'/%3E%3C/radialGradient%3E%3ClinearGradient id='b' gradientUnits='userSpaceOnUse' x1='400' y1='148' x2='400' y2='333'%3E%3Cstop offset='0' stop-color='%23FA3' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23FA3' stop-opacity='0.5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23a)' width='800' height='400'/%3E%3Cg fill-opacity='0.4'%3E%3Ccircle fill='url(%23b)' cx='267.5' cy='61' r='300'/%3E%3Ccircle fill='url(%23b)' cx='532.5' cy='61' r='300'/%3E%3Ccircle fill='url(%23b)' cx='400' cy='30' r='300'/%3E%3C/g%3E%3C/svg%3E"),
+    ),
+  ),
+);
