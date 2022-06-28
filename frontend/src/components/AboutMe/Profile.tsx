@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import linkedin from "./img/linkedin_icon.png";
 import github from "./img/git_icono.png";
 import Badge from "../shared/Badge";
+import i18n from "../../locales/i18n";
 
 interface ProfileProps {
   next: (nextValue: number) => void;
@@ -20,51 +21,53 @@ function Profile({ next, auto }: ProfileProps) {
       <motion.div
         className="profile"
         animate={{ opacity: [0, 0.2, 1] }}
-        transition={{ ease: "easeOut", duration: 1, when: "beforeChildren" }}
+        transition={{ ease: "easeOut", duration: 0.5, when: "beforeChildren" }}
       >
         <motion.div
           className="profileTitle"
           animate={{ x: [-200, 90], y: [0, 0], opacity: [0, 0.2, 1] }}
-          transition={{ ease: "easeOut", duration: 1 }}
+          transition={{ ease: "easeOut", duration: 0.5 }}
         >
-          PROFILE
+          {`${i18n.t("PROFILE")}`}
         </motion.div>
         <motion.div
           className="divider"
           animate={{ x: [-200, 19], y: [7, 7], opacity: [0, 0.2, 1] }}
-          transition={{ ease: "easeOut", duration: 1, delay: 0.5 }}
+          transition={{ ease: "easeOut", duration: 0.5, delay: 0.5 }}
         ></motion.div>
 
         <motion.div
           animate={{ x: [-200, 20], y: [12, 12], opacity: [0, 0.2, 1] }}
-          transition={{ ease: "easeOut", duration: 1, delay: 1 }}
+          transition={{ ease: "easeOut", duration: 0.5, delay: 1 }}
           className="profileDescription"
           onAnimationComplete={() => auto && goNext()}
         >
-          <div className="label">Fullname</div>
-          <div className="textData">Perez, Marcos Daniel</div>
+          <div className="label">{`${i18n.t("Fullname")}`}</div>
+          <div className="textData">{`${i18n.t("Perez, Marcos Daniel")}`}</div>
 
-          <div className="label">From</div>
-          <div className="textData">Santa Fe, Argentina</div>
+          <div className="label">{`${i18n.t("From")}`}</div>
+          <div className="textData">{`${i18n.t("Santa Fe, Argentina")}`}</div>
 
-          <div className="label">Email</div>
-          <div className="textData">marcos.d.perez@gmail.com</div>
+          <div className="label">{`${i18n.t("Email")}`}</div>
+          <div className="textData">{`${i18n.t(
+            "marcos.d.perez@gmail.com"
+          )}`}</div>
 
-          <div className="label">Mobile Phone</div>
+          <div className="label">{`${i18n.t("Mobile Phone")}`}</div>
           <div className="textData">+54 342-639312</div>
         </motion.div>
 
         <motion.div
           className="profileTitle"
           animate={{ x: [-80, 80], y: [40, 40], opacity: [0, 0.2, 1] }}
-          transition={{ ease: "easeOut", duration: 1, delay: 1.4 }}
+          transition={{ ease: "easeOut", duration: 0.5, delay: 1.4 }}
         >
-          EDUCTATIONS
+          {`${i18n.t("EDUCTATIONS")}`}
         </motion.div>
         <motion.div
           className="divider"
           animate={{ x: [-80, 19], y: [48, 48], opacity: [0, 0.2, 1] }}
-          transition={{ ease: "easeOut", duration: 1, delay: 1.7 }}
+          transition={{ ease: "easeOut", duration: 0.5, delay: 1.7 }}
         ></motion.div>
 
         <motion.div
@@ -74,15 +77,13 @@ function Profile({ next, auto }: ProfileProps) {
           onAnimationComplete={() => auto && goNext()}
         >
           <div>
-            <Badge>2008 - Ingenieria</Badge>
-            <div>
-              Ingenierie en sistemas de información en UTN Santa Fe Argentina
-            </div>
+            <Badge>{`${i18n.t("2008 - Ingenieria")}`}</Badge>
+            <div>{`${i18n.t("Title")}`}</div>
           </div>
 
           <div style={{ marginTop: 10 }}>
-            <Badge>English</Badge>
-            <div>Medium Level</div>
+            <Badge>{`${i18n.t("English")}`}</Badge>
+            <div>{`${i18n.t("Medium Level")}`}</div>
           </div>
         </motion.div>
 

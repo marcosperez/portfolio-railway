@@ -21,7 +21,7 @@
   // text-shadow: 4px 4px 2px rgb(202 12 202 / 60%);
 
   @include theme-aware("text-shadow", "text-shadow-secondary");
-  width: 110px;
+  width: 140px;
   opacity: 0;
 }
 .divider {

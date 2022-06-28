@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import Badge from "../shared/Badge";
 import { useState } from "react";
 import Button from "../shared/Button";
+import i18n from "../../locales/i18n";
 
 interface ExperiencesProps {
   next: (nextValue: number) => void;
@@ -27,144 +28,119 @@ function Experiences({ next, auto }: ExperiencesProps) {
         }}
         transition={{
           ease: "easeOut",
-          duration: 1,
+          duration: 0.5,
           when: "beforeChildren",
         }}
       >
-        <motion.div className="title-text ">EXPERIENCES</motion.div>
+        <motion.div className="title-text ">{`${i18n.t(
+          "EXPERIENCES"
+        )}`}</motion.div>
         <motion.div className="text ">
           <motion.div
             animate={{ y: [50, 0], opacity: [0, 1] }}
-            transition={{ ease: "easeOut", duration: 1, delay: 0.7 }}
+            transition={{ ease: "easeOut", duration: 0.5, delay: 0 }}
           >
-            <Badge>03/12/19 - Mobile and Web Developer in EPE</Badge>
+            <Badge>{`${i18n.t("EXPERIENCES03/12/19")}`}</Badge>
           </motion.div>
 
           <motion.div
             animate={{ y: [50, 0], opacity: [0, 1] }}
-            transition={{ ease: "easeOut", duration: 1, delay: 1 }}
+            transition={{ ease: "easeOut", duration: 0.5, delay: 0.4 }}
             style={{ fontSize: "0.9em" }}
           >
-            Implementación de proyectos internos de la empresa con NodeJS
-            (Typescript), aplicaciones móviles en IONIC. Implementacion y
-            mantenimiento de sistemas angular, react.js y vue.js. Ademas
-            configuracion de CI/CD para despliegue y automaticacion de procesos.
+            {`${i18n.t("EXPERIENCES03/12/19DESC")}`}
+          </motion.div>
+
+          <motion.div
+            animate={{ y: [50, 0], opacity: [0, 1] }}
+            transition={{ ease: "easeOut", duration: 0.5, delay: 0.55 }}
+            style={{ fontSize: "0.9em", marginTop: 10 }}
+          >
+            {`${i18n.t("EXPERIENCES03/12/19DESC2")}`}
           </motion.div>
         </motion.div>
 
         <motion.div className="text" style={{ marginTop: 20 }}>
           <motion.div
             animate={{ y: [50, 0], opacity: [0, 1] }}
-            transition={{ ease: "easeOut", duration: 1, delay: 1.3 }}
+            transition={{ ease: "easeOut", duration: 0.5, delay: 0.7 }}
           >
-            <Badge>
-              15/07/19 - 03/12/19 - Desarrollador y Analista en La caja de
-              ingenieria
-            </Badge>
+            <Badge>{`${i18n.t("EXPERIENCES15/07/19")}`}</Badge>
           </motion.div>
 
           <motion.div
             animate={{ y: [50, 0], opacity: [0, 1] }}
-            transition={{ ease: "easeOut", duration: 1, delay: 1.6 }}
+            transition={{ ease: "easeOut", duration: 0.5, delay: 1 }}
             style={{ fontSize: "0.9em" }}
           >
-            Implementación de proyectos internos de la empresa en C# MVC .NET y
-            javascript. Implementacion de StoreProcedures
+            {`${i18n.t("EXPERIENCES15/07/19DESC")}`}
           </motion.div>
         </motion.div>
 
         <motion.div className="text" style={{ marginTop: 20 }}>
           <motion.div
             animate={{ y: [50, 0], opacity: [0, 1] }}
-            transition={{ ease: "easeOut", duration: 1, delay: 1.9 }}
+            transition={{ ease: "easeOut", duration: 0.5, delay: 1.2 }}
           >
-            <Badge>
-              22/12/16 - 10/07/19 - Desarrollador y Analista en Matriz S.A.
-            </Badge>
+            <Badge>{`${i18n.t("EXPERIENCES22/12/16")}`}</Badge>
           </motion.div>
 
           <motion.div
             animate={{ y: [50, 0], opacity: [0, 1] }}
-            transition={{ ease: "easeOut", duration: 1, delay: 2.2 }}
+            transition={{ ease: "easeOut", duration: 0.5, delay: 1.5 }}
             style={{ fontSize: "0.9em" }}
           >
-            Implementación y gestión de proyecto de plataforma de trading
-            MATRIZ. Desarrollo frontend con REACT.js , Desarrollo backend con
-            GOLANG y ELIXIR. Herramientas de proyecto GITLAB y docker.
+            {`${i18n.t("EXPERIENCES22/12/16DESC")}`}
           </motion.div>
         </motion.div>
 
-        {/* {!showMore && (
+        <motion.div className="text" style={{ marginTop: 20 }}>
+          <motion.div
+            animate={{ y: [50, 0], opacity: [0, 1] }}
+            transition={{ ease: "easeOut", duration: 0.5, delay: 1.8 }}
+          >
+            <Badge>{`${i18n.t("EXPERIENCES15/07/14")}`}</Badge>
+          </motion.div>
+
+          <motion.div
+            animate={{ y: [50, 0], opacity: [0, 1] }}
+            transition={{ ease: "easeOut", duration: 0.5, delay: 2.1 }}
+            style={{ fontSize: "0.9em" }}
+          >
+            <div>{`${i18n.t("EXPERIENCES15/07/14-1")}`}</div>
+            <div>{`${i18n.t("EXPERIENCES15/07/14-2")}`}</div>
+            <div>{`${i18n.t("EXPERIENCES15/07/14-3")}`}</div>
+          </motion.div>
+        </motion.div>
+
+        <motion.div className="text" style={{ marginTop: 20 }}>
           <motion.div
             animate={{ y: [50, 0], opacity: [0, 1] }}
             transition={{ ease: "easeOut", duration: 1, delay: 2.4 }}
-            style={{
-              width: "168px",
-              margin: "23px auto auto auto",
-              cursor: "pointer",
-            }}
-            onClick={() => setShowMore(true)}
           >
-            <Button onClick={() => setShowMore(true)}>Show More</Button>
-          </motion.div>
-        )} */}
-
-        <motion.div className="text" style={{ marginTop: 20 }}>
-          <motion.div
-            animate={{ y: [50, 0], opacity: [0, 1] }}
-            transition={{ ease: "easeOut", duration: 1, delay: 2.6 }}
-          >
-            <Badge>15/07/14 - 15/12/16 - Others Jobs</Badge>
+            <Badge>{`${i18n.t("Other knowledge")}`}</Badge>
           </motion.div>
 
           <motion.div
             animate={{ y: [50, 0], opacity: [0, 1] }}
-            transition={{ ease: "easeOut", duration: 1, delay: 2.8 }}
+            transition={{ ease: "easeOut", duration: 1, delay: 2.7 }}
             style={{ fontSize: "0.9em" }}
           >
             <div>
-              * Red mutual - Desarrollo en VB.Net y javascript de herramientas
-              internas del sector
+              * <strong>{`${i18n.t("Databases")}`}</strong>
+              {`${i18n.t("DatabasesDesc")}`}
             </div>
             <div>
-              * Pasantía Musimundo - Desarrollo de fix en 4GL INFORMIX para
-              aplicaciones existentes en la empresa.
+              * <strong>{`${i18n.t("Testing tools")}`}</strong>
+              {`${i18n.t("Testing tools Desc")}`}
             </div>
             <div>
-              * Pasantía en Acronex - Desarrollo de “router” de paquetes para
-              hardware desarrollado en la empresa, implementado en PYTHON sobre
-              una placa raspberry PI
-            </div>
-          </motion.div>
-        </motion.div>
-
-        <motion.div className="text" style={{ marginTop: 20 }}>
-          <motion.div
-            animate={{ y: [50, 0], opacity: [0, 1] }}
-            transition={{ ease: "easeOut", duration: 1, delay: 3 }}
-          >
-            <Badge>Other knowledge</Badge>
-          </motion.div>
-
-          <motion.div
-            animate={{ y: [50, 0], opacity: [0, 1] }}
-            transition={{ ease: "easeOut", duration: 1, delay: 3.2 }}
-            style={{ fontSize: "0.9em" }}
-          >
-            <div>
-              * <strong>Databases</strong> - Postgres, MySQL, Oracle, SQL Server
-              (store procedures)
+              * <strong>{`${i18n.t("Virtualización and Containers")}`}</strong>
+              {`${i18n.t("Virtualización and Containers Desc")}`}
             </div>
             <div>
-              * <strong>Testing tools</strong> - Jest, supertest, Elixir
-              Phoenix, Jasmin, Go Testify.
-            </div>
-            <div>
-              * <strong>Virtualización and Containers</strong> - Docker and
-              Vagrant
-            </div>
-            <div>
-              * <strong>CI/CD</strong> - Git and Gitlab Pipelines
+              * <strong>{`${i18n.t("CI/CD")}`}</strong>
+              {`${i18n.t("CI/CD Desc")}`}
             </div>
           </motion.div>
         </motion.div>
