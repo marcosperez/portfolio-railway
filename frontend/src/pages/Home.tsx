@@ -27,6 +27,9 @@ function Home() {
     setLanguaje(!v ? "en" : "es");
   };
 
+  console.log(theme);
+  console.log(languaje);
+
   return (
     <div className="Home">
       <div className="app-container">
@@ -64,7 +67,7 @@ function Home() {
             onChange={changeLanguage}
             value2={"English"}
             value1={"Español"}
-            defaultValue={languaje === "en"}
+            value={languaje === "es"}
           ></Slider>
         </motion.div>
 
@@ -77,7 +80,7 @@ function Home() {
             onChange={changeTheme}
             value1={i18n.t("off")}
             value2={i18n.t("on")}
-            defaultValue={theme === "light"}
+            value={theme === "dark"}
           ></Slider>
         </motion.div>
       </div>

@@ -5,18 +5,16 @@ import i18n from "../../locales/i18n";
 
 interface SliderProps {
   onChange: (v: boolean) => void;
-  defaultValue?: boolean;
+  value?: boolean;
   value1: string;
   value2: string;
 }
 
-function Slider({ onChange, defaultValue, value1, value2 }: SliderProps) {
-  const [value, setValue] = useState(defaultValue);
-
+function Slider({ onChange, value, value1, value2 }: SliderProps) {
   const onClick = () => {
-    setValue(!value);
     onChange(!value);
   };
+  const controls = useAnimation();
 
   useEffect(() => {
     if (!value) {
@@ -31,8 +29,6 @@ function Slider({ onChange, defaultValue, value1, value2 }: SliderProps) {
       });
     }
   }, [value]);
-
-  const controls = useAnimation();
 
   return (
     <motion.div className={`Slider`} onClick={onClick}>

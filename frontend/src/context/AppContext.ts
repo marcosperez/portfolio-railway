@@ -7,9 +7,9 @@ export type GlobalContent = {
 };
 
 export const AppContext = createContext<GlobalContent>({
-  theme: "dark",
+  theme: "",
   setTheme: () => {},
-  languaje: "en",
+  languaje: "",
   setLanguaje: () => {},
 });
 
