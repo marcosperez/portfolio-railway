@@ -56,7 +56,13 @@ function HomeMobile() {
         <motion.div
           animate={{ right: 20, opacity: [0, 0.2, 1] }}
           transition={{ duration: 1, delay: 0 }}
-          initial={{ position: "absolute", right: -100, top: 5, opacity: 0 }}
+          initial={{
+            position: "fixed",
+            right: -100,
+            top: 5,
+            opacity: 0,
+            zIndex: 10,
+          }}
         >
           <Slider
             onChange={changeLanguage}
@@ -69,7 +75,13 @@ function HomeMobile() {
         <motion.div
           animate={{ left: 20, opacity: [0, 0.2, 1] }}
           transition={{ duration: 1, delay: 0 }}
-          initial={{ position: "absolute", left: -100, top: 5, opacity: 0 }}
+          initial={{
+            position: "fixed",
+            left: -100,
+            top: 5,
+            opacity: 0,
+            zIndex: 10,
+          }}
         >
           <Slider
             onChange={changeTheme}
