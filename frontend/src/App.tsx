@@ -52,12 +52,14 @@ function App() {
         setWindowWidth,
       }}
     >
-      <div className={`App theme-${theme} ${isMovilCls}`}>
-        <div className="background-back-app" />
-        <div className="background" />
+      <div className={`theme-${theme} ${isMovilCls}`}>
+        <div className="App">
+          <div className="background-back-app" />
+          <div className="background" />
 
-        {!isMovil && <Home></Home>}
-        {isMovil && <HomeMobile></HomeMobile>}
+          {!isMovil && <Home></Home>}
+          {isMovil && <HomeMobile></HomeMobile>}
+        </div>
       </div>
     </AppContext.Provider>
   );

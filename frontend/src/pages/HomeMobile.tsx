@@ -54,12 +54,12 @@ function HomeMobile() {
       <motion.div className="app-container">
         <DownloadCV></DownloadCV>
         <motion.div
-          animate={{ right: 20, opacity: [0, 0.2, 1] }}
+          animate={{ right: 20, top: 15, opacity: [0, 0.2, 1] }}
           transition={{ duration: 1, delay: 0 }}
           initial={{
             position: "fixed",
             right: -100,
-            top: 5,
+            top: 15,
             opacity: 0,
             zIndex: 10,
           }}
@@ -73,12 +73,12 @@ function HomeMobile() {
         </motion.div>
 
         <motion.div
-          animate={{ left: 20, opacity: [0, 0.2, 1] }}
+          animate={{ left: 20, top: 15, opacity: [0, 0.2, 1] }}
           transition={{ duration: 1, delay: 0 }}
           initial={{
             position: "fixed",
             left: -100,
-            top: 5,
+            top: 15,
             opacity: 0,
             zIndex: 10,
           }}
