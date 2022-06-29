@@ -10,10 +10,6 @@
   left: calc(50% - 142px);
   position: absolute;
   z-index: 3;
-  // background: #ac0057;
-  // color: white;
-  // border-color: #c4008c;
-
   @include theme-aware("background", "primary-color");
   @include theme-aware("border-color", "secondary-color");
   @include theme-aware("box-shadow", "box-shadow-3d");
@@ -28,8 +24,12 @@
   text-decoration: none;
   perspective-origin: 25% 75%;
   opacity: 0;
-  // box-shadow: 1px 1px 0px #9e0071, 2px 2px 0px #9e0071, 3px 3px 0px #9e0071,
-  //   4px 4px 0px #9e0071, 12px 2px 0px #9e0071;
+}
+
+.App.movil {
+  .downloadCurriculumBtn {
+    position: fixed;
+  }
 }
 
 .downloadCurriculumBtn:hover {

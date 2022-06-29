@@ -6,10 +6,11 @@
   font-family: "Fredoka", sans-serif;
   @include theme-aware("border-color", "primary-color");
   border-top: 8px solid;
-}
-
-body {
   overflow: hidden;
+
+  &.movil {
+    overflow-y: scroll;
+  }
 }
 
 .background-back-app {

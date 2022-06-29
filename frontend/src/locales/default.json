@@ -6,6 +6,7 @@
     "Im": "I'm Marcos!",
     "FullstackDev": "Fullstack Developer",
     "youWantMore": "You Want To Know More?",
+    "scrollDown": "Scroll Down!",
     "downloadCV": "Download PDF",
 
     "PROFILE": "PROFILE",
@@ -35,7 +36,7 @@
     "EXPERIENCES03/12/19DESC": "Implementación de proyectos internos de la empresa con NodeJS    (Typescript), aplicaciones móviles en IONIC. Implementacion y    mantenimiento de sistemas angular, react.js y vue.js. Ademas    configuracion de CI/CD para despliegue y automaticacion de procesos.",
     "EXPERIENCES03/12/19DESC2": "Colaboracion en desarrollo de proyecto WEB React para VALID EEUU",
     "EXPERIENCES15/07/19": "15/07/19 - 03/12/19 - Desarrollador y Analista en La caja de    ingenieria",
-    "EXPERIENCES15/07/19DESC": "Implementación de proyectos internos de la empresa en C# MVC .NET y    javascript. Implementacion de StoreProcedures",
+    "EXPERIENCES15/07/19DESC": "Implementación de proyectos internos de la empresa en C# MVC .NET y    javascript. Desarrollo de Store Procedures",
     "EXPERIENCES22/12/16": "22/12/16 - 10/07/19 - Desarrollador y Analista en Matriz S.A.",
     "EXPERIENCES22/12/16DESC": "Implementación y gestión de proyecto de plataforma de trading    MATRIZ. Desarrollo frontend con REACT.js , Desarrollo backend con    GOLANG y ELIXIR. Herramientas de proyecto GITLAB y docker.",
     "EXPERIENCES15/07/14": "15/07/14 - 15/12/16 - Others Jobs",

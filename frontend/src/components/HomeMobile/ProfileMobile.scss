@@ -1,0 +1,45 @@
+@import "../../theme/mixins";
+
+.profileMobile {
+  // color: white;
+  @include theme-aware("color", "text-color");
+  font-size: 20px;
+  text-align: left;
+  position: relative;
+  height: 100vh;
+
+  opacity: 0;
+
+  .profileMobileDescription {
+    font-size: 15px;
+    width: 239px;
+  }
+
+  .profileMobileTitle {
+    text-align: center;
+    font-weight: 700;
+    @include theme-aware("text-shadow", "text-shadow-secondary");
+  }
+  .divider {
+    border-bottom: 2px solid;
+    @include theme-aware("border-color", "primary-color");
+  }
+
+  .label {
+    font-weight: 600;
+    margin-top: 10px;
+  }
+
+  .social-buttons {
+    margin-top: 30px;
+    text-align: center;
+  }
+
+  .social-icon {
+    border: 1px #df2a2a solid;
+    @include theme-aware("filter", "filter-social-icon");
+    height: 40px;
+    padding: 8px;
+    margin: 0px 8px;
+  }
+}

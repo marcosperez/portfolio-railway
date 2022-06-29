@@ -1,6 +1,7 @@
 import "./MiddleContainer.scss";
 import { motion } from "framer-motion";
 import { ReactElement, useEffect, useState } from "react";
+import { useAppContext } from "../../context/AppContext";
 
 interface MiddleContainerProps {
   next: (nextValue: number) => void;
@@ -9,21 +10,18 @@ interface MiddleContainerProps {
   children?: ReactElement;
 }
 
+const MIN_WIDTH = 1200;
+
 function MiddleContainer({ next, auto, children }: MiddleContainerProps) {
-  const [windowWidth, setWindowWidth] = useState(
-    Math.min(window.innerWidth, 1200)
-  );
-  const width = windowWidth - 600;
-  const left = windowWidth / 2 - width / 2;
+  // const [windowWidth, setWindowWidth] = useState(
+  //   Math.min(window.innerWidth, 1200)
+  // );
+  const { windowWidth } = useAppContext();
+  const width = Math.min(windowWidth, MIN_WIDTH) - 600;
+  const left = Math.min(windowWidth, MIN_WIDTH) / 2 - width / 2;
   const goNext = async () => {
     next(5);
   };
-
-  useEffect(() => {
-    window.addEventListener("resize", () => {
-      setWindowWidth(Math.min(window.innerWidth, 1200));
-    });
-  }, []);
 
   return (
     <motion.div

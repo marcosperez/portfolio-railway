@@ -1,0 +1,29 @@
+@import "../../theme/mixins";
+
+.IAmMobil {
+  position: relative;
+  height: 100vh;
+
+  .iAmMobilText1 {
+    font-weight: 700;
+    @include theme-aware("color", "text-color");
+    @include theme-aware("text-shadow", "text-shadow-secondary");
+  }
+  .iAmMobilText2 {
+    @include theme-aware("color", "primary-color");
+    @include theme-aware("text-shadow", "text-shadow-secondary");
+    font-weight: 700;
+    padding: 2px;
+  }
+  .iAmMobilText3 {
+    padding: 2px;
+    color: white;
+    font-weight: 500;
+    text-shadow: 4px 4px 2px rgba(202, 12, 202, 0.6);
+  }
+
+  .group-iAmMobil {
+    width: 450px;
+    position: absolute;
+  }
+}
