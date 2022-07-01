@@ -1,17 +1,18 @@
+// Definir temas en base a 2 colores (filtro draken y ligthin)
+
 $themes: (
   light: (
     color-background: #fafafa,
     color-card: #fff,
     text-color: black,
-    text-shadow-secondary: 2px 2px 2px rgba(208, 255, 237, 0.6),
+    text-shadow-secondary: 2px 2px 2px #418099,
     text-shadow-3d: (
       1px 1px 0 #5fc2e9,
       2px 2px 0 #5fc2e9,
       3px 3px 0 #5fc2e9,
       4px 4px 0 #3b9ec5,
-      5px 5px 0px #3b9ec5,
     ),
-    primary-color: #6ab9d8,
+    primary-color: #57bee7,
     secondary-color: rgba(208, 255, 237, 0.6),
     box-shadow: (
       1px 1px 0px #55a3c2,
