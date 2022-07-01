@@ -18,6 +18,7 @@
     @include theme-aware("color", "text-color");
     @include theme-aware("background", "primary-color");
     @include theme-aware("border-color", "secondary-color");
+    @include theme-aware("box-shadow", "box-shadow");
     font-size: 14px;
 
     border-style: solid;

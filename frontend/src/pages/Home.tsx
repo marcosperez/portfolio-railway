@@ -10,11 +10,11 @@ import Slider from "../components/shared/Slider";
 import { useAppContext } from "../context/AppContext";
 import { motion } from "framer-motion";
 import i18n from "../locales/i18n";
+import { useAnimationContext } from "../context/AnimationContext";
 
 function Home() {
-  const [step, setStep] = useState(1);
-  const [auto, setAuto] = useState(false);
   const { setTheme, theme, setLanguaje, languaje } = useAppContext();
+  const { step, setStep, auto, setAuto } = useAnimationContext();
 
   const next = (nextValue: number) => {
     setStep(nextValue);
@@ -26,9 +26,6 @@ function Home() {
   const changeLanguage = (v: boolean) => {
     setLanguaje(!v ? "en" : "es");
   };
-
-  console.log(theme);
-  console.log(languaje);
 
   return (
     <div className="Home">

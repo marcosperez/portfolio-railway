@@ -12,6 +12,8 @@ import { motion, Variants } from "framer-motion";
 import i18n from "../locales/i18n";
 import IAmMobil from "../components/HomeMobile/IAmMobil";
 import ProfileMobil from "../components/HomeMobile/ProfileMobile";
+import AboutMeMobile from "../components/HomeMobile/AboutMeMobile";
+import ExperiencesMobile from "../components/HomeMobile/ExperiencesMobile";
 
 const cardVariants: Variants = {
   offscreen: {
@@ -103,7 +105,6 @@ function HomeMobile() {
               setAuto={setAuto}
             ></IAmMobil>
           </motion.div>
-
           <motion.div
             variants={cardVariants}
             initial="offscreen"
@@ -116,77 +117,30 @@ function HomeMobile() {
             ></ProfileMobil>
           </motion.div>
 
-          {/* <motion.div
+          <motion.div
             variants={cardVariants}
             initial="offscreen"
             whileInView="onscreen"
           >
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed at
-            aspernatur a accusantium, voluptatem dolores molestias, maxime
-            aperiam blanditiis facere dolorem autem tempore. Sunt sit impedit
-            quod consectetur, quisquam accusamus.
-          </motion.div> */}
-          {/* <motion.div
-            initial="offscreen"
-            whileInView="onscreen"
-            variants={cardVariants}
-          >
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed at
-            aspernatur a accusantium, voluptatem dolores molestias, maxime
-            aperiam blanditiis facere dolorem autem tempore. Sunt sit impedit
-            quod consectetur, quisquam accusamus.
-          </motion.div> */}
-        </motion.div>
-        {/* {step > 0 && (
-          <IAm
-            next={next}
-            auto={auto}
-            currentStep={step}
-            setAuto={setAuto}
-          ></IAm>
-        )}
-        {step > 1 && (
-          <Profile next={next} auto={auto} currentStep={step}></Profile>
-        )}
-        {step > 2 && (
-          <AboutMe next={next} auto={auto} currentStep={step}></AboutMe>
-        )}
-        {step > 3 && (
-          <MiddleContainer next={next} auto={auto} currentStep={step}>
-            <Experiences
+            <AboutMeMobile
               next={next}
               auto={auto}
               currentStep={step}
-            ></Experiences>
-          </MiddleContainer>
-        )}
+            ></AboutMeMobile>
+          </motion.div>
 
-        
-        <motion.div
-          animate={{ right: 60, opacity: [0, 0.2, 1] }}
-          transition={{ duration: 0.5, delay: 3 }}
-          initial={{ position: "absolute", right: 50, top: 5, opacity: 0 }}
-        >
-          <Slider
-            onChange={changeLanguage}
-            value2={"English"}
-            value1={"Español"}
-            value={languaje === "es"}
-          ></Slider>
+          <motion.div
+            variants={cardVariants}
+            initial="offscreen"
+            whileInView="onscreen"
+          >
+            <ExperiencesMobile
+              next={next}
+              auto={auto}
+              currentStep={step}
+            ></ExperiencesMobile>
+          </motion.div>
         </motion.div>
-
-        <motion.div
-          animate={{ right: 60, top: 47, opacity: [0, 0.2, 1] }}
-          transition={{ duration: 0.5, delay: 3 }}
-          initial={{ position: "absolute", right: 50, top: 47, opacity: 0 }}
-        >
-          <Slider
-            onChange={changeTheme}
-            value1={i18n.t("off")}
-            value2={i18n.t("on")}
-            value={theme === "dark"}
-          ></Slider>
-        </motion.div> */}
       </motion.div>
     </div>
   );

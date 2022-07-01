@@ -1,9 +1,10 @@
 .Home {
-  height: calc(100vh - 8px);
+  height: calc(100vh - 13px);
   position: relative;
   max-width: 1200px;
   margin: auto;
   min-height: 732px;
+  z-index: 2;
 
   // .background-back {
   //   background-color: #000000;

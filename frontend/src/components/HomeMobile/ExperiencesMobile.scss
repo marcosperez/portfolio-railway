@@ -1,0 +1,24 @@
+@import "../../theme/mixins";
+
+.experiencesMobile {
+  background-color: transparent;
+
+  margin: 25px 20px;
+  width: 90%;
+}
+
+.title-text {
+  // color: #f5f5f5;
+  @include theme-aware("color", "text-color");
+  font-size: 1.2em;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.text {
+  display: inline-block;
+  // color: #f5f5f5;
+  @include theme-aware("color", "text-color");
+  font-size: 16px;
+  padding: 5px;
+}

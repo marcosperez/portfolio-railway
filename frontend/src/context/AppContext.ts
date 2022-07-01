@@ -6,6 +6,8 @@ export type GlobalContent = {
   setLanguaje: (c: string) => void;
   windowWidth: number;
   setWindowWidth: (c: number) => void;
+  windowHeight: number;
+  setWindowHeight: (c: number) => void;
 };
 
 export const AppContext = createContext<GlobalContent>({
@@ -15,6 +17,8 @@ export const AppContext = createContext<GlobalContent>({
   setLanguaje: () => {},
   windowWidth: window.innerWidth,
   setWindowWidth: () => {},
+  windowHeight: window.innerHeight,
+  setWindowHeight: () => {},
 });
 
 export const useAppContext = () => useContext(AppContext);
