@@ -1,11 +1,11 @@
 import "./HomeMobile.scss";
 import IAm from "../components/AboutMe/IAm";
 import AboutMe from "../components/AboutMe/AboutMe";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Profile from "../components/AboutMe/Profile";
 import MiddleContainer from "../components/AboutMe/MiddleContainer";
 import Experiences from "../components/AboutMe/Experiences";
-import DownloadCV from "../components/AboutMe/DownloadCV";
+import DownloadCV from "../components/shared/DownloadCV";
 import Slider from "../components/shared/Slider";
 import { useAppContext } from "../context/AppContext";
 import { motion, Variants } from "framer-motion";
@@ -14,6 +14,7 @@ import IAmMobil from "../components/HomeMobile/IAmMobil";
 import ProfileMobil from "../components/HomeMobile/ProfileMobile";
 import AboutMeMobile from "../components/HomeMobile/AboutMeMobile";
 import ExperiencesMobile from "../components/HomeMobile/ExperiencesMobile";
+import { useAnimationContext } from "../context/AnimationContext";
 
 const cardVariants: Variants = {
   offscreen: {
@@ -33,9 +34,8 @@ const cardVariants: Variants = {
 };
 
 function HomeMobile() {
-  const [step, setStep] = useState(1);
-  const [auto, setAuto] = useState(false);
   const { setTheme, theme, setLanguaje, languaje } = useAppContext();
+  const { step, setStep, auto, setAuto } = useAnimationContext();
 
   const next = (nextValue: number) => {
     setStep(nextValue);
@@ -48,8 +48,22 @@ function HomeMobile() {
     setLanguaje(!v ? "en" : "es");
   };
 
-  console.log(theme);
-  console.log(languaje);
+  const IAmRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {});
+  const scrollIAm = () => {
+    IAmRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const ProfileMobileRef = useRef<HTMLDivElement>(null);
+  const scrollProfile = () => {
+    ProfileMobileRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    if (step === 2) {
+      scrollProfile();
+    }
+  }, [step]);
 
   return (
     <div className="HomeMobile">
@@ -92,7 +106,7 @@ function HomeMobile() {
             value={theme === "dark"}
           ></Slider>
         </motion.div>
-        <motion.div>
+        <motion.div ref={IAmRef}>
           <motion.div
             variants={cardVariants}
             initial="offscreen"
@@ -109,6 +123,7 @@ function HomeMobile() {
             variants={cardVariants}
             initial="offscreen"
             whileInView="onscreen"
+            ref={ProfileMobileRef}
           >
             <ProfileMobil
               next={next}

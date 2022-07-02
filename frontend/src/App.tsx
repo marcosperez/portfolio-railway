@@ -54,7 +54,7 @@ function App() {
   });
 
   useEffect(() => {
-    if (step === 2) {
+    if (step === 2 && !isMovil) {
       controls.start({
         right: 247,
         top: -65,

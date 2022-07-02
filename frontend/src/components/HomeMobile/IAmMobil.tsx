@@ -27,12 +27,6 @@ function IAmMobil({ next, auto, setAuto, currentStep }: IAmMobilProps) {
     });
   };
 
-  // controlsButton.start({
-  //   opacity: [0, 0.5, 1],
-  //   y: [100, 50],
-  //   transition: { ease: "easeOut", duration: 0.8, delay: 3 },
-  // });
-
   const goNext = async () => {
     setHiddenButton(true);
 
@@ -46,15 +40,9 @@ function IAmMobil({ next, auto, setAuto, currentStep }: IAmMobilProps) {
 
   return (
     <motion.div className="IAmMobil">
-      <motion.div
-        className="group-iAmMobil IAmMobil"
-        animate={controls}
-        // animate={{ z: [500, 0] }}
-        // transition={{ ease: "easeOut", duration: 1 }}
-      >
+      <motion.div className="group-iAmMobil IAmMobil" animate={controls}>
         <motion.div
           custom={0}
-          //   animate={controls}
           whileHover={{
             scale: 1.2,
             transition: { ease: "easeOut", duration: 0.5 },
@@ -70,7 +58,6 @@ function IAmMobil({ next, auto, setAuto, currentStep }: IAmMobilProps) {
         </motion.div>
         <motion.div
           custom={1}
-          //   animate={controls}
           whileHover={{
             scale: 1.2,
             transition: { ease: "easeOut", duration: 0.5 },

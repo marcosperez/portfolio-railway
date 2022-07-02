@@ -5,7 +5,7 @@ import { useState } from "react";
 import Profile from "../components/AboutMe/Profile";
 import MiddleContainer from "../components/AboutMe/MiddleContainer";
 import Experiences from "../components/AboutMe/Experiences";
-import DownloadCV from "../components/AboutMe/DownloadCV";
+import DownloadCV from "../components/shared/DownloadCV";
 import Slider from "../components/shared/Slider";
 import { useAppContext } from "../context/AppContext";
 import { motion } from "framer-motion";
