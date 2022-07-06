@@ -9,13 +9,14 @@ import DownloadCV from "../components/shared/DownloadCV";
 import Slider from "../components/shared/Slider";
 import { useAppContext } from "../context/AppContext";
 import { motion, Variants } from "framer-motion";
-import i18n from "../locales/i18n";
+import i18n from "../features/translations/locales/i18n";
 import IAmMobil from "../components/HomeMobile/IAmMobil";
 import ProfileMobil from "../components/HomeMobile/ProfileMobile";
 import AboutMeMobile from "../components/HomeMobile/AboutMeMobile";
 import ExperiencesMobile from "../components/HomeMobile/ExperiencesMobile";
 import { useAnimationContext } from "../context/AnimationContext";
 import { GetTheme, useSetTheme } from "../features/theme/hooks";
+import { useLanguajeState } from "../features/translations/hooks";
 
 const cardVariants: Variants = {
   offscreen: {
@@ -35,7 +36,7 @@ const cardVariants: Variants = {
 };
 
 function HomeMobile() {
-  const { setLanguaje, languaje } = useAppContext();
+  const [languaje, setLanguaje] = useLanguajeState();
   const { step, setStep, auto, setAuto } = useAnimationContext();
   const theme = GetTheme();
 

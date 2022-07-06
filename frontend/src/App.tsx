@@ -1,20 +1,22 @@
 import { motion, useAnimation } from "framer-motion";
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 import "./App.scss";
 import { AnimationContext } from "./context/AnimationContext";
 import { AppContext } from "./context/AppContext";
 import { GetTheme, useSetTheme } from "./features/theme/hooks";
-import { changeTheme } from "./features/theme/ThemeSlice";
-import i18n from "./locales/i18n";
+import { Themes } from "./features/theme/ThemeSlice";
+import { GetLanguaje, useSetLanguaje } from "./features/translations/hooks";
+import i18n from "./features/translations/locales/i18n";
+import { Languajes } from "./features/translations/TranslationSlice";
 import Home from "./pages/Home";
 import HomeMobile from "./pages/HomeMobile";
-import { RootState } from "./store";
 
 function App() {
   const theme = GetTheme();
   // const [theme, setTheme] = useState<string>("light");
-  const [languaje, setLanguaje] = useState<string>("en");
+  // const [languaje, setLanguaje] = useState<string>("en");
+  const languaje = GetLanguaje();
+  const setLanguaje = useSetLanguaje();
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [windowHeight, setWindowHeight] = useState(window.innerHeight);
   // Animation
@@ -22,23 +24,14 @@ function App() {
   const [auto, setAuto] = useState(false);
   i18n.changeLanguage(languaje);
 
-  // const saveTheme = (theme: "light" | "dark") => {
-  //   localStorage.setItem("theme", theme);
-  //   setTheme(theme);
-  // };
-
-  const saveLanguaje = (languaje: string) => {
-    localStorage.setItem("languaje", languaje);
-    setLanguaje(languaje);
-  };
   const setTheme = useSetTheme();
   useEffect(() => {
-    const theme = localStorage.getItem("theme");
+    const theme = localStorage.getItem("theme") as Themes;
     if (theme) {
-      setTheme(theme === "dark" ? "dark" : "light");
+      setTheme(theme);
     }
 
-    const languaje = localStorage.getItem("languaje");
+    const languaje = localStorage.getItem("languaje") as Languajes;
     if (languaje) {
       setLanguaje(languaje);
     }
@@ -72,8 +65,6 @@ function App() {
   return (
     <AppContext.Provider
       value={{
-        languaje,
-        setLanguaje: saveLanguaje,
         windowWidth,
         setWindowWidth,
         windowHeight,
@@ -99,10 +90,10 @@ function App() {
             {theme === "dark" && (
               <motion.div
                 animate={{
-                  bottom: windowHeight / 2 - 200,
+                  bottom: windowHeight / 2 - 400,
                   opacity: 1,
                 }}
-                initial={{ bottom: -200, opacity: 0 }}
+                initial={{ bottom: -400, opacity: 0, maxHeight: 0 }}
                 transition={{ ease: "easeIn", delay: 0, duration: 5 }}
               >
                 <div id="stars"></div>

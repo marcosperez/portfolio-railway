@@ -1,7 +1,7 @@
 import "./Slider.scss";
 import { motion, useAnimation } from "framer-motion";
 import { useEffect, useState } from "react";
-import i18n from "../../locales/i18n";
+import i18n from "../../features/translations/locales/i18n";
 
 interface SliderProps {
   onChange: (v: boolean) => void;

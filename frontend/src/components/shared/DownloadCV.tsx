@@ -1,6 +1,6 @@
 import "./DownloadCV.scss";
 import { motion } from "framer-motion";
-import i18n from "../../locales/i18n";
+import i18n from "../../features/translations/locales/i18n";
 
 interface DownloadCVProps {}
 

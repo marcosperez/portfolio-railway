@@ -7,8 +7,12 @@
   text-align: left;
   position: relative;
   height: 100vh;
-
+  display: flex;
   opacity: 0;
+
+  .profileMobileContainer {
+    margin: auto auto;
+  }
 
   .profileMobileDescription {
     font-size: 15px;

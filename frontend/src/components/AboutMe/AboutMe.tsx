@@ -4,7 +4,7 @@ import TextReveal from "../shared/TextReveal";
 import { useState } from "react";
 import Badge from "../shared/Badge";
 import { useAppContext } from "../../context/AppContext";
-import i18n from "../../locales/i18n";
+import i18n from "../../features/translations/locales/i18n";
 
 interface AboutMeProps {
   next: (nextValue: number) => void;

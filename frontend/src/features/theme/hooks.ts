@@ -1,12 +1,12 @@
-import { useDispatch } from "react-redux";
-import { changeTheme } from "./ThemeSlice";
+import { setThemeStorage, Themes } from "./ThemeSlice";
 import { useSelector } from "react-redux";
-import { RootState } from "../../store";
+import { RootState } from "../store";
+import { useAppDispatch } from "../hooks";
 
 export const useSetTheme = () => {
-  const dispatch = useDispatch();
-  return (theme: "light" | "dark") => {
-    dispatch(changeTheme(theme));
+  const dispatch = useAppDispatch();
+  return (theme: Themes) => {
+    dispatch(setThemeStorage(theme));
   };
 };
 
