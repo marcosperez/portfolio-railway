@@ -4,6 +4,7 @@ import linkedin from "./img/linkedin_icon.png";
 import github from "./img/git_icono.png";
 import Badge from "../shared/Badge";
 import i18n from "../../features/translations/locales/i18n";
+import TextReveal from "../shared/TextReveal";
 
 interface ProfileMobileProps {
   next: (nextValue: number) => void;
@@ -61,6 +62,27 @@ function ProfileMobile({ next, auto }: ProfileMobileProps) {
           </motion.div>
 
           <motion.div
+            className="aboutMeMobileTitle"
+            animate={{ x: [-200, 0], y: [0, 0], opacity: [0, 0.2, 1] }}
+            transition={{ ease: "easeOut", duration: 0.5 }}
+          >
+            {`${i18n.t("ABOUT ME")}`}
+          </motion.div>
+          <motion.div
+            className="divider"
+            animate={{ x: [-200, 0], y: [0, 0], opacity: [0, 0.2, 1] }}
+            transition={{ ease: "easeOut", duration: 0.5 }}
+          ></motion.div>
+
+          <motion.div
+            animate={{ x: [-200, 0], y: [0, 0], opacity: [0, 0.2, 1] }}
+            transition={{ ease: "easeOut", duration: 0.5 }}
+            className="aboutMeMobileDescription"
+          >
+            <TextReveal>{`${i18n.t("ABOUT ME DESC")}`}</TextReveal>
+          </motion.div>
+
+          {/* <motion.div
             className="profileMobileTitle"
             animate={{ x: [-500, 0], y: [40, 40], opacity: [0, 0.2, 1] }}
             transition={{ ease: "easeOut", duration: 0.5, delay: 1.4 }}
@@ -123,7 +145,7 @@ function ProfileMobile({ next, auto }: ProfileMobileProps) {
                 ></motion.img>
               </a>
             </div>
-          </motion.div>
+          </motion.div> */}
         </div>
       </motion.div>
     </>

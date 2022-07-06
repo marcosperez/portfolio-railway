@@ -141,24 +141,24 @@ function HomeMobile() {
             initial="offscreen"
             whileInView="onscreen"
           >
-            <AboutMeMobile
-              next={next}
-              auto={auto}
-              currentStep={step}
-            ></AboutMeMobile>
-          </motion.div>
-
-          <motion.div
-            variants={cardVariants}
-            initial="offscreen"
-            whileInView="onscreen"
-          >
             <ExperiencesMobile
               next={next}
               auto={auto}
               currentStep={step}
             ></ExperiencesMobile>
           </motion.div>
+        </motion.div>
+
+        <motion.div
+          variants={cardVariants}
+          initial="offscreen"
+          whileInView="onscreen"
+        >
+          <AboutMeMobile
+            next={next}
+            auto={auto}
+            currentStep={step}
+          ></AboutMeMobile>
         </motion.div>
       </motion.div>
     </div>
