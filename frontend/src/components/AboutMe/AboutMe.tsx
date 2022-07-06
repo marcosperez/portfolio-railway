@@ -3,8 +3,8 @@ import { motion } from "framer-motion";
 import TextReveal from "../shared/TextReveal";
 import { useState } from "react";
 import Badge from "../shared/Badge";
-import { useAppContext } from "../../context/AppContext";
 import i18n from "../../features/translations/locales/i18n";
+import { GetSizes } from "../../features/config/hooks";
 
 interface AboutMeProps {
   next: (nextValue: number) => void;
@@ -16,7 +16,7 @@ function AboutMe({ next, auto }: AboutMeProps) {
   const goNext = async () => {
     next(4);
   };
-  const rightYStart = window.innerWidth;
+  const [rightYStart] = GetSizes();
   const [showText, setShowText] = useState(false);
   const [showHobbies, setShowHobbies] = useState(false);
 

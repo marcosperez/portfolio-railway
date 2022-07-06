@@ -2,7 +2,7 @@ import { motion, useAnimation } from "framer-motion";
 import { useEffect, useState } from "react";
 import "./App.scss";
 import { AnimationContext } from "./context/AnimationContext";
-import { AppContext } from "./context/AppContext";
+import { GetSizes, useSetWindowSizes } from "./features/config/hooks";
 import { GetTheme, useSetTheme } from "./features/theme/hooks";
 import { Themes } from "./features/theme/ThemeSlice";
 import { GetLanguaje, useSetLanguaje } from "./features/translations/hooks";
@@ -17,9 +17,12 @@ function App() {
   // const [languaje, setLanguaje] = useState<string>("en");
   const languaje = GetLanguaje();
   const setLanguaje = useSetLanguaje();
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const [windowHeight, setWindowHeight] = useState(window.innerHeight);
+  // const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  // const [windowHeight, setWindowHeight] = useState(window.innerHeight);
   // Animation
+
+  const [windowWidth, windowHeight] = GetSizes();
+  const setWindowSize = useSetWindowSizes();
   const [step, setStep] = useState(1);
   const [auto, setAuto] = useState(false);
   i18n.changeLanguage(languaje);
@@ -37,8 +40,7 @@ function App() {
     }
 
     window.addEventListener("resize", () => {
-      setWindowWidth(window.innerWidth);
-      setWindowWidth(window.innerWidth);
+      setWindowSize(window.innerWidth, window.innerHeight);
     });
   }, []);
 
@@ -63,52 +65,44 @@ function App() {
     }
   }, [step]);
   return (
-    <AppContext.Provider
+    <AnimationContext.Provider
       value={{
-        windowWidth,
-        setWindowWidth,
-        windowHeight,
-        setWindowHeight,
+        step,
+        setStep,
+        auto,
+        setAuto,
       }}
     >
-      <AnimationContext.Provider
-        value={{
-          step,
-          setStep,
-          auto,
-          setAuto,
-        }}
-      >
-        <div className={`theme-${theme} ${isMovilCls}`}>
-          <div className="App">
-            <div className="background-back-app" />
+      <div className={`theme-${theme} ${isMovilCls}`}>
+        <div className="App">
+          <div className="background-back-app" />
+          <div className="background" />
+          <motion.div
+            animate={controls}
+            className="sun-moon"
+            initial={{ bottom: -200, opacity: 1 }}
+          ></motion.div>
+          {theme === "dark" && (
             <motion.div
-              animate={controls}
-              className="sun-moon"
-              initial={{ bottom: -200, opacity: 1 }}
-            ></motion.div>
-            {theme === "dark" && (
-              <motion.div
-                animate={{
-                  bottom: windowHeight / 2 - 400,
-                  opacity: 1,
-                }}
-                initial={{ bottom: -400, opacity: 0, maxHeight: 0 }}
-                transition={{ ease: "easeIn", delay: 0, duration: 5 }}
-              >
-                <div id="stars"></div>
-                <div id="stars2"></div>
-                <div id="stars3"></div>
-              </motion.div>
-            )}
-            <div className="background" />
+              animate={{
+                bottom: windowHeight / 2 - 400,
+                opacity: 1,
+              }}
+              initial={{ bottom: -400, opacity: 0, maxHeight: 0 }}
+              transition={{ ease: "easeIn", delay: 0, duration: 5 }}
+              style={{ zIndex: -99 }}
+            >
+              <div id="stars"></div>
+              <div id="stars2"></div>
+              <div id="stars3"></div>
+            </motion.div>
+          )}
 
-            {!isMovil && <Home></Home>}
-            {isMovil && <HomeMobile></HomeMobile>}
-          </div>
+          {!isMovil && <Home></Home>}
+          {isMovil && <HomeMobile></HomeMobile>}
         </div>
-      </AnimationContext.Provider>
-    </AppContext.Provider>
+      </div>
+    </AnimationContext.Provider>
   );
 }
 
