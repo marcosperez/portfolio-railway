@@ -15,6 +15,7 @@ import ProfileMobil from "../components/HomeMobile/ProfileMobile";
 import AboutMeMobile from "../components/HomeMobile/AboutMeMobile";
 import ExperiencesMobile from "../components/HomeMobile/ExperiencesMobile";
 import { useAnimationContext } from "../context/AnimationContext";
+import { GetTheme, useSetTheme } from "../features/theme/hooks";
 
 const cardVariants: Variants = {
   offscreen: {
@@ -34,12 +35,14 @@ const cardVariants: Variants = {
 };
 
 function HomeMobile() {
-  const { setTheme, theme, setLanguaje, languaje } = useAppContext();
+  const { setLanguaje, languaje } = useAppContext();
   const { step, setStep, auto, setAuto } = useAnimationContext();
+  const theme = GetTheme();
 
   const next = (nextValue: number) => {
     setStep(nextValue);
   };
+  const setTheme = useSetTheme();
   const changeTheme = (v: boolean) => {
     setTheme(v ? "dark" : "light");
   };

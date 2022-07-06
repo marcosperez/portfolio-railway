@@ -1,7 +1,7 @@
 import { createContext, useContext } from "react";
 export type GlobalContent = {
-  theme: string;
-  setTheme: (c: string) => void;
+  // theme: string;
+  // setTheme: (c: string) => void;
   languaje: string;
   setLanguaje: (c: string) => void;
   windowWidth: number;
@@ -11,8 +11,8 @@ export type GlobalContent = {
 };
 
 export const AppContext = createContext<GlobalContent>({
-  theme: "",
-  setTheme: () => {},
+  // theme: "",
+  // setTheme: () => {},
   languaje: "",
   setLanguaje: () => {},
   windowWidth: window.innerWidth,

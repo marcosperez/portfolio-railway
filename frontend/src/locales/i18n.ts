@@ -7,7 +7,7 @@ const options = {
     escapeValue: false, // not needed for react!!
   },
 
-  debug: true,
+  debug: false,
 
   lng: "en",
 

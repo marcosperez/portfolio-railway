@@ -1,14 +1,19 @@
 import { motion, useAnimation } from "framer-motion";
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import "./App.scss";
 import { AnimationContext } from "./context/AnimationContext";
 import { AppContext } from "./context/AppContext";
+import { GetTheme, useSetTheme } from "./features/theme/hooks";
+import { changeTheme } from "./features/theme/ThemeSlice";
 import i18n from "./locales/i18n";
 import Home from "./pages/Home";
 import HomeMobile from "./pages/HomeMobile";
+import { RootState } from "./store";
 
 function App() {
-  const [theme, setTheme] = useState<string>("light");
+  const theme = GetTheme();
+  // const [theme, setTheme] = useState<string>("light");
   const [languaje, setLanguaje] = useState<string>("en");
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [windowHeight, setWindowHeight] = useState(window.innerHeight);
@@ -17,20 +22,20 @@ function App() {
   const [auto, setAuto] = useState(false);
   i18n.changeLanguage(languaje);
 
-  const saveTheme = (theme: string) => {
-    localStorage.setItem("theme", theme);
-    setTheme(theme);
-  };
+  // const saveTheme = (theme: "light" | "dark") => {
+  //   localStorage.setItem("theme", theme);
+  //   setTheme(theme);
+  // };
 
   const saveLanguaje = (languaje: string) => {
     localStorage.setItem("languaje", languaje);
     setLanguaje(languaje);
   };
-
+  const setTheme = useSetTheme();
   useEffect(() => {
     const theme = localStorage.getItem("theme");
     if (theme) {
-      setTheme(theme);
+      setTheme(theme === "dark" ? "dark" : "light");
     }
 
     const languaje = localStorage.getItem("languaje");
@@ -67,8 +72,6 @@ function App() {
   return (
     <AppContext.Provider
       value={{
-        theme,
-        setTheme: saveTheme,
         languaje,
         setLanguaje: saveLanguaje,
         windowWidth,

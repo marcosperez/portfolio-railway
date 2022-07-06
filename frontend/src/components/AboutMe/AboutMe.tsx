@@ -19,12 +19,11 @@ function AboutMe({ next, auto }: AboutMeProps) {
   const rightYStart = window.innerWidth;
   const [showText, setShowText] = useState(false);
   const [showHobbies, setShowHobbies] = useState(false);
-  const { theme } = useAppContext();
 
   return (
     <>
       <motion.div
-        className={`aboutMe theme--${theme}`}
+        className={`aboutMe`}
         animate={{ opacity: [0, 0.2, 1] }}
         transition={{ ease: "easeOut", duration: 0.5, when: "beforeChildren" }}
       >

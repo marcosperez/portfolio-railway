@@ -18,12 +18,11 @@ function AboutMeMobile({ next, auto }: AboutMeMobileProps) {
   };
   const [showText, setShowText] = useState(false);
   const [showHobbies, setShowHobbies] = useState(false);
-  const { theme } = useAppContext();
 
   return (
     <>
       <motion.div
-        className={`aboutMeMobile theme--${theme}`}
+        className={`aboutMeMobile`}
         animate={{ opacity: [0, 0.2, 1] }}
         transition={{ ease: "easeOut", duration: 0.5, when: "beforeChildren" }}
       >
