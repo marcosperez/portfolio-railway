@@ -1,20 +1,16 @@
 import "./HomeMobile.scss";
-import IAm from "../components/AboutMe/IAm";
-import AboutMe from "../components/AboutMe/AboutMe";
-import { useEffect, useRef, useState } from "react";
-import Profile from "../components/AboutMe/Profile";
-import MiddleContainer from "../components/AboutMe/MiddleContainer";
-import Experiences from "../components/AboutMe/Experiences";
+import { useEffect, useRef } from "react";
 import DownloadCV from "../components/shared/DownloadCV";
 import Slider from "../components/shared/Slider";
-import { useAppContext } from "../context/AppContext";
 import { motion, Variants } from "framer-motion";
-import i18n from "../locales/i18n";
+import i18n from "../features/translations/locales/i18n";
 import IAmMobil from "../components/HomeMobile/IAmMobil";
 import ProfileMobil from "../components/HomeMobile/ProfileMobile";
 import AboutMeMobile from "../components/HomeMobile/AboutMeMobile";
 import ExperiencesMobile from "../components/HomeMobile/ExperiencesMobile";
 import { useAnimationContext } from "../context/AnimationContext";
+import { GetTheme, useSetTheme } from "../features/theme/hooks";
+import { useLanguajeState } from "../features/translations/hooks";
 
 const cardVariants: Variants = {
   offscreen: {
@@ -34,12 +30,14 @@ const cardVariants: Variants = {
 };
 
 function HomeMobile() {
-  const { setTheme, theme, setLanguaje, languaje } = useAppContext();
+  const [languaje, setLanguaje] = useLanguajeState();
   const { step, setStep, auto, setAuto } = useAnimationContext();
+  const theme = GetTheme();
 
   const next = (nextValue: number) => {
     setStep(nextValue);
   };
+  const setTheme = useSetTheme();
   const changeTheme = (v: boolean) => {
     setTheme(v ? "dark" : "light");
   };
@@ -137,24 +135,24 @@ function HomeMobile() {
             initial="offscreen"
             whileInView="onscreen"
           >
-            <AboutMeMobile
-              next={next}
-              auto={auto}
-              currentStep={step}
-            ></AboutMeMobile>
-          </motion.div>
-
-          <motion.div
-            variants={cardVariants}
-            initial="offscreen"
-            whileInView="onscreen"
-          >
             <ExperiencesMobile
               next={next}
               auto={auto}
               currentStep={step}
             ></ExperiencesMobile>
           </motion.div>
+        </motion.div>
+
+        <motion.div
+          variants={cardVariants}
+          initial="offscreen"
+          whileInView="onscreen"
+        >
+          <AboutMeMobile
+            next={next}
+            auto={auto}
+            currentStep={step}
+          ></AboutMeMobile>
         </motion.div>
       </motion.div>
     </div>

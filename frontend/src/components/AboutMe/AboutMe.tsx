@@ -3,8 +3,8 @@ import { motion } from "framer-motion";
 import TextReveal from "../shared/TextReveal";
 import { useState } from "react";
 import Badge from "../shared/Badge";
-import { useAppContext } from "../../context/AppContext";
-import i18n from "../../locales/i18n";
+import i18n from "../../features/translations/locales/i18n";
+import { GetSizes } from "../../features/config/hooks";
 
 interface AboutMeProps {
   next: (nextValue: number) => void;
@@ -16,15 +16,14 @@ function AboutMe({ next, auto }: AboutMeProps) {
   const goNext = async () => {
     next(4);
   };
-  const rightYStart = window.innerWidth;
+  const [rightYStart] = GetSizes();
   const [showText, setShowText] = useState(false);
   const [showHobbies, setShowHobbies] = useState(false);
-  const { theme } = useAppContext();
 
   return (
     <>
       <motion.div
-        className={`aboutMe theme--${theme}`}
+        className={`aboutMe`}
         animate={{ opacity: [0, 0.2, 1] }}
         transition={{ ease: "easeOut", duration: 0.5, when: "beforeChildren" }}
       >

@@ -1,10 +1,10 @@
 import "./AboutMeMobile.scss";
 import { motion } from "framer-motion";
-import TextReveal from "../shared/TextReveal";
 import { useState } from "react";
 import Badge from "../shared/Badge";
-import { useAppContext } from "../../context/AppContext";
-import i18n from "../../locales/i18n";
+import i18n from "../../features/translations/locales/i18n";
+import linkedin from "./img/linkedin_icon.png";
+import github from "./img/git_icono.png";
 
 interface AboutMeMobileProps {
   next: (nextValue: number) => void;
@@ -16,44 +16,44 @@ function AboutMeMobile({ next, auto }: AboutMeMobileProps) {
   const goNext = async () => {
     next(4);
   };
-  const [showText, setShowText] = useState(false);
-  const [showHobbies, setShowHobbies] = useState(false);
-  const { theme } = useAppContext();
 
   return (
     <>
       <motion.div
-        className={`aboutMeMobile theme--${theme}`}
+        className={`aboutMeMobile`}
         animate={{ opacity: [0, 0.2, 1] }}
         transition={{ ease: "easeOut", duration: 0.5, when: "beforeChildren" }}
       >
-        <motion.div
-          className="aboutMeMobileTitle"
-          animate={{ x: [-200, 0], y: [0, 0], opacity: [0, 0.2, 1] }}
-          transition={{ ease: "easeOut", duration: 0.5 }}
-        >
-          {`${i18n.t("ABOUT ME")}`}
-        </motion.div>
-        <motion.div
-          className="divider"
-          animate={{ x: [-200, 0], y: [0, 0], opacity: [0, 0.2, 1] }}
-          transition={{ ease: "easeOut", duration: 0.5 }}
-        ></motion.div>
+        <div className={`aboutMeMobileContainer`}>
+          <motion.div
+            className="aboutMeMobileTitle"
+            animate={{ x: [-200, 0], y: [0, 0], opacity: [0, 0.2, 1] }}
+            transition={{ ease: "easeOut", duration: 0.5 }}
+          >
+            {`${i18n.t("EDUCTATIONS")}`}{" "}
+          </motion.div>
+          <motion.div
+            className="divider"
+            animate={{ x: [-200, 0], y: [0, 0], opacity: [0, 0.2, 1] }}
+            transition={{ ease: "easeOut", duration: 0.5 }}
+          ></motion.div>
 
-        <motion.div
-          animate={{ x: [-200, 0], y: [0, 0], opacity: [0, 0.2, 1] }}
-          transition={{ ease: "easeOut", duration: 0.5 }}
-          className="aboutMeMobileDescription"
-          onAnimationComplete={() => setShowText(true)}
-        >
-          {showText && (
-            <TextReveal onAnimationComplete={() => setShowHobbies(true)}>
-              {`${i18n.t("ABOUT ME DESC")}`}
-            </TextReveal>
-          )}
-        </motion.div>
+          <motion.div
+            animate={{ x: [-200, 0], y: [0, 0], opacity: [0, 0.2, 1] }}
+            transition={{ ease: "easeOut", duration: 0.5 }}
+            className="aboutMeMobileDescription"
+          >
+            <div>
+              <Badge>{`${i18n.t("2008 - Ingenieria")}`}</Badge>
+              <div>{`${i18n.t("Title")}`}</div>
+            </div>
 
-        {showHobbies && (
+            <div style={{ marginTop: 10 }}>
+              <Badge>{`${i18n.t("English")}`}</Badge>
+              <div>{`${i18n.t("Medium Level")}`}</div>
+            </div>
+          </motion.div>
+
           <>
             <motion.div
               className="aboutMeMobileTitle"
@@ -92,8 +92,43 @@ function AboutMeMobile({ next, auto }: AboutMeMobileProps) {
                 <div>{`${i18n.t("Violin")}`} </div>
               </motion.div>
             </motion.div>
+
+            <motion.div
+              animate={{ x: [-80, 0], y: [70, 70], opacity: [0, 0.2, 1] }}
+              transition={{ ease: "easeOut", duration: 0.5, delay: 2.1 }}
+            >
+              <div className="social-buttons">
+                <a
+                  href="https://www.linkedin.com/in/marcos-perez-40942682"
+                  target={"_blank"}
+                >
+                  <motion.img
+                    whileHover={{
+                      scale: 1.2,
+                      transition: { ease: "easeOut", duration: 0.5 },
+                    }}
+                    animate={{ y: [50, 0], opacity: [0, 0.2, 1] }}
+                    transition={{ ease: "easeOut", duration: 0.5, delay: 2.5 }}
+                    className="social-icon"
+                    src={linkedin}
+                  ></motion.img>
+                </a>
+                <a href="https://github.com/marcosperez" target={"_blank"}>
+                  <motion.img
+                    whileHover={{
+                      scale: 1.2,
+                      transition: { ease: "easeOut", duration: 0.5 },
+                    }}
+                    animate={{ y: [50, 0], opacity: [0, 0.2, 1] }}
+                    transition={{ ease: "easeOut", duration: 0.5, delay: 2.7 }}
+                    className="social-icon"
+                    src={github}
+                  ></motion.img>
+                </a>
+              </div>
+            </motion.div>
           </>
-        )}
+        </div>
       </motion.div>
     </>
   );

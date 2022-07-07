@@ -2,7 +2,7 @@ import "./IAm.scss";
 import { motion, useAnimation } from "framer-motion";
 import { useEffect, useState } from "react";
 import Button from "../shared/Button";
-import i18n from "../../locales/i18n";
+import i18n from "../../features/translations/locales/i18n";
 
 interface IAmProps {
   next: (nextValue: number) => void;

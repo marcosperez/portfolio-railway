@@ -1,20 +1,22 @@
 import "./Home.scss";
 import IAm from "../components/AboutMe/IAm";
 import AboutMe from "../components/AboutMe/AboutMe";
-import { useState } from "react";
 import Profile from "../components/AboutMe/Profile";
 import MiddleContainer from "../components/AboutMe/MiddleContainer";
 import Experiences from "../components/AboutMe/Experiences";
 import DownloadCV from "../components/shared/DownloadCV";
 import Slider from "../components/shared/Slider";
-import { useAppContext } from "../context/AppContext";
 import { motion } from "framer-motion";
-import i18n from "../locales/i18n";
+import i18n from "../features/translations/locales/i18n";
 import { useAnimationContext } from "../context/AnimationContext";
+import { GetTheme, useSetTheme } from "../features/theme/hooks";
+import { useLanguajeState } from "../features/translations/hooks";
 
 function Home() {
-  const { setTheme, theme, setLanguaje, languaje } = useAppContext();
   const { step, setStep, auto, setAuto } = useAnimationContext();
+  const theme = GetTheme();
+  const setTheme = useSetTheme();
+  const [languaje, setLanguaje] = useLanguajeState();
 
   const next = (nextValue: number) => {
     setStep(nextValue);

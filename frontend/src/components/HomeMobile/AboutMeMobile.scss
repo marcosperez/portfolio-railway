@@ -8,6 +8,11 @@
 
   opacity: 0;
   @include theme-aware("color", "text-color");
+  display: flex;
+}
+
+.aboutMeMobileContainer {
+  margin: auto auto;
 }
 
 .aboutMeMobileTitle {
