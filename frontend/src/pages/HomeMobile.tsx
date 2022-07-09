@@ -8,9 +8,9 @@ import IAmMobil from "../components/HomeMobile/IAmMobil";
 import ProfileMobil from "../components/HomeMobile/ProfileMobile";
 import AboutMeMobile from "../components/HomeMobile/AboutMeMobile";
 import ExperiencesMobile from "../components/HomeMobile/ExperiencesMobile";
-import { useAnimationContext } from "../context/AnimationContext";
 import { GetTheme, useSetTheme } from "../features/theme/hooks";
 import { useLanguajeState } from "../features/translations/hooks";
+import { useAutoState, useStepState } from "../features/animations/hooks";
 
 const cardVariants: Variants = {
   offscreen: {
@@ -31,7 +31,8 @@ const cardVariants: Variants = {
 
 function HomeMobile() {
   const [languaje, setLanguaje] = useLanguajeState();
-  const { step, setStep, auto, setAuto } = useAnimationContext();
+  const [auto, setAuto] = useAutoState();
+  const [step, setStep] = useStepState();
   const theme = GetTheme();
 
   const next = (nextValue: number) => {

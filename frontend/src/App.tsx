@@ -1,7 +1,7 @@
 import { motion, useAnimation } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import "./App.scss";
-import { AnimationContext } from "./context/AnimationContext";
+import { useStep } from "./features/animations/hooks";
 import { GetSizes, useSetWindowSizes } from "./features/config/hooks";
 import { GetTheme, useSetTheme } from "./features/theme/hooks";
 import { Themes } from "./features/theme/ThemeSlice";
@@ -13,18 +13,11 @@ import HomeMobile from "./pages/HomeMobile";
 
 function App() {
   const theme = GetTheme();
-  // const [theme, setTheme] = useState<string>("light");
-  // const [languaje, setLanguaje] = useState<string>("en");
   const languaje = GetLanguaje();
   const setLanguaje = useSetLanguaje();
-  // const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  // const [windowHeight, setWindowHeight] = useState(window.innerHeight);
-  // Animation
-
   const [windowWidth, windowHeight] = GetSizes();
   const setWindowSize = useSetWindowSizes();
-  const [step, setStep] = useState(1);
-  const [auto, setAuto] = useState(false);
+  const step = useStep();
   i18n.changeLanguage(languaje);
 
   const setTheme = useSetTheme();
@@ -65,44 +58,35 @@ function App() {
     }
   }, [step]);
   return (
-    <AnimationContext.Provider
-      value={{
-        step,
-        setStep,
-        auto,
-        setAuto,
-      }}
-    >
-      <div className={`theme-${theme} ${isMovilCls}`}>
-        <div className="App">
-          <div className="background-back-app" />
-          <div className="background" />
+    <div className={`theme-${theme} ${isMovilCls}`}>
+      <div className="App">
+        <div className="background-back-app" />
+        <div className="background" />
+        <motion.div
+          animate={controls}
+          className="sun-moon"
+          initial={{ bottom: -200, opacity: 1 }}
+        ></motion.div>
+        {theme === "dark" && (
           <motion.div
-            animate={controls}
-            className="sun-moon"
-            initial={{ bottom: -200, opacity: 1 }}
-          ></motion.div>
-          {theme === "dark" && (
-            <motion.div
-              animate={{
-                bottom: windowHeight / 2 - 400,
-                opacity: 1,
-              }}
-              initial={{ bottom: -400, opacity: 0, maxHeight: 0 }}
-              transition={{ ease: "easeIn", delay: 0, duration: 5 }}
-              style={{ zIndex: -99 }}
-            >
-              <div id="stars"></div>
-              <div id="stars2"></div>
-              <div id="stars3"></div>
-            </motion.div>
-          )}
+            animate={{
+              bottom: windowHeight / 2 - 400,
+              opacity: 1,
+            }}
+            initial={{ bottom: -400, opacity: 0, maxHeight: 0 }}
+            transition={{ ease: "easeIn", delay: 0, duration: 5 }}
+            style={{ zIndex: -99 }}
+          >
+            <div id="stars"></div>
+            <div id="stars2"></div>
+            <div id="stars3"></div>
+          </motion.div>
+        )}
 
-          {!isMovil && <Home></Home>}
-          {isMovil && <HomeMobile></HomeMobile>}
-        </div>
+        {!isMovil && <Home></Home>}
+        {isMovil && <HomeMobile></HomeMobile>}
       </div>
-    </AnimationContext.Provider>
+    </div>
   );
 }
 

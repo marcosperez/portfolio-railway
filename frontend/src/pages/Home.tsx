@@ -8,12 +8,13 @@ import DownloadCV from "../components/shared/DownloadCV";
 import Slider from "../components/shared/Slider";
 import { motion } from "framer-motion";
 import i18n from "../features/translations/locales/i18n";
-import { useAnimationContext } from "../context/AnimationContext";
 import { GetTheme, useSetTheme } from "../features/theme/hooks";
 import { useLanguajeState } from "../features/translations/hooks";
+import { useAutoState, useStepState } from "../features/animations/hooks";
 
 function Home() {
-  const { step, setStep, auto, setAuto } = useAnimationContext();
+  const [auto, setAuto] = useAutoState();
+  const [step, setStep] = useStepState();
   const theme = GetTheme();
   const setTheme = useSetTheme();
   const [languaje, setLanguaje] = useLanguajeState();
