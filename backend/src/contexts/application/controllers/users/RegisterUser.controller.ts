@@ -4,11 +4,12 @@ import { RegisterUserService } from "../../services/users/RegisterUser.applicati
 import { Controller } from "../../controllers/Controller";
 import { controller, httpPost } from "inversify-express-utils";
 import { inject } from "inversify";
+import { UsersServicesTypes } from "../../services/users/users.services";
 
 @controller("/users")
 export class RegisterUserController implements Controller {
   constructor(
-    @inject("RegisterUserService")
+    @inject(UsersServicesTypes.RegisterUserService)
     private registerUserService: RegisterUserService
   ) {}
 

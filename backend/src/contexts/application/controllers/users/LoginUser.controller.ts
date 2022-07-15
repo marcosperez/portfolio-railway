@@ -4,11 +4,13 @@ import { LoginUserService } from "../../services/users/LoginUser.application";
 import { Controller } from "../../controllers/Controller";
 import { controller, httpPost } from "inversify-express-utils";
 import { inject } from "inversify";
+import { UsersServicesTypes } from "../../services/users/users.services";
 
 @controller("/users")
 export class LoginUserController implements Controller {
   constructor(
-    @inject("LoginUserService") private loginUserService: LoginUserService
+    @inject(UsersServicesTypes.LoginUserService)
+    private loginUserService: LoginUserService
   ) {}
 
   @httpPost("/login")

@@ -2,11 +2,11 @@ import "reflect-metadata";
 import { DeepMockProxy, mockReset } from "jest-mock-extended";
 import { RegisterUserService } from "../../../../contexts/application/services/users/RegisterUser.application";
 import { User } from "../../../../contexts/domain/users/User.domain";
-import { UserRepository } from "../../../../contexts/infrastructure/users/User.repository";
 import InversifyContainer from "../../../../inversify.config";
 import { prismaMock } from "../../../helpers/prisma.mock";
 import { Service } from "../../../../contexts/application/Service";
 import { RegisterUser } from "../../../../contexts/domain/users/RegisterUser.domain";
+import { UsersServicesTypes } from "../../../../contexts/application/services/users/users.services";
 
 describe("Tests for RegisterUser Service ", () => {
   let service: Service<RegisterUser, User>;
@@ -18,7 +18,7 @@ describe("Tests for RegisterUser Service ", () => {
     );
     prisma = InversifyContainer.get<any>("PrismaClient");
     service = InversifyContainer.get<RegisterUserService>(
-      "RegisterUserService"
+      UsersServicesTypes.RegisterUserService
     );
   });
 

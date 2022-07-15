@@ -1,8 +1,6 @@
 import { agent as request } from "supertest";
 import { createApp } from "../../../../app";
 import { prismaMock } from "../../../helpers/prisma.mock";
-import { Express } from "express";
-import { objectWithTheSameFields } from "../../../helpers/mock.utils";
 import { User } from "../../../../contexts/domain/users/User.domain";
 import { DeepMockProxy, mockReset } from "jest-mock-extended";
 import InversifyContainer from "../../../../inversify.config";

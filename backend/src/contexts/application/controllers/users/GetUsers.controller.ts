@@ -4,6 +4,7 @@ import { GetUsersFilterCriteria } from "../../../domain/users/GetUsersFilterCrit
 import { GetUsersService } from "../../services/users/GetUsers.application";
 import { interfaces, controller, httpGet } from "inversify-express-utils";
 import { inject } from "inversify";
+import { UsersServicesTypes } from "../../services/users/users.services";
 
 export const QueryGetUsersSchema = Joi.object({
   filter: Joi.string().min(1).max(30),
@@ -23,7 +24,8 @@ const defaultPagination: GetUsersFilterCriteria = {
 @controller("/users")
 export class GetUsersController implements interfaces.Controller {
   constructor(
-    @inject("GetUsersService") private getUsersService: GetUsersService
+    @inject(UsersServicesTypes.GetUsersService)
+    private getUsersService: GetUsersService
   ) {}
 
   @httpGet("/")
