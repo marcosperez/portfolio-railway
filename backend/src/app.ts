@@ -4,17 +4,11 @@ import dotenv from "dotenv";
 import MorganConfig from "./morgan.config";
 import cors from "cors";
 import { json } from "body-parser";
-import { ConfigAppRouter } from "./router.config";
-import { AppRepositories } from "./contexts/infrastructure/repositories";
-import { AppServices } from "./contexts/application/services";
-import {
-  interfaces,
-  InversifyExpressServer,
-  TYPE,
-} from "inversify-express-utils";
+import { InversifyExpressServer } from "inversify-express-utils";
 import path from "path";
 import InversifyContainer from "./inversify.config";
 import { Container } from "inversify";
+import helmet from "helmet";
 dotenv.config();
 
 export async function createApp(container: Container = InversifyContainer) {
@@ -26,9 +20,7 @@ export async function createApp(container: Container = InversifyContainer) {
     app.use(MorganConfig.MorganLogFile);
     app.use(json());
 
-    // const repositories = new AppRepositories(client);
-    // const services = new AppServices(repositories);
-    // ConfigAppRouter(app, services, repositories);
+    app.use(helmet());
     app.use("/", express.static(path.join(__dirname, "/web")));
   });
 

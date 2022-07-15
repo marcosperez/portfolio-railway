@@ -2,6 +2,21 @@
 
 App develop with expres.js and typescript
 
+## Modules
+
+### Security
+
+- `helmet` default
+- `cors` default
+
+### Logs
+
+- `morgan` on file and stdout
+
+### Dependency Inyection
+
+- `inversify` and `inversify-express-utils`
+
 ## Testing
 
 ### Unit testing and Integration with Jest
