@@ -1,6 +1,6 @@
 import { agent as request } from "supertest";
-import { createApp } from "../../../../app";
-import { prismaMock } from "../../../helpers/prisma.mock";
+import { createApp } from "../../../../../app";
+import { prismaMock } from "../../../../helpers/prisma.mock";
 
 describe("Ping Controller", () => {
   let app: Express.Application;

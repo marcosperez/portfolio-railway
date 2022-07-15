@@ -1,8 +1,8 @@
 import { agent as request } from "supertest";
-import { createApp } from "../../../../app";
-import { prismaMock } from "../../../helpers/prisma.mock";
-import { objectWithTheSameFields } from "../../../helpers/mock.utils";
-import InversifyContainer from "../../../../inversify.config";
+import { createApp } from "../../../../../app";
+import { prismaMock } from "../../../../helpers/prisma.mock";
+import { objectWithTheSameFields } from "../../../../helpers/mock.utils";
+import InversifyContainer from "../../../../../inversify.config";
 import { DeepMockProxy, mockReset } from "jest-mock-extended";
 
 describe("Get Users Controller", function () {

@@ -1,16 +1,16 @@
 import "reflect-metadata";
-import { User } from "../../../../contexts/domain/users/User.domain";
-import { prismaMock } from "../../../helpers/prisma.mock";
-import { objectWithTheSameFields } from "../../../helpers/mock.utils";
+import { User } from "../../../../../contexts/domain/users/User.domain";
+import { prismaMock } from "../../../../helpers/prisma.mock";
+import { objectWithTheSameFields } from "../../../../helpers/mock.utils";
 import { DeepMockProxy, mockReset } from "jest-mock-extended";
-import InversifyContainer from "../../../../inversify.config";
-import { Service } from "../../../../contexts/application/Service";
-import { LoginUser } from "../../../../contexts/domain/users/LoginUser.domain";
-import { LoginUserToken } from "../../../../contexts/domain/users/LoginUserToken.domain";
+import InversifyContainer from "../../../../../inversify.config";
+import { Service } from "../../../../../contexts/application/Service";
+import { LoginUser } from "../../../../../contexts/domain/users/LoginUser.domain";
+import { LoginUserToken } from "../../../../../contexts/domain/users/LoginUserToken.domain";
 import {
   LoginUserService,
   UsersServicesTypes,
-} from "../../../../contexts/application/services/users/users.services";
+} from "../../../../../contexts/application/services/users/users.services";
 
 describe("Tests for LoginUser Service ", () => {
   let service: Service<LoginUser, LoginUserToken>;
