@@ -1,15 +1,17 @@
 import { Request, Response } from "express";
 import Joi from "joi";
-import { LoginUserService } from "../../application/users/LoginUser.application";
-import { UserRepository } from "../../infrastructure/users/User.repository";
-import { Controller } from "../Controller";
+import { LoginUserService } from "../../services/users/LoginUser.application";
+import { Controller } from "../../controllers/Controller";
+import { controller, httpPost } from "inversify-express-utils";
+import { inject } from "inversify";
 
+@controller("/users")
 export class LoginUserController implements Controller {
-  loginUserService: LoginUserService;
-  constructor(loginUserService: LoginUserService) {
-    this.loginUserService = loginUserService;
-  }
+  constructor(
+    @inject(LoginUserService) private loginUserService: LoginUserService
+  ) {}
 
+  @httpPost("/login")
   async handler(req: Request, res: Response): Promise<void> {
     try {
       const [ok, token] = await this.loginUserService.execute(req.body);

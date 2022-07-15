@@ -2,12 +2,16 @@ import { User } from "../../domain/users/User.domain";
 import { Prisma, PrismaClient } from "@prisma/client";
 import { GetUsersFilterCriteria } from "../../domain/users/GetUsersFilterCriteria.domain";
 import { UserRepositoryInterface } from "./User.repository.interface";
+import { inject, injectable } from "inversify";
 
+@injectable()
 export class UserRepository implements UserRepositoryInterface {
-  prisma: PrismaClient;
-  constructor(client: PrismaClient = new PrismaClient()) {
-    this.prisma = client;
-  }
+  // prisma: PrismaClient;
+  // constructor(client: PrismaClient = new PrismaClient()) {
+  //   this.prisma = client;
+  // }
+
+  constructor(@inject("PrismaClient") private readonly prisma: PrismaClient) {}
 
   // Default repository methods
 

@@ -4,9 +4,24 @@ import { prismaMock } from "../../../helpers/prisma.mock";
 import { Express } from "express";
 import { objectWithTheSameFields } from "../../../helpers/mock.utils";
 import { User } from "../../../../contexts/domain/users/User.domain";
+import { DeepMockProxy, mockReset } from "jest-mock-extended";
+import InversifyContainer from "../../../../inversify.config";
 
 describe("Register User Controller", function () {
-  let app: Express = createApp(prismaMock);
+  let prisma: DeepMockProxy<any>;
+  let app: Express.Application;
+
+  beforeAll(async () => {
+    InversifyContainer.rebind<any>("PrismaClient").toDynamicValue(
+      () => prismaMock
+    );
+    prisma = InversifyContainer.get<any>("PrismaClient");
+    app = await createApp();
+  });
+
+  beforeEach(async () => {
+    mockReset(prisma);
+  });
 
   test("Register successful user registration", async () => {
     const passwordHash = await User.hashPassword("12345678");
@@ -25,7 +40,7 @@ describe("Register User Controller", function () {
       website: null,
     };
 
-    prismaMock.users.create.mockResolvedValue(newUser);
+    prisma.users.create.mockResolvedValue(newUser);
 
     const registerUser = {
       username: "marcosp222",

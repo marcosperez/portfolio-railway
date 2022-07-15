@@ -1,8 +1,8 @@
 import { PrismaClient } from "@prisma/client";
 import { AppRepositories } from "../infrastructure/repositories";
-import { GetUsersService } from "./users/GetUsers.application";
-import { LoginUserService } from "./users/LoginUser.application";
-import { RegisterUserService } from "./users/RegisterUser.application";
+import { GetUsersService } from "./services/users/GetUsers.application";
+import { LoginUserService } from "./services/users/LoginUser.application";
+import { RegisterUserService } from "./services/users/RegisterUser.application";
 
 export class AppServices {
   getUsersService: GetUsersService;

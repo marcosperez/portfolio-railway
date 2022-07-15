@@ -1,10 +1,10 @@
 import { Express } from "express";
 import { AppServices } from "./contexts/application/services";
-import createUserRoutes from "./contexts/controllers/users/Users.router";
+import createUserRoutes from "./contexts/application/controllers/users/Users.router";
 import { AppRepositories } from "./contexts/infrastructure/repositories";
 
 export function ConfigAppRouter(
-  app: Express,
+  app: any,
   services: AppServices,
   repositories: AppRepositories
 ) {

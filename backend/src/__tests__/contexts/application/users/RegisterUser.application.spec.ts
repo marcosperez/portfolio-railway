@@ -1,12 +1,26 @@
-import { RegisterUserService } from "../../../../contexts/application/users/RegisterUser.application";
+import "reflect-metadata";
+import { DeepMockProxy, mockReset } from "jest-mock-extended";
+import { RegisterUserService } from "../../../../contexts/application/services/users/RegisterUser.application";
 import { User } from "../../../../contexts/domain/users/User.domain";
 import { UserRepository } from "../../../../contexts/infrastructure/users/User.repository";
+import InversifyContainer from "../../../../inversify.config";
 import { prismaMock } from "../../../helpers/prisma.mock";
 
 describe("Tests for RegisterUser Service ", () => {
-  // beforeEach(async () => {
+  let service: RegisterUserService;
+  let prisma: DeepMockProxy<any>;
 
-  // });
+  beforeAll(async () => {
+    InversifyContainer.rebind<any>("PrismaClient").toDynamicValue(
+      () => prismaMock
+    );
+    prisma = InversifyContainer.get<any>("PrismaClient");
+    service = InversifyContainer.get<RegisterUserService>(RegisterUserService);
+  });
+
+  beforeEach(async () => {
+    mockReset(prisma);
+  });
 
   test("Register succefuly", async () => {
     const newUser = {
@@ -24,9 +38,8 @@ describe("Tests for RegisterUser Service ", () => {
       website: null,
     };
 
-    prismaMock.users.create.mockResolvedValue(newUser);
+    prisma.users.create.mockResolvedValue(newUser);
 
-    const service = new RegisterUserService(new UserRepository(prismaMock));
     const registerUser = {
       username: "marcosp222",
       password: "12345678",

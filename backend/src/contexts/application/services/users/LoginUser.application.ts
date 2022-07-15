@@ -1,15 +1,16 @@
-import { ServiceResult } from "../../context.common";
-import { LoginUser } from "../../domain/users/LoginUser.domain";
-import { LoginUserToken } from "../../domain/users/LoginUserToken.domain";
-import { User } from "../../domain/users/User.domain";
-import { UserRepositoryInterface } from "../../infrastructure/users/User.repository.interface";
-import { Service } from "../Service";
+import { inject, injectable } from "inversify";
+import { ServiceResult } from "../../../context.common";
+import { LoginUser } from "../../../domain/users/LoginUser.domain";
+import { LoginUserToken } from "../../../domain/users/LoginUserToken.domain";
+import { User } from "../../../domain/users/User.domain";
+import { UserRepositoryInterface } from "../../../infrastructure/users/User.repository.interface";
+import { Service } from "../../Service";
 
+@injectable()
 export class LoginUserService implements Service<LoginUser, LoginUserToken> {
-  userRepository: UserRepositoryInterface;
-  constructor(userRepository: UserRepositoryInterface) {
-    this.userRepository = userRepository;
-  }
+  constructor(
+    @inject("UserRepository") private userRepository: UserRepositoryInterface
+  ) {}
 
   async execute(
     userLoginData: LoginUser
