@@ -8,7 +8,7 @@ import { inject } from "inversify";
 @controller("/users")
 export class LoginUserController implements Controller {
   constructor(
-    @inject(LoginUserService) private loginUserService: LoginUserService
+    @inject("LoginUserService") private loginUserService: LoginUserService
   ) {}
 
   @httpPost("/login")

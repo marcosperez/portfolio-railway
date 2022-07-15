@@ -6,9 +6,13 @@ import InversifyContainer from "../../../../inversify.config";
 import { Prisma, PrismaClient } from "@prisma/client";
 import { DeepMockProxy, mockReset } from "jest-mock-extended";
 import { prismaMock } from "../../../helpers/prisma.mock";
+import { Service } from "../../../../contexts/application/Service";
+import { GetUsersFilterCriteria } from "../../../../contexts/domain/users/GetUsersFilterCriteria.domain";
+import { UserDTO } from "../../../../contexts/domain/users/UserDTO.domain";
+import { PageData } from "../../../../contexts/infrastructure/Infrastructure.common";
 
 describe("Tests for Get Users Service ", () => {
-  let service: GetUsersService;
+  let service: Service<GetUsersFilterCriteria, PageData<UserDTO>>;
   let prisma: DeepMockProxy<any>;
 
   beforeAll(async () => {
@@ -16,7 +20,7 @@ describe("Tests for Get Users Service ", () => {
       () => prismaMock
     );
     prisma = InversifyContainer.get<any>("PrismaClient");
-    service = InversifyContainer.get<GetUsersService>(GetUsersService);
+    service = InversifyContainer.get<GetUsersService>("GetUsersService");
   });
 
   beforeEach(async () => {

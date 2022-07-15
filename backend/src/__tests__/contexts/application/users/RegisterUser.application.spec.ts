@@ -5,9 +5,11 @@ import { User } from "../../../../contexts/domain/users/User.domain";
 import { UserRepository } from "../../../../contexts/infrastructure/users/User.repository";
 import InversifyContainer from "../../../../inversify.config";
 import { prismaMock } from "../../../helpers/prisma.mock";
+import { Service } from "../../../../contexts/application/Service";
+import { RegisterUser } from "../../../../contexts/domain/users/RegisterUser.domain";
 
 describe("Tests for RegisterUser Service ", () => {
-  let service: RegisterUserService;
+  let service: Service<RegisterUser, User>;
   let prisma: DeepMockProxy<any>;
 
   beforeAll(async () => {
@@ -15,7 +17,9 @@ describe("Tests for RegisterUser Service ", () => {
       () => prismaMock
     );
     prisma = InversifyContainer.get<any>("PrismaClient");
-    service = InversifyContainer.get<RegisterUserService>(RegisterUserService);
+    service = InversifyContainer.get<RegisterUserService>(
+      "RegisterUserService"
+    );
   });
 
   beforeEach(async () => {

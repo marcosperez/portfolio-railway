@@ -13,7 +13,7 @@ App develop with expres.js and typescript
 
 - `morgan` on file and stdout
 
-### Dependency Inyection
+### Dependency Inyection and Inversion control
 
 - `inversify` and `inversify-express-utils`
 

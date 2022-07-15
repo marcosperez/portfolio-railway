@@ -23,7 +23,7 @@ const defaultPagination: GetUsersFilterCriteria = {
 @controller("/users")
 export class GetUsersController implements interfaces.Controller {
   constructor(
-    @inject(GetUsersService) private getUsersService: GetUsersService
+    @inject("GetUsersService") private getUsersService: GetUsersService
   ) {}
 
   @httpGet("/")
