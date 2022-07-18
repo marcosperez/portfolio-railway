@@ -29,7 +29,6 @@ export class LoginUserService implements Service<LoginUser, LoginUserToken> {
     }
 
     const tokenJWT = User.generateJWT({ username: userLoginData.login });
-    console.log("[LoginUserService] JWT generado exitosamente");
     return [true, { token: tokenJWT }];
   }
 }
