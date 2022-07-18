@@ -24,7 +24,7 @@ describe("Get Users Controller", function () {
   test("Get users succefuly without filters", (done) => {
     prisma.users.findMany.mockResolvedValue([
       {
-        id: 6616,
+        id: 666,
         username: "pepeeee1234",
         passwordHash: "asdasdasdasd",
         email: "pepeeee@gmail.com",
@@ -45,7 +45,6 @@ describe("Get Users Controller", function () {
       .expect("Content-Type", /json/)
       .expect(200)
       .then((response) => {
-        console.log(response.body);
         expect(response.body.status).toBeTruthy();
         expect(response.body.data.users.count).toBe(1);
         expect(response.body.data.users.list[0].id).toBe(666);
@@ -107,7 +106,6 @@ describe("Get Users Controller", function () {
       .expect("Content-Type", /json/)
       .expect(200)
       .then((response) => {
-        console.log(response.body);
         expect(response.body.status).toBeTruthy();
         expect(response.body.data.users.count).toBe(2);
         expect(response.body.data.users.list[0].id).toBe(665);

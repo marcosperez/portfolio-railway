@@ -60,7 +60,6 @@ describe("Tests for RegisterUser Service ", () => {
     };
 
     const [ok, user] = await service.execute(registerUser);
-    console.log(user);
 
     expect(ok).toBeTruthy();
     expect(user).not.toBeUndefined();

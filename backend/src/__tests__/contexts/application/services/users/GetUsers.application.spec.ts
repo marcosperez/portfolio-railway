@@ -68,8 +68,6 @@ describe("Tests for Get Users Service ", () => {
       pageSize: 2,
     });
 
-    console.log(page);
-
     expect(ok).toBeTruthy();
     expect(page).not.toBeUndefined();
     expect(page?.list.length).toEqual(1);
@@ -157,8 +155,6 @@ describe("Tests for Get Users Service ", () => {
       page: 1,
       pageSize: 2,
     });
-
-    console.log(page);
 
     expect(ok).toBeTruthy();
     expect(page).not.toBeUndefined();

@@ -30,7 +30,6 @@ export class GetUsersController implements interfaces.Controller {
 
   @httpGet("/")
   async handler(req: Request, res: Response): Promise<void> {
-    console.log("[GetUsersController] Buscando usuarios....");
     const query = { ...defaultPagination, ...req.query };
     const [ok, users] = await this.getUsersService.execute(query);
     if (!ok) {
@@ -40,9 +39,6 @@ export class GetUsersController implements interfaces.Controller {
       });
       return;
     }
-
-    console.log("[GetUsersController] Usuarios encontrados..");
-    console.log(users);
 
     res.status(200).json({
       status: ok,
