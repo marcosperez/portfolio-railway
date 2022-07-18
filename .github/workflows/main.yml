@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: [Backend] Install modules 
+      - name: (Backend) Install modules
         run: cd backend && yarn
-      - name: [Backend] Run Jest Backend
+      - name: (Backend) Run Jest Backend
         run: cd backend && yarn test
