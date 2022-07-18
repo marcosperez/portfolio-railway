@@ -9,7 +9,6 @@ function Validator(
 ) {
   return function (req: Request, res: Response, next: NextFunction) {
     const { error, value } = schema.validate(req[type]);
-    console.log("[Validator][" + type + "] Validation");
     console.log(error);
     if (error !== undefined) {
       res.status(400).json({

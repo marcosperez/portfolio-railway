@@ -1,14 +1,28 @@
 import { agent as request } from "supertest";
-import { createApp } from "../../../../app";
-import { prismaMock } from "../../../helpers/prisma.mock";
-import { Express } from "express";
-import { objectWithTheSameFields } from "../../../helpers/mock.utils";
+import { createApp } from "../../../../../app";
+import { prismaMock } from "../../../../helpers/prisma.mock";
+import { objectWithTheSameFields } from "../../../../helpers/mock.utils";
+import InversifyContainer from "../../../../../inversify.config";
+import { DeepMockProxy, mockReset } from "jest-mock-extended";
 
 describe("Get Users Controller", function () {
-  let app: Express = createApp(prismaMock);
+  let prisma: DeepMockProxy<any>;
+  let app: Express.Application;
+
+  beforeAll(async () => {
+    InversifyContainer.rebind<any>("PrismaClient").toDynamicValue(
+      () => prismaMock
+    );
+    prisma = InversifyContainer.get<any>("PrismaClient");
+    app = await createApp();
+  });
+
+  beforeEach(async () => {
+    mockReset(prisma);
+  });
 
   test("Get users succefuly without filters", (done) => {
-    prismaMock.users.findMany.mockResolvedValue([
+    prisma.users.findMany.mockResolvedValue([
       {
         id: 666,
         username: "pepeeee1234",
@@ -24,14 +38,13 @@ describe("Get Users Controller", function () {
         website: "http://www.paginafalsa.com.ar",
       },
     ]);
-    prismaMock.users.count.mockResolvedValue(1);
+    prisma.users.count.mockResolvedValue(1);
 
     request(app)
       .get("/users")
       .expect("Content-Type", /json/)
       .expect(200)
       .then((response) => {
-        console.log(response.body);
         expect(response.body.status).toBeTruthy();
         expect(response.body.data.users.count).toBe(1);
         expect(response.body.data.users.list[0].id).toBe(666);
@@ -41,7 +54,7 @@ describe("Get Users Controller", function () {
   });
 
   test("Get users succefuly with filter", (done) => {
-    prismaMock.users.findMany
+    prisma.users.findMany
       .calledWith(
         objectWithTheSameFields({
           where: {
@@ -85,7 +98,7 @@ describe("Get Users Controller", function () {
           website: "http://www.paginafalsa.com.ar",
         },
       ]);
-    prismaMock.users.count.mockResolvedValue(2);
+    prisma.users.count.mockResolvedValue(2);
 
     request(app)
       .get("/users")
@@ -93,7 +106,6 @@ describe("Get Users Controller", function () {
       .expect("Content-Type", /json/)
       .expect(200)
       .then((response) => {
-        console.log(response.body);
         expect(response.body.status).toBeTruthy();
         expect(response.body.data.users.count).toBe(2);
         expect(response.body.data.users.list[0].id).toBe(665);

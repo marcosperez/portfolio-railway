@@ -83,7 +83,6 @@ export class User {
   }
 
   static generateJWT(payload: JWTPayload) {
-    console.log("tokenSecret: ", tokenSecret);
     return sign(payload, tokenSecret, { expiresIn: "1800s" });
   }
 }

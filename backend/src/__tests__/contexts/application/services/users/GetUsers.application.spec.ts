@@ -1,14 +1,36 @@
-import { User } from "../../../../contexts/domain/users/User.domain";
-import { UserRepository } from "../../../../contexts/infrastructure/users/User.repository";
-import { prismaMock } from "../../../helpers/prisma.mock";
-import { GetUsersService } from "../../../../contexts/application/users/GetUsers.application";
-import { objectWithTheSameFields } from "../../../helpers/mock.utils";
+import "reflect-metadata";
+import { User } from "../../../../../contexts/domain/users/User.domain";
+import { GetUsersService } from "../../../../../contexts/application/services/users/GetUsers.application";
+import { objectWithTheSameFields } from "../../../../helpers/mock.utils";
+import InversifyContainer from "../../../../../inversify.config";
+import { DeepMockProxy, mockReset } from "jest-mock-extended";
+import { prismaMock } from "../../../../helpers/prisma.mock";
+import { Service } from "../../../../../contexts/application/Service";
+import { GetUsersFilterCriteria } from "../../../../../contexts/domain/users/GetUsersFilterCriteria.domain";
+import { UserDTO } from "../../../../../contexts/domain/users/UserDTO.domain";
+import { PageData } from "../../../../../contexts/infrastructure/Infrastructure.common";
+import { UsersServicesTypes } from "../../../../../contexts/application/services/users/users.services";
 
 describe("Tests for Get Users Service ", () => {
-  const service = new GetUsersService(new UserRepository(prismaMock));
+  let service: Service<GetUsersFilterCriteria, PageData<UserDTO>>;
+  let prisma: DeepMockProxy<any>;
+
+  beforeAll(async () => {
+    InversifyContainer.rebind<any>("PrismaClient").toDynamicValue(
+      () => prismaMock
+    );
+    prisma = InversifyContainer.get<any>("PrismaClient");
+    service = InversifyContainer.get<GetUsersService>(
+      UsersServicesTypes.GetUsersService
+    );
+  });
+
+  beforeEach(async () => {
+    mockReset(prisma);
+  });
 
   test("GetUsers find by username", async () => {
-    prismaMock.users.findMany
+    prisma.users.findMany
       .calledWith(
         objectWithTheSameFields({
           where: {
@@ -38,15 +60,13 @@ describe("Tests for Get Users Service ", () => {
           website: "http://www.paginafalsa.com.ar",
         },
       ]);
-    prismaMock.users.count.mockResolvedValue(1);
+    prisma.users.count.mockResolvedValue(1);
 
     const [ok, page] = await service.execute({
       filter: "pepeeee",
       page: 1,
       pageSize: 2,
     });
-
-    console.log(page);
 
     expect(ok).toBeTruthy();
     expect(page).not.toBeUndefined();
@@ -55,8 +75,8 @@ describe("Tests for Get Users Service ", () => {
   });
 
   test("GetUsers find by username", async () => {
-    prismaMock.users.count.mockResolvedValue(5);
-    prismaMock.users.findMany
+    prisma.users.count.mockResolvedValue(5);
+    prisma.users.findMany
       .calledWith(objectWithTheSameFields({ where: {}, take: 2, skip: 0 }))
       .mockResolvedValue([
         {
@@ -135,8 +155,6 @@ describe("Tests for Get Users Service ", () => {
       page: 1,
       pageSize: 2,
     });
-
-    console.log(page);
 
     expect(ok).toBeTruthy();
     expect(page).not.toBeUndefined();

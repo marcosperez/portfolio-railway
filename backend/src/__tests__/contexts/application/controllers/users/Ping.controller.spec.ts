@@ -1,15 +1,20 @@
 import { agent as request } from "supertest";
-import { createApp } from "../../../../app";
-import { prismaMock } from "../../../helpers/prisma.mock";
+import { createApp } from "../../../../../app";
+import { prismaMock } from "../../../../helpers/prisma.mock";
 
 describe("Ping Controller", () => {
+  let app: Express.Application;
+  beforeAll(async () => {
+    app = await createApp();
+  });
+
   test("Ping succeful", (done) => {
-    request(createApp(prismaMock))
+    request(app)
       .get("/ping")
       .expect("Content-Type", /json/)
       .expect(200)
       .then((response) => {
-        expect(response.body.message).toBe("pong");
+        expect(response.body.message).toBe("pong 2.0");
         expect(response.body.status).toBeTruthy();
         done();
       })

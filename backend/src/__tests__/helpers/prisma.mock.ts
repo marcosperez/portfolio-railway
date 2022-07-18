@@ -1,15 +1,19 @@
-import { PrismaClient } from "@prisma/client";
+import { Prisma, PrismaClient } from "@prisma/client";
 import { mockDeep, mockReset, DeepMockProxy } from "jest-mock-extended";
 
 import prisma from "../../contexts/infrastructure/client";
+import InversifyContainer from "../../inversify.config";
 
 jest.mock("../../contexts/infrastructure/client", () => ({
   __esModule: true,
   default: mockDeep<PrismaClient>(),
 }));
 
-beforeEach(() => {
-  mockReset(prismaMock);
-});
+// beforeEach(() => {
+//   InversifyContainer.rebind<any>("PrismaClient").toDynamicValue(
+//     () => prismaMock
+//   );
+//   mockReset(prismaMock);
+// });
 
 export const prismaMock = prisma as unknown as DeepMockProxy<PrismaClient>;
