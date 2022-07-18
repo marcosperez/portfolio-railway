@@ -6,7 +6,7 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: ["main", "add-inversify"]
+    branches: ["main"]
   pull_request:
     branches: ["main"]
 
@@ -42,4 +42,4 @@ jobs:
         # with:
         #   # Args to jest
         #   jestArgs: # optional
-        run: yarn test
+        run: cd backend && yarn test
