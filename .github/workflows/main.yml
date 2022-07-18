@@ -33,7 +33,7 @@ jobs:
       - name: Install dependencies
         run: cd backend && npm install
 
-  build:
+  build_backend:
     name: Build Backend
     runs-on: ubuntu-latest
     needs: [install_dependencies_backend]
@@ -53,9 +53,10 @@ jobs:
         run: cd backend && npm install
       - name: (Backend) Build Server
         run: cd backend && npm run build
-  test:
+  test_backend:
+    name: Test Backend
     runs-on: ubuntu-latest
-    needs: [cache-build]
+    needs: [install_dependencies_backend]
     steps:
       - uses: actions/checkout@v3
       - uses: actions/cache@v3
