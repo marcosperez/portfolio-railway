@@ -24,7 +24,7 @@ describe("Get Users Controller", function () {
   test("Get users succefuly without filters", (done) => {
     prisma.users.findMany.mockResolvedValue([
       {
-        id: 666,
+        id: 6616,
         username: "pepeeee1234",
         passwordHash: "asdasdasdasd",
         email: "pepeeee@gmail.com",
