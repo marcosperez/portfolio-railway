@@ -3,7 +3,7 @@ import { ServiceResult } from "../../../context.common";
 import { LoginUser } from "../../../domain/users/LoginUser.domain";
 import { LoginUserToken } from "../../../domain/users/LoginUserToken.domain";
 import { User } from "../../../domain/users/User.domain";
-import { UserRepositoryInterface } from "../../../infrastructure/users/User.repository.interface";
+import { UserRepositoryInterface } from "../../../infrastructure/repositories/users/User.repository.interface";
 import { Service } from "../../Service";
 
 @injectable()

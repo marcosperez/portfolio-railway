@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
 import Joi from "joi";
-import { RegisterUserService } from "../../services/users/RegisterUser.application";
-import { Controller } from "../../controllers/Controller";
+import { RegisterUserService } from "../../../application/services/users/RegisterUser.application";
+import { Controller } from "../Controller";
 import { controller, httpPost } from "inversify-express-utils";
 import { inject } from "inversify";
-import { UsersServicesTypes } from "../../services/users/users.services";
+import { UsersServicesTypes } from "../../../application/services/users/users.services";
 
 @controller("/users")
 export class RegisterUserController implements Controller {

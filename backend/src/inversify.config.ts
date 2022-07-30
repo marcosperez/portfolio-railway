@@ -2,12 +2,11 @@ import "reflect-metadata";
 import { PrismaClient } from "@prisma/client";
 import { Container } from "inversify";
 
-import "./contexts/application/controllers/test/test.controllers";
-import "./contexts/application/controllers/users/users.controllers";
+import "./contexts/infrastructure/controllers/common/Ping.controller.ts";
+import "./contexts/infrastructure/controllers/users/users.controllers";
 
-import { UserRepository } from "./contexts/infrastructure/users/User.repository";
+import { UserRepository } from "./contexts/infrastructure/repositories/users/User.repository";
 import prisma from "./contexts/infrastructure/client";
-import { UserRepositoryInterface } from "./contexts/infrastructure/users/User.repository.interface";
 import { Service } from "./contexts/application/Service";
 import { GetUsersFilterCriteria } from "./contexts/domain/users/GetUsersFilterCriteria.domain";
 import { UserDTO } from "./contexts/domain/users/UserDTO.domain";
@@ -22,6 +21,7 @@ import {
   RegisterUserService,
   UsersServicesTypes,
 } from "./contexts/application/services/users/users.services";
+import { UserRepositoryInterface } from "./contexts/infrastructure/repositories/users/User.repository.interface";
 
 const InversifyContainer = new Container();
 

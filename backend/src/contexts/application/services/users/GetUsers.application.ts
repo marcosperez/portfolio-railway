@@ -4,7 +4,7 @@ import { PageData } from "../../../infrastructure/Infrastructure.common";
 import { UserDTO } from "../../../domain/users/UserDTO.domain";
 import { ServiceResult } from "../../../context.common";
 import { Service } from "../../Service";
-import { UserRepositoryInterface } from "../../../infrastructure/users/User.repository.interface";
+import { UserRepositoryInterface } from "../../../infrastructure/repositories/users/User.repository.interface";
 import { inject, injectable } from "inversify";
 
 @injectable()

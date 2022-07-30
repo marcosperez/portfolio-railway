@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
 import Joi from "joi";
 import { GetUsersFilterCriteria } from "../../../domain/users/GetUsersFilterCriteria.domain";
-import { GetUsersService } from "../../services/users/GetUsers.application";
+import { GetUsersService } from "../../../application/services/users/GetUsers.application";
 import { interfaces, controller, httpGet } from "inversify-express-utils";
 import { inject } from "inversify";
-import { UsersServicesTypes } from "../../services/users/users.services";
+import { UsersServicesTypes } from "../../../application/services/users/users.services";
 
 export const QueryGetUsersSchema = Joi.object({
   filter: Joi.string().min(1).max(30),
