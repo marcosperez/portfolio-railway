@@ -1,4 +1,4 @@
-import { Maybe } from "../../context.common";
+import { Maybe } from "../domain.common";
 import { UserContactData } from "./UserContactData.domain";
 import bcrypt from "bcrypt";
 import { UserDTO } from "./UserDTO.domain";

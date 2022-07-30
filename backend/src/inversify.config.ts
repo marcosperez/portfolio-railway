@@ -7,7 +7,7 @@ import "./contexts/infrastructure/controllers/users/users.controllers";
 
 import { UserRepository } from "./contexts/infrastructure/repositories/users/User.repository";
 import prisma from "./contexts/infrastructure/client";
-import { Service } from "./contexts/application/Service";
+import { Service } from "./contexts/application/services/service.common";
 import { GetUsersFilterCriteria } from "./contexts/domain/users/GetUsersFilterCriteria.domain";
 import { UserDTO } from "./contexts/domain/users/UserDTO.domain";
 import { PageData } from "./contexts/infrastructure/Infrastructure.common";

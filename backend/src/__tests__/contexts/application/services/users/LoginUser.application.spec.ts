@@ -4,13 +4,13 @@ import { prismaMock } from "../../../../helpers/prisma.mock";
 import { objectWithTheSameFields } from "../../../../helpers/mock.utils";
 import { DeepMockProxy, mockReset } from "jest-mock-extended";
 import InversifyContainer from "../../../../../inversify.config";
-import { Service } from "../../../../../contexts/application/Service";
 import { LoginUser } from "../../../../../contexts/domain/users/LoginUser.domain";
 import { LoginUserToken } from "../../../../../contexts/domain/users/LoginUserToken.domain";
 import {
   LoginUserService,
   UsersServicesTypes,
 } from "../../../../../contexts/application/services/users/users.services";
+import { Service } from "../../../../../contexts/application/services/service.common";
 
 describe("Tests for LoginUser Service ", () => {
   let service: Service<LoginUser, LoginUserToken>;

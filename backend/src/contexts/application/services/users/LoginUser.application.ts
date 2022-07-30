@@ -1,10 +1,9 @@
 import { inject, injectable } from "inversify";
-import { ServiceResult } from "../../../context.common";
 import { LoginUser } from "../../../domain/users/LoginUser.domain";
 import { LoginUserToken } from "../../../domain/users/LoginUserToken.domain";
 import { User } from "../../../domain/users/User.domain";
 import { UserRepositoryInterface } from "../../../infrastructure/repositories/users/User.repository.interface";
-import { Service } from "../../Service";
+import { Service, ServiceResult } from "../service.common";
 
 @injectable()
 export class LoginUserService implements Service<LoginUser, LoginUserToken> {

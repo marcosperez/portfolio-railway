@@ -4,9 +4,9 @@ import { RegisterUserService } from "../../../../../contexts/application/service
 import { User } from "../../../../../contexts/domain/users/User.domain";
 import InversifyContainer from "../../../../../inversify.config";
 import { prismaMock } from "../../../../helpers/prisma.mock";
-import { Service } from "../../../../../contexts/application/Service";
 import { RegisterUser } from "../../../../../contexts/domain/users/RegisterUser.domain";
 import { UsersServicesTypes } from "../../../../../contexts/application/services/users/users.services";
+import { Service } from "../../../../../contexts/application/services/service.common";
 
 describe("Tests for RegisterUser Service ", () => {
   let service: Service<RegisterUser, User>;

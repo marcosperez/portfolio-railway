@@ -1,4 +1,4 @@
-import { Maybe } from "../../context.common";
+import { Maybe } from "../domain.common";
 
 export interface UserDTO {
   id: Maybe<number>;
