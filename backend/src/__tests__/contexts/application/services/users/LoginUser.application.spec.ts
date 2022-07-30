@@ -10,7 +10,7 @@ import {
   LoginUserService,
   UsersServicesTypes,
 } from "../../../../../contexts/application/services/users/users.services";
-import { Service } from "../../../../../contexts/application/services/service.common";
+import { Service } from "../../../../../contexts/application/services/Services.common";
 
 describe("Tests for LoginUser Service ", () => {
   let service: Service<LoginUser, LoginUserToken>;

@@ -9,7 +9,7 @@ import { GetUsersFilterCriteria } from "../../../../../contexts/domain/users/Get
 import { UserDTO } from "../../../../../contexts/domain/users/UserDTO.domain";
 import { PageData } from "../../../../../contexts/infrastructure/Infrastructure.common";
 import { UsersServicesTypes } from "../../../../../contexts/application/services/users/users.services";
-import { Service } from "../../../../../contexts/application/services/service.common";
+import { Service } from "../../../../../contexts/application/services/Services.common";
 
 describe("Tests for Get Users Service ", () => {
   let service: Service<GetUsersFilterCriteria, PageData<UserDTO>>;

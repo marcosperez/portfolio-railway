@@ -3,11 +3,11 @@ import { PrismaClient } from "@prisma/client";
 import { Container } from "inversify";
 
 import "./contexts/infrastructure/controllers/common/Ping.controller.ts";
-import "./contexts/infrastructure/controllers/users/users.controllers";
+import "./contexts/infrastructure/controllers/users/Users.controllers";
 
 import { UserRepository } from "./contexts/infrastructure/repositories/users/User.repository";
 import prisma from "./contexts/infrastructure/client";
-import { Service } from "./contexts/application/services/service.common";
+import { Service } from "./contexts/application/services/Services.common";
 import { GetUsersFilterCriteria } from "./contexts/domain/users/GetUsersFilterCriteria.domain";
 import { UserDTO } from "./contexts/domain/users/UserDTO.domain";
 import { PageData } from "./contexts/infrastructure/Infrastructure.common";

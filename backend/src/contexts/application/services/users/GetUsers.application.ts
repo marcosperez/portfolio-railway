@@ -2,7 +2,7 @@ import { GetUsersFilterCriteria } from "../../../domain/users/GetUsersFilterCrit
 import { User } from "../../../domain/users/User.domain";
 import { PageData } from "../../../infrastructure/Infrastructure.common";
 import { UserDTO } from "../../../domain/users/UserDTO.domain";
-import { Service, ServiceResult } from "../service.common";
+import { Service, ServiceResult } from "../Services.common";
 import { UserRepositoryInterface } from "../../../infrastructure/repositories/users/User.repository.interface";
 import { inject, injectable } from "inversify";
 

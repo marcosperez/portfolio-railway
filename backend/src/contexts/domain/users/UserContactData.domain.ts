@@ -1,4 +1,4 @@
-import { Maybe } from "../domain.common";
+import { Maybe } from "../Domain.common";
 
 export class UserContactData {
   street: Maybe<string>;
