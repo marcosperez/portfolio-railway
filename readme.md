@@ -1,8 +1,8 @@
-# App React/Node to DEMO
+# App React/Node for DEMO
 
 Both Frontend and Backend run in the same container, Its only for simplicity.
 
-## Run proyect with docker
+## Run project with docker
 
 ```sh
 docker-compose up  --build
@@ -10,6 +10,9 @@ docker-compose up  --build
 
 ## TODO
 
+- [*] Basic DDD
+- [*] Basic Unit Test
+- [*] Basic Integration Test
 - [ ] Add swagger
 - [ ] Add helmet
 - [ ] Add Simple Home Page for Videos
@@ -27,13 +30,13 @@ docker-compose up  --build
 
 ## Docker
 
-### Build
+### Build Image
 
 ```sh
 docker build . -t mdperez/node-portfolio:latest
 ```
 
-### Run
+### Run Image
 
 ```sh
 docker build --build-arg PORT=9000 . -t mdperez/node-portfolio:latest &&
@@ -42,19 +45,19 @@ docker run --name node-portfolio -p 9000:9000 -d mdperez/node-portfolio:latest &
 docker logs node-portfolio -f
 ```
 
-### Stop
+### Stop Container
 
 ```sh
 docker container rm node-portfolio -f
 ```
 
-### Logs
+### View Logs
 
 ```sh
 docker logs node-portfolio -f
 ```
 
-### RUN FRONTEND
+### RUN FRONTEND DEV
 
 **Install packages first**
 
@@ -62,7 +65,7 @@ docker logs node-portfolio -f
 cd frontend && npm start
 ```
 
-### RUN BACKEND
+### RUN BACKEND DEV
 
 **Install packages first**
 
