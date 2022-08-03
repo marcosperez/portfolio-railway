@@ -12,7 +12,7 @@ import helmet from "helmet";
 dotenv.config();
 
 export async function createApp(container: Container = InversifyContainer) {
-  let server = new InversifyExpressServer(container);
+  const server = new InversifyExpressServer(container);
 
   server.setConfig((app) => {
     app.use(cors());
