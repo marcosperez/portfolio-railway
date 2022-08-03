@@ -2,9 +2,7 @@ import "./DownloadCV.scss";
 import { motion } from "framer-motion";
 import i18n from "../../features/translations/locales/i18n";
 
-interface DownloadCVProps {}
-
-function DownloadCV({}: DownloadCVProps) {
+function DownloadCV() {
   return (
     <>
       <motion.a

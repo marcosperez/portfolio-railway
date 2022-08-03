@@ -1,7 +1,6 @@
 import "./Slider.scss";
 import { motion, useAnimation } from "framer-motion";
-import { useEffect, useState } from "react";
-import i18n from "../../features/translations/locales/i18n";
+import { useEffect } from "react";
 
 interface SliderProps {
   onChange: (v: boolean) => void;
@@ -28,6 +27,7 @@ function Slider({ onChange, value, value1, value2 }: SliderProps) {
         transition: { duration: 0.3 },
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value]);
 
   return (

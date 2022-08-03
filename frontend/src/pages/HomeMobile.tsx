@@ -49,9 +49,6 @@ function HomeMobile() {
 
   const IAmRef = useRef<HTMLDivElement>(null);
   useEffect(() => {});
-  const scrollIAm = () => {
-    IAmRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
 
   const ProfileMobileRef = useRef<HTMLDivElement>(null);
   const scrollProfile = () => {
@@ -136,11 +133,7 @@ function HomeMobile() {
             initial="offscreen"
             whileInView="onscreen"
           >
-            <ExperiencesMobile
-              next={next}
-              auto={auto}
-              currentStep={step}
-            ></ExperiencesMobile>
+            <ExperiencesMobile></ExperiencesMobile>
           </motion.div>
         </motion.div>
 

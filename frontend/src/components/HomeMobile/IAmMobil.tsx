@@ -13,7 +13,6 @@ interface IAmMobilProps {
 
 function IAmMobil({ next, auto, setAuto, currentStep }: IAmMobilProps) {
   const controls = useAnimation();
-  const controlsButton = useAnimation();
   let middle = Math.min(window.innerWidth, 1200) / 2 - 225;
   const startDelay = auto ? 5 : 0;
 
@@ -36,6 +35,7 @@ function IAmMobil({ next, auto, setAuto, currentStep }: IAmMobilProps) {
 
   useEffect(() => {
     sequence();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

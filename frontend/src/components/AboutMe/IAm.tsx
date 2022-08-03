@@ -42,6 +42,7 @@ function IAm({ next, auto, setAuto }: IAmProps) {
 
   useEffect(() => {
     sequence();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

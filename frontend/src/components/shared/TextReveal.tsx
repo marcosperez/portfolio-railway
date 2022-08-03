@@ -1,6 +1,5 @@
 import "./TextReveal.scss";
 import { motion } from "framer-motion";
-import { ReactElement } from "react";
 
 interface TextRevealProps {
   children: string;

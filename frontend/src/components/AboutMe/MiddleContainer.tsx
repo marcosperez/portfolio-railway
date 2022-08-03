@@ -1,6 +1,6 @@
 import "./MiddleContainer.scss";
 import { motion } from "framer-motion";
-import { ReactElement, useEffect, useState } from "react";
+import { ReactElement } from "react";
 import { GetSizes } from "../../features/config/hooks";
 
 interface MiddleContainerProps {

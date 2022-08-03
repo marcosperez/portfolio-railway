@@ -100,6 +100,7 @@ function Profile({ next, auto }: ProfileProps) {
             <a
               href="https://www.linkedin.com/in/marcos-perez-40942682"
               target={"_blank"}
+              rel="noreferrer"
             >
               <motion.img
                 whileHover={{
@@ -112,7 +113,11 @@ function Profile({ next, auto }: ProfileProps) {
                 src={linkedin}
               ></motion.img>
             </a>
-            <a href="https://github.com/marcosperez" target={"_blank"}>
+            <a
+              href="https://github.com/marcosperez"
+              target={"_blank"}
+              rel="noreferrer"
+            >
               <motion.img
                 whileHover={{
                   scale: 1.2,

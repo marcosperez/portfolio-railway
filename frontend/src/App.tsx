@@ -35,6 +35,7 @@ function App() {
     window.addEventListener("resize", () => {
       setWindowSize(window.innerWidth, window.innerHeight);
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const isMovil = windowWidth < 1200;
@@ -56,6 +57,7 @@ function App() {
         transition: { ease: "easeOut", delay: 0, duration: 3 },
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [step]);
   return (
     <div className={`theme-${theme} ${isMovilCls}`}>

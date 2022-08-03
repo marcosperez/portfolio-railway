@@ -1,8 +1,5 @@
 import "./ProfileMobile.scss";
 import { motion } from "framer-motion";
-import linkedin from "./img/linkedin_icon.png";
-import github from "./img/git_icono.png";
-import Badge from "../shared/Badge";
 import i18n from "../../features/translations/locales/i18n";
 import TextReveal from "../shared/TextReveal";
 

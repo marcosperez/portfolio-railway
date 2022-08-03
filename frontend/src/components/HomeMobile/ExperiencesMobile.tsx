@@ -1,21 +1,9 @@
 import "./ExperiencesMobile.scss";
 import { motion } from "framer-motion";
 import Badge from "../shared/Badge";
-import { useState } from "react";
-import Button from "../shared/Button";
 import i18n from "../../features/translations/locales/i18n";
 
-interface ExperiencesMobileProps {
-  next: (nextValue: number) => void;
-  auto?: boolean;
-  currentStep: number;
-}
-
-function ExperiencesMobile({ next, auto }: ExperiencesMobileProps) {
-  const goNext = async () => {
-    next(5);
-  };
-
+function ExperiencesMobile() {
   return (
     <>
       <motion.div

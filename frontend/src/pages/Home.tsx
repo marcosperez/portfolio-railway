@@ -49,11 +49,7 @@ function Home() {
         )}
         {step > 3 && (
           <MiddleContainer next={next} auto={auto} currentStep={step}>
-            <Experiences
-              next={next}
-              auto={auto}
-              currentStep={step}
-            ></Experiences>
+            <Experiences></Experiences>
           </MiddleContainer>
         )}
 

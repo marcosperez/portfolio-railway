@@ -1,6 +1,5 @@
 import "./AboutMeMobile.scss";
 import { motion } from "framer-motion";
-import { useState } from "react";
 import Badge from "../shared/Badge";
 import i18n from "../../features/translations/locales/i18n";
 import linkedin from "./img/linkedin_icon.png";
@@ -101,6 +100,7 @@ function AboutMeMobile({ next, auto }: AboutMeMobileProps) {
                 <a
                   href="https://www.linkedin.com/in/marcos-perez-40942682"
                   target={"_blank"}
+                  rel="noreferrer"
                 >
                   <motion.img
                     whileHover={{
@@ -113,7 +113,11 @@ function AboutMeMobile({ next, auto }: AboutMeMobileProps) {
                     src={linkedin}
                   ></motion.img>
                 </a>
-                <a href="https://github.com/marcosperez" target={"_blank"}>
+                <a
+                  href="https://github.com/marcosperez"
+                  target={"_blank"}
+                  rel="noreferrer"
+                >
                   <motion.img
                     whileHover={{
                       scale: 1.2,

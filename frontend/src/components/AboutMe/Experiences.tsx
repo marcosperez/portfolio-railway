@@ -1,23 +1,9 @@
 import "./Experiences.scss";
 import { motion } from "framer-motion";
 import Badge from "../shared/Badge";
-import { useState } from "react";
-import Button from "../shared/Button";
 import i18n from "../../features/translations/locales/i18n";
 
-interface ExperiencesProps {
-  next: (nextValue: number) => void;
-  auto?: boolean;
-  currentStep: number;
-}
-
-function Experiences({ next, auto }: ExperiencesProps) {
-  const goNext = async () => {
-    next(5);
-  };
-
-  const [showMore, setShowMore] = useState(false);
-
+function Experiences() {
   return (
     <>
       <motion.div
