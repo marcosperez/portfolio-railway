@@ -28,8 +28,8 @@ import { UserRepository } from "./contexts/infrastructure/repositories/users/Use
 import { UserRepositoryInterface } from "./contexts/infrastructure/repositories/users/User.repository.interface";
 
 // Controllers
-import "./contexts/infrastructure/controllers/common/ping.controller";
-import "./contexts/infrastructure/controllers/users/users.controllers";
+import "./contexts/infrastructure/controllers/healthCheck/Ping.controller";
+import "./contexts/infrastructure/controllers/users/Users.controllers";
 
 //*************************************************************************************** */
 // TODO: split code?
