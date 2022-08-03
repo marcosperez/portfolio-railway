@@ -2,7 +2,7 @@ import "reflect-metadata";
 import { PrismaClient } from "@prisma/client";
 import { Container } from "inversify";
 
-import "./contexts/infrastructure/controllers/common/Ping.controller.ts";
+import "./contexts/infrastructure/controllers/common/Ping.controller";
 import "./contexts/infrastructure/controllers/users/Users.controllers";
 
 import { UserRepository } from "./contexts/infrastructure/repositories/users/User.repository";
