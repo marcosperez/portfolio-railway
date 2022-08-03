@@ -1,4 +1,4 @@
-import { Maybe } from "../Domain.common";
+import { Maybe } from "../domain.common";
 
 export interface UserDTO {
   id: Maybe<number>;
