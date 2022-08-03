@@ -14,7 +14,7 @@ docker-compose up  --build
 - [x] Basic Unit Test
 - [x] Basic Integration Test
 - [x] Translate all frontend
-- [ ] Remove all warnings in frontend
+- [x] Remove all warnings in frontend
 - [ ] Add swagger
 - [ ] Add helmet
 - [ ] Add Simple Home Page for Videos
