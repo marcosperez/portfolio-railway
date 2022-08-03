@@ -10,9 +10,10 @@ docker-compose up  --build
 
 ## TODO
 
-- [*] Basic DDD
-- [*] Basic Unit Test
-- [*] Basic Integration Test
+- [x] Basic DDD
+- [x] Basic Unit Test
+- [x] Basic Integration Test
+- [x] Translate all frontend
 - [ ] Add swagger
 - [ ] Add helmet
 - [ ] Add Simple Home Page for Videos

@@ -125,6 +125,11 @@ function ExperiencesMobile({ next, auto }: ExperiencesMobileProps) {
             style={{ fontSize: "0.9em" }}
           >
             <div>
+              * <strong>{`${i18n.t("Architecture")}`}</strong>
+              {`${i18n.t("ArchitectureDesc")}`}
+            </div>
+
+            <div>
               * <strong>{`${i18n.t("Databases")}`}</strong>
               {`${i18n.t("DatabasesDesc")}`}
             </div>

@@ -82,6 +82,11 @@ function Profile({ next, auto }: ProfileProps) {
           </div>
 
           <div style={{ marginTop: 10 }}>
+            <Badge>{`${i18n.t("Español")}`}</Badge>
+            <div>{`${i18n.t("Español Level")}`}</div>
+          </div>
+
+          <div style={{ marginTop: 10 }}>
             <Badge>{`${i18n.t("English")}`}</Badge>
             <div>{`${i18n.t("Medium Level")}`}</div>
           </div>
