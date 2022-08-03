@@ -1,3 +1,3 @@
-export { GetUsersController } from "./GetUsers.controller";
-export { LoginUserController } from "./LoginUser.controller";
-export { RegisterUserController } from "./RegisterUser.controller";
+export { GetUsersController } from "./getUsers.controller";
+export { LoginUserController } from "./loginUser.controller";
+export { RegisterUserController } from "./registerUser.controller";

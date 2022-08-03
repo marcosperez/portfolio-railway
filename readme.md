@@ -25,6 +25,7 @@ docker-compose up  --build
 - [ ] Add Admin Page
   - [ ] List Users
   - [ ] "Upload" videos and descriptions
+- [ ] Read about tRPC and implement if its useful
 - [ ] Add Video Page
   - List Videos with basic filters
 - [ ] Add example with GrapQL
