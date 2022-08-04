@@ -1,9 +1,4 @@
 import "reflect-metadata";
-// Controllers
-import "./contexts/infrastructure/controllers/healthCheck/Ping.controller";
-import "./contexts/infrastructure/controllers/users/GetUsers.controller";
-import "./contexts/infrastructure/controllers/users/RegisterUser.controller";
-import "./contexts/infrastructure/controllers/users/LoginUser.controller";
 
 import { Container } from "inversify";
 
@@ -20,6 +15,15 @@ import { LoginUser } from "./contexts/domain/users/LoginUser.domain";
 import { LoginUserToken } from "./contexts/domain/users/LoginUserToken.domain";
 import { RegisterUser } from "./contexts/domain/users/RegisterUser.domain";
 import { User } from "./contexts/domain/users/User.domain";
+
+// Controllers
+// Health Check
+import "./contexts/infrastructure/controllers/healthCheck/Ping.controller";
+
+// Users
+import "./contexts/infrastructure/controllers/users/GetUsers.controller";
+import "./contexts/infrastructure/controllers/users/RegisterUser.controller";
+import "./contexts/infrastructure/controllers/users/LoginUser.controller";
 
 // Services
 import {
