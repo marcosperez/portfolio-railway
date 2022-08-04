@@ -1,4 +1,10 @@
 import "reflect-metadata";
+// Controllers
+import "./contexts/infrastructure/controllers/healthCheck/Ping.controller";
+import "./contexts/infrastructure/controllers/users/GetUsers.controller";
+import "./contexts/infrastructure/controllers/users/RegisterUser.controller";
+import "./contexts/infrastructure/controllers/users/LoginUser.controller";
+
 import { Container } from "inversify";
 
 // Prisma DB Client
@@ -26,10 +32,6 @@ import {
 // Repositories
 import { UserRepository } from "./contexts/infrastructure/repositories/users/User.repository";
 import { UserRepositoryInterface } from "./contexts/infrastructure/repositories/users/User.repository.interface";
-
-// Controllers
-import "./contexts/infrastructure/controllers/healthCheck/Ping.controller";
-import "./contexts/infrastructure/controllers/users/Users.controllers";
 
 //*************************************************************************************** */
 // TODO: split code?
