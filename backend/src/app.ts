@@ -41,6 +41,14 @@ export async function createApp(container: Container = iocContainer) {
       res: ExResponse,
       next: NextFunction
     ): ErrorController | ExResponse | void {
+      if (err instanceof ValidateError) {
+        console.warn(`Caught Validation Error for ${req.path}:`, err.fields);
+        return res.status(422).json({
+          message: "Validation Failed",
+          details: err?.fields,
+        });
+      }
+
       console.warn(`[ErrorHandler][Error][${req.path}]`);
       console.warn(err);
 

@@ -15,7 +15,7 @@ import { UserDTO } from "./contexts/domain/users/UserDTO.domain";
 import { PageData } from "./contexts/infrastructure/Infrastructure.common";
 import { LoginUserDTO } from "./contexts/domain/users/LoginUser.domain";
 import { LoginUserToken } from "./contexts/domain/users/LoginUserToken.domain";
-import { RegisterUser } from "./contexts/domain/users/RegisterUser.domain";
+import { RegisterUserDTO } from "./contexts/domain/users/RegisterUser.domain";
 import { User } from "./contexts/domain/users/User.domain";
 
 // Services
@@ -61,7 +61,7 @@ iocContainer
   )
   .to(LoginUserService);
 iocContainer
-  .bind<Service<RegisterUser, User>>(UsersServicesTypes.RegisterUserService)
+  .bind<Service<RegisterUserDTO, User>>(UsersServicesTypes.RegisterUserService)
   .to(RegisterUserService);
 
 // Controllers

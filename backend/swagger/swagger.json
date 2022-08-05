@@ -27,19 +27,11 @@
 				"type": "object",
 				"additionalProperties": false
 			},
-			"Maybe_number_": {
-				"type": "number",
-				"format": "double",
-				"nullable": true
-			},
-			"Maybe_string_": {
-				"type": "string",
-				"nullable": true
-			},
 			"UserDTO": {
 				"properties": {
 					"id": {
-						"$ref": "#/components/schemas/Maybe_number_"
+						"type": "number",
+						"format": "double"
 					},
 					"name": {
 						"type": "string"
@@ -51,35 +43,28 @@
 						"type": "string"
 					},
 					"street": {
-						"$ref": "#/components/schemas/Maybe_string_"
+						"type": "string"
 					},
 					"suite": {
-						"$ref": "#/components/schemas/Maybe_string_"
+						"type": "string"
 					},
 					"city": {
-						"$ref": "#/components/schemas/Maybe_string_"
+						"type": "string"
 					},
 					"zipcode": {
-						"$ref": "#/components/schemas/Maybe_string_"
+						"type": "string"
 					},
 					"phone": {
-						"$ref": "#/components/schemas/Maybe_string_"
+						"type": "string"
 					},
 					"website": {
-						"$ref": "#/components/schemas/Maybe_string_"
+						"type": "string"
 					}
 				},
 				"required": [
-					"id",
 					"name",
 					"username",
-					"email",
-					"street",
-					"suite",
-					"city",
-					"zipcode",
-					"phone",
-					"website"
+					"email"
 				],
 				"type": "object",
 				"additionalProperties": false
@@ -231,7 +216,7 @@
 				"type": "object",
 				"additionalProperties": false
 			},
-			"ResultController__token-LoginUserToken-or-undefined--__": {
+			"ResultController_LoginUserToken-or-undefined_": {
 				"properties": {
 					"status": {
 						"type": "boolean"
@@ -240,12 +225,7 @@
 						"type": "string"
 					},
 					"data": {
-						"properties": {
-							"token": {
-								"$ref": "#/components/schemas/LoginUserToken"
-							}
-						},
-						"type": "object"
+						"$ref": "#/components/schemas/LoginUserToken"
 					},
 					"error": {
 						"$ref": "#/components/schemas/ValidationError"
@@ -258,7 +238,7 @@
 				"additionalProperties": false
 			},
 			"LoginUsersResponseDTO": {
-				"$ref": "#/components/schemas/ResultController__token-LoginUserToken-or-undefined--__"
+				"$ref": "#/components/schemas/ResultController_LoginUserToken-or-undefined_"
 			},
 			"LoginUserDTO": {
 				"properties": {
@@ -275,6 +255,139 @@
 				],
 				"type": "object",
 				"additionalProperties": false
+			},
+			"UserContactData": {
+				"properties": {
+					"street": {
+						"type": "string"
+					},
+					"suite": {
+						"type": "string"
+					},
+					"city": {
+						"type": "string"
+					},
+					"zipcode": {
+						"type": "string"
+					},
+					"phone": {
+						"type": "string"
+					},
+					"website": {
+						"type": "string"
+					}
+				},
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Partial_User_": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"name": {
+						"type": "string"
+					},
+					"username": {
+						"type": "string"
+					},
+					"passwordHash": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"address": {
+						"$ref": "#/components/schemas/UserContactData"
+					}
+				},
+				"type": "object",
+				"description": "Make all properties in T optional"
+			},
+			"ResultController__user-Partial_User_-or-undefined--__": {
+				"properties": {
+					"status": {
+						"type": "boolean"
+					},
+					"reason": {
+						"type": "string"
+					},
+					"data": {
+						"properties": {
+							"user": {
+								"$ref": "#/components/schemas/Partial_User_"
+							}
+						},
+						"type": "object"
+					},
+					"error": {
+						"$ref": "#/components/schemas/ValidationError"
+					}
+				},
+				"required": [
+					"status"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"RegisterUsersResponseDTO": {
+				"$ref": "#/components/schemas/ResultController__user-Partial_User_-or-undefined--__"
+			},
+			"RegisterUserDTO": {
+				"description": "DTO for register users",
+				"properties": {
+					"username": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					},
+					"passwordConfirmation": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"street": {
+						"type": "string"
+					},
+					"suite": {
+						"type": "string"
+					},
+					"city": {
+						"type": "string"
+					},
+					"zipcode": {
+						"type": "string"
+					},
+					"phone": {
+						"type": "string"
+					},
+					"website": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"username",
+					"password",
+					"passwordConfirmation",
+					"name",
+					"email"
+				],
+				"type": "object",
+				"additionalProperties": false,
+				"example": {
+					"name": "123",
+					"username": "marcos",
+					"email": "marcos@correo.com",
+					"street": "santa els 123",
+					"password": "222222222",
+					"passwordConfirmation": "222222222"
+				}
 			}
 		},
 		"securitySchemes": {}
@@ -404,6 +517,17 @@
 							"application/json": {
 								"schema": {
 									"$ref": "#/components/schemas/LoginUsersResponseDTO"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"status": true,
+											"reason": "success",
+											"data": {
+												"token": "asdasdasdasdas%$%&$##"
+											}
+										}
+									}
 								}
 							}
 						}
@@ -430,6 +554,56 @@
 						"application/json": {
 							"schema": {
 								"$ref": "#/components/schemas/LoginUserDTO"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/users/register": {
+			"post": {
+				"operationId": "Handler",
+				"responses": {
+					"200": {
+						"description": "Register User",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/RegisterUsersResponseDTO"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"status": true,
+											"reason": "exito"
+										}
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Bad Request",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/RegisterUsersResponseDTO"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Users"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/RegisterUserDTO"
 							}
 						}
 					}

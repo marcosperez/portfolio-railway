@@ -1,44 +1,69 @@
-import { Request, Response } from "express";
 import Joi from "joi";
 import { RegisterUserService } from "../../../application/services/users/RegisterUser.application";
-import { Controller } from "../Controller";
 import { controller, httpPost } from "inversify-express-utils";
 import { inject } from "inversify";
 import { UsersServicesTypes } from "../../../application/services/users/users.services";
+import {
+  Route,
+  Controller,
+  Post,
+  SuccessResponse,
+  Tags,
+  Response,
+  Body,
+  Example,
+} from "tsoa";
+import { ResultController } from "../Controller";
+import { User } from "../../../domain/users/User.domain";
+import { RegisterUserDTO } from "../../../domain/users/RegisterUser.domain";
 
+type RegisterUsersResponseDTO = ResultController<{
+  user: Partial<User> | undefined;
+}>;
+
+@Route("/users")
+@Tags("Users")
 @controller("/users")
-export class RegisterUserController implements Controller {
+export class RegisterUserController extends Controller {
   constructor(
     @inject(UsersServicesTypes.RegisterUserService)
     private registerUserService: RegisterUserService
-  ) {}
-
+  ) {
+    super();
+  }
   @httpPost("/register")
-  async handler(req: Request, res: Response): Promise<void> {
-    try {
-      const [ok, user] = await this.registerUserService.execute(req.body);
+  @Response<RegisterUsersResponseDTO>(400, "Bad Request")
+  @SuccessResponse("200", "Register User", "application/json")
+  @Example<RegisterUsersResponseDTO>({
+    status: true,
+    reason: "exito",
+  })
+  @Post("/register")
+  async handler(
+    @Body() requestBody: RegisterUserDTO
+  ): Promise<RegisterUsersResponseDTO> {
+    await BodyRegisterSchema.validateAsync(requestBody);
+    const [ok, user] = await this.registerUserService.execute(requestBody);
 
-      if (!ok) {
-        res.status(404).json({
-          status: false,
-          message: "Error en creacion de usuario",
-        });
-        return;
-      }
-
-      res.status(200).json({
-        status: ok,
-        data: { user },
-      });
-    } catch (err) {
-      console.log("[RegisterUsersController][Error]");
-      console.log(err);
-
-      res.status(500).json({
+    if (!ok) {
+      this.setStatus(404);
+      return {
         status: false,
-        message: "Error en creacion de usuario",
-      });
+        reason: "Error en creacion de usuario",
+      };
     }
+    this.setStatus(200);
+    return {
+      status: ok,
+      data: {
+        user: {
+          id: user?.id,
+          name: user?.name,
+          username: user?.username,
+          email: user?.email,
+        },
+      },
+    };
   }
 }
 

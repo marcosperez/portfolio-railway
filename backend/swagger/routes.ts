@@ -8,6 +8,8 @@ import { PingController } from './../src/contexts/infrastructure/controllers/hea
 import { GetUsersController } from './../src/contexts/infrastructure/controllers/users/GetUsers.controller';
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 import { LoginUserController } from './../src/contexts/infrastructure/controllers/users/LoginUser.controller';
+// WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+import { RegisterUserController } from './../src/contexts/infrastructure/controllers/users/RegisterUser.controller';
 import { iocContainer } from './../src/inversify.config';
 import { IocContainer, IocContainerFactory } from '@tsoa/runtime';
 import type { RequestHandler } from 'express';
@@ -26,29 +28,19 @@ const models: TsoaRoute.Models = {
         "additionalProperties": false,
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "Maybe_number_": {
-        "dataType": "refAlias",
-        "type": {"dataType":"union","subSchemas":[{"dataType":"double"},{"dataType":"undefined"},{"dataType":"enum","enums":[null]}],"validators":{}},
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "Maybe_string_": {
-        "dataType": "refAlias",
-        "type": {"dataType":"union","subSchemas":[{"dataType":"string"},{"dataType":"undefined"},{"dataType":"enum","enums":[null]}],"validators":{}},
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "UserDTO": {
         "dataType": "refObject",
         "properties": {
-            "id": {"ref":"Maybe_number_","required":true},
+            "id": {"dataType":"double"},
             "name": {"dataType":"string","required":true},
             "username": {"dataType":"string","required":true},
             "email": {"dataType":"string","required":true},
-            "street": {"ref":"Maybe_string_","required":true},
-            "suite": {"ref":"Maybe_string_","required":true},
-            "city": {"ref":"Maybe_string_","required":true},
-            "zipcode": {"ref":"Maybe_string_","required":true},
-            "phone": {"ref":"Maybe_string_","required":true},
-            "website": {"ref":"Maybe_string_","required":true},
+            "street": {"dataType":"string"},
+            "suite": {"dataType":"string"},
+            "city": {"dataType":"string"},
+            "zipcode": {"dataType":"string"},
+            "phone": {"dataType":"string"},
+            "website": {"dataType":"string"},
         },
         "additionalProperties": false,
     },
@@ -120,12 +112,12 @@ const models: TsoaRoute.Models = {
         "additionalProperties": false,
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "ResultController__token-LoginUserToken-or-undefined--__": {
+    "ResultController_LoginUserToken-or-undefined_": {
         "dataType": "refObject",
         "properties": {
             "status": {"dataType":"boolean","required":true},
             "reason": {"dataType":"string"},
-            "data": {"dataType":"nestedObjectLiteral","nestedProperties":{"token":{"dataType":"union","subSchemas":[{"ref":"LoginUserToken"},{"dataType":"undefined"}],"required":true}}},
+            "data": {"dataType":"union","subSchemas":[{"ref":"LoginUserToken"},{"dataType":"undefined"}]},
             "error": {"ref":"ValidationError"},
         },
         "additionalProperties": false,
@@ -133,7 +125,7 @@ const models: TsoaRoute.Models = {
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "LoginUsersResponseDTO": {
         "dataType": "refAlias",
-        "type": {"ref":"ResultController__token-LoginUserToken-or-undefined--__","validators":{}},
+        "type": {"ref":"ResultController_LoginUserToken-or-undefined_","validators":{}},
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "LoginUserDTO": {
@@ -141,6 +133,58 @@ const models: TsoaRoute.Models = {
         "properties": {
             "login": {"dataType":"string","required":true},
             "password": {"dataType":"string","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "UserContactData": {
+        "dataType": "refObject",
+        "properties": {
+            "street": {"dataType":"string"},
+            "suite": {"dataType":"string"},
+            "city": {"dataType":"string"},
+            "zipcode": {"dataType":"string"},
+            "phone": {"dataType":"string"},
+            "website": {"dataType":"string"},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Partial_User_": {
+        "dataType": "refAlias",
+        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"id":{"dataType":"double"},"name":{"dataType":"string"},"username":{"dataType":"string"},"passwordHash":{"dataType":"string"},"email":{"dataType":"string"},"address":{"ref":"UserContactData"}},"validators":{}},
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "ResultController__user-Partial_User_-or-undefined--__": {
+        "dataType": "refObject",
+        "properties": {
+            "status": {"dataType":"boolean","required":true},
+            "reason": {"dataType":"string"},
+            "data": {"dataType":"nestedObjectLiteral","nestedProperties":{"user":{"dataType":"union","subSchemas":[{"ref":"Partial_User_"},{"dataType":"undefined"}],"required":true}}},
+            "error": {"ref":"ValidationError"},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "RegisterUsersResponseDTO": {
+        "dataType": "refAlias",
+        "type": {"ref":"ResultController__user-Partial_User_-or-undefined--__","validators":{}},
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "RegisterUserDTO": {
+        "dataType": "refObject",
+        "properties": {
+            "username": {"dataType":"string","required":true},
+            "password": {"dataType":"string","required":true},
+            "passwordConfirmation": {"dataType":"string","required":true},
+            "name": {"dataType":"string","required":true},
+            "email": {"dataType":"string","required":true},
+            "street": {"dataType":"string"},
+            "suite": {"dataType":"string"},
+            "city": {"dataType":"string"},
+            "zipcode": {"dataType":"string"},
+            "phone": {"dataType":"string"},
+            "website": {"dataType":"string"},
         },
         "additionalProperties": false,
     },
@@ -236,6 +280,36 @@ export function RegisterRoutes(app: express.Router) {
                 const container: IocContainer = typeof iocContainer === 'function' ? (iocContainer as IocContainerFactory)(request) : iocContainer;
 
                 const controller: any = await container.get<LoginUserController>(LoginUserController);
+                if (typeof controller['setStatus'] === 'function') {
+                controller.setStatus(undefined);
+                }
+
+
+              const promise = controller.handler.apply(controller, validatedArgs as any);
+              promiseHandler(controller, promise, response, 200, next);
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.post('/users/register',
+            ...(fetchMiddlewares<RequestHandler>(RegisterUserController)),
+            ...(fetchMiddlewares<RequestHandler>(RegisterUserController.prototype.handler)),
+
+            async function RegisterUserController_handler(request: any, response: any, next: any) {
+            const args = {
+                    requestBody: {"in":"body","name":"requestBody","required":true,"ref":"RegisterUserDTO"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+
+                const container: IocContainer = typeof iocContainer === 'function' ? (iocContainer as IocContainerFactory)(request) : iocContainer;
+
+                const controller: any = await container.get<RegisterUserController>(RegisterUserController);
                 if (typeof controller['setStatus'] === 'function') {
                 controller.setStatus(undefined);
                 }

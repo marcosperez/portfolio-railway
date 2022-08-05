@@ -11,14 +11,13 @@ import {
   Tags,
   Response,
   Body,
+  Example,
 } from "tsoa";
 import { ResultController } from "../Controller";
 import { LoginUserDTO } from "../../../domain/users/LoginUser.domain";
 import { LoginUserToken } from "../../../domain/users/LoginUserToken.domain";
 
-type LoginUsersResponseDTO = ResultController<{
-  token: LoginUserToken | undefined;
-}>;
+type LoginUsersResponseDTO = ResultController<LoginUserToken | undefined>;
 
 @Route("/users")
 @Tags("Users")
@@ -34,6 +33,11 @@ export class LoginUserController extends Controller {
   @httpPost("/login")
   @Response<LoginUsersResponseDTO>(400, "Bad Request")
   @SuccessResponse("200", "Users login", "application/json")
+  @Example<LoginUsersResponseDTO>({
+    status: true,
+    reason: "success",
+    data: { token: "asdasdasdasdas%$%&$##" },
+  })
   @Post("/login")
   async handler(
     @Body() requestBody: LoginUserDTO
@@ -52,7 +56,7 @@ export class LoginUserController extends Controller {
     return {
       status: ok,
       reason: "success",
-      data: { token: token },
+      data: token,
     };
   }
 }

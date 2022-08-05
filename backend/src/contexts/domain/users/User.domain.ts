@@ -1,4 +1,3 @@
-import { Maybe } from "../domain.common";
 import { UserContactData } from "./UserContactData.domain";
 import bcrypt from "bcrypt";
 import { UserDTO } from "./UserDTO.domain";
@@ -7,39 +6,39 @@ import { JWTPayload } from "./JWTPayload.domain";
 const tokenSecret = process.env.TOKEN_SECRET || "secreto123?@";
 
 export class User {
-  id: Maybe<number>;
+  id?: number;
   name: string;
   username: string;
   passwordHash: string;
   email: string;
-  address: Maybe<UserContactData>;
+  address?: UserContactData;
 
   constructor(params: {
-    id: Maybe<number>;
+    id?: number | null;
     name: string;
     username: string;
     email: string;
     passwordHash: string;
-    street: Maybe<string>;
-    suite: Maybe<string>;
-    city: Maybe<string>;
-    zipcode: Maybe<string>;
-    phone: Maybe<string>;
-    website: Maybe<string>;
+    street?: string | null;
+    suite?: string | null;
+    city?: string | null;
+    zipcode?: string | null;
+    phone?: string | null;
+    website?: string | null;
   }) {
-    this.id = params.id;
+    this.id = params.id || 0;
     this.name = params.name;
     this.passwordHash = params.passwordHash;
     this.username = params.username;
     this.email = params.email;
 
     this.address = new UserContactData(
-      params.street,
-      params.suite,
-      params.city,
-      params.zipcode,
-      params.phone,
-      params.website
+      params.street || "",
+      params.suite || "",
+      params.city || "",
+      params.zipcode || "",
+      params.phone || "",
+      params.website || ""
     );
   }
 

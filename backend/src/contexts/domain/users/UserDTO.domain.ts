@@ -1,14 +1,12 @@
-import { Maybe } from "../domain.common";
-
 export interface UserDTO {
-  id: Maybe<number>;
+  id?: number;
   name: string;
   username: string;
   email: string;
-  street: Maybe<string>;
-  suite: Maybe<string>;
-  city: Maybe<string>;
-  zipcode: Maybe<string>;
-  phone: Maybe<string>;
-  website: Maybe<string>;
+  street?: string;
+  suite?: string;
+  city?: string;
+  zipcode?: string;
+  phone?: string;
+  website?: string;
 }
