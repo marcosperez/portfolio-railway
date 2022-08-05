@@ -15,7 +15,7 @@ docker-compose up  --build
 - [x] Basic Integration Test
 - [x] Translate all frontend
 - [x] Remove all warnings in frontend
-- [ ] Add swagger
+- [x] Add swagger
 - [ ] Add helmet
 - [ ] Add Simple Home Page for Videos
 - [ ] Add Basic users roles (Admin/Guest)
