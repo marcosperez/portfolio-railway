@@ -1,0 +1,445 @@
+{
+	"components": {
+		"examples": {},
+		"headers": {},
+		"parameters": {},
+		"requestBodies": {},
+		"responses": {},
+		"schemas": {
+			"PingResponseBody": {
+				"properties": {
+					"status": {
+						"type": "string"
+					},
+					"message": {
+						"type": "string"
+					},
+					"datetime": {
+						"type": "string",
+						"format": "date-time"
+					}
+				},
+				"required": [
+					"status",
+					"message",
+					"datetime"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Maybe_number_": {
+				"type": "number",
+				"format": "double",
+				"nullable": true
+			},
+			"Maybe_string_": {
+				"type": "string",
+				"nullable": true
+			},
+			"UserDTO": {
+				"properties": {
+					"id": {
+						"$ref": "#/components/schemas/Maybe_number_"
+					},
+					"name": {
+						"type": "string"
+					},
+					"username": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"street": {
+						"$ref": "#/components/schemas/Maybe_string_"
+					},
+					"suite": {
+						"$ref": "#/components/schemas/Maybe_string_"
+					},
+					"city": {
+						"$ref": "#/components/schemas/Maybe_string_"
+					},
+					"zipcode": {
+						"$ref": "#/components/schemas/Maybe_string_"
+					},
+					"phone": {
+						"$ref": "#/components/schemas/Maybe_string_"
+					},
+					"website": {
+						"$ref": "#/components/schemas/Maybe_string_"
+					}
+				},
+				"required": [
+					"id",
+					"name",
+					"username",
+					"email",
+					"street",
+					"suite",
+					"city",
+					"zipcode",
+					"phone",
+					"website"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"PageData_UserDTO_": {
+				"properties": {
+					"list": {
+						"items": {
+							"$ref": "#/components/schemas/UserDTO"
+						},
+						"type": "array"
+					},
+					"count": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"list",
+					"count"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Context": {
+				"properties": {
+					"key": {
+						"type": "string"
+					},
+					"label": {
+						"type": "string"
+					},
+					"value": {}
+				},
+				"type": "object",
+				"additionalProperties": {}
+			},
+			"ValidationErrorItem": {
+				"properties": {
+					"message": {
+						"type": "string"
+					},
+					"path": {
+						"items": {
+							"anyOf": [
+								{
+									"type": "string"
+								},
+								{
+									"type": "number",
+									"format": "double"
+								}
+							]
+						},
+						"type": "array"
+					},
+					"type": {
+						"type": "string"
+					},
+					"context": {
+						"$ref": "#/components/schemas/Context"
+					}
+				},
+				"required": [
+					"message",
+					"path",
+					"type"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ValidationError": {
+				"properties": {
+					"name": {
+						"type": "string",
+						"enum": [
+							"ValidationError"
+						],
+						"nullable": false
+					},
+					"message": {
+						"type": "string"
+					},
+					"stack": {
+						"type": "string"
+					},
+					"isJoi": {
+						"type": "boolean"
+					},
+					"details": {
+						"items": {
+							"$ref": "#/components/schemas/ValidationErrorItem"
+						},
+						"type": "array",
+						"description": "array of errors."
+					},
+					"_original": {}
+				},
+				"required": [
+					"name",
+					"message",
+					"isJoi",
+					"details",
+					"_original"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ResultController_PageData_UserDTO_-or-ValidationError_": {
+				"properties": {
+					"status": {
+						"type": "boolean"
+					},
+					"reason": {
+						"type": "string"
+					},
+					"data": {
+						"anyOf": [
+							{
+								"$ref": "#/components/schemas/PageData_UserDTO_"
+							},
+							{
+								"$ref": "#/components/schemas/ValidationError"
+							}
+						]
+					},
+					"error": {
+						"$ref": "#/components/schemas/ValidationError"
+					}
+				},
+				"required": [
+					"status"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"GetUsersResponseDTO": {
+				"$ref": "#/components/schemas/ResultController_PageData_UserDTO_-or-ValidationError_"
+			},
+			"LoginUserToken": {
+				"properties": {
+					"token": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"token"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ResultController__token-LoginUserToken-or-undefined--__": {
+				"properties": {
+					"status": {
+						"type": "boolean"
+					},
+					"reason": {
+						"type": "string"
+					},
+					"data": {
+						"properties": {
+							"token": {
+								"$ref": "#/components/schemas/LoginUserToken"
+							}
+						},
+						"type": "object"
+					},
+					"error": {
+						"$ref": "#/components/schemas/ValidationError"
+					}
+				},
+				"required": [
+					"status"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"LoginUsersResponseDTO": {
+				"$ref": "#/components/schemas/ResultController__token-LoginUserToken-or-undefined--__"
+			},
+			"LoginUserDTO": {
+				"properties": {
+					"login": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"login",
+					"password"
+				],
+				"type": "object",
+				"additionalProperties": false
+			}
+		},
+		"securitySchemes": {}
+	},
+	"info": {
+		"title": "express-ts-videos",
+		"version": "1.0.0",
+		"description": "expressjs with typescript",
+		"license": {
+			"name": "ISC"
+		},
+		"contact": {
+			"name": "Perez, Marcos Daniel"
+		}
+	},
+	"openapi": "3.0.0",
+	"paths": {
+		"/ping": {
+			"get": {
+				"operationId": "Handler",
+				"responses": {
+					"200": {
+						"description": "PingResponseBody",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/PingResponseBody"
+								}
+							}
+						}
+					}
+				},
+				"description": "Health checker",
+				"summary": "Health checker",
+				"tags": [
+					"Health Checker"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/users": {
+			"get": {
+				"operationId": "Handler",
+				"responses": {
+					"200": {
+						"description": "Users pagination list",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/GetUsersResponseDTO"
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Bad Request",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/GetUsersResponseDTO"
+								}
+							}
+						}
+					}
+				},
+				"description": "Return a list of users with pagination",
+				"summary": "users list",
+				"tags": [
+					"Users"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "filter",
+						"required": false,
+						"schema": {
+							"default": "",
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "page",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "pageSize",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "sortField",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "sortDirection",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/users/login": {
+			"post": {
+				"operationId": "Handler",
+				"responses": {
+					"200": {
+						"description": "Users login",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/LoginUsersResponseDTO"
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Bad Request",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/LoginUsersResponseDTO"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Users"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/LoginUserDTO"
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"servers": [
+		{
+			"url": "/"
+		}
+	]
+}

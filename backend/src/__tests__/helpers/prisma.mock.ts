@@ -2,7 +2,7 @@ import { Prisma, PrismaClient } from "@prisma/client";
 import { mockDeep, mockReset, DeepMockProxy } from "jest-mock-extended";
 
 import prisma from "../../contexts/infrastructure/client";
-import InversifyContainer from "../../inversify.config";
+import { iocContainer } from "../../inversify.config";
 
 jest.mock("../../contexts/infrastructure/client", () => ({
   __esModule: true,

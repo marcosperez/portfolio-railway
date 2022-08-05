@@ -1,13 +1,25 @@
-import { Request, Response } from "express";
 import Joi from "joi";
+import { ValidationError } from "joi";
 import { GetUsersFilterCriteria } from "../../../domain/users/GetUsersFilterCriteria.domain";
 import { GetUsersService } from "../../../application/services/users/GetUsers.application";
-import { interfaces, controller, httpGet } from "inversify-express-utils";
+import { controller, httpGet } from "inversify-express-utils";
 import { inject } from "inversify";
 import { UsersServicesTypes } from "../../../application/services/users/users.services";
+import {
+  Route,
+  Controller,
+  Get,
+  Query,
+  Response,
+  SuccessResponse,
+  Tags,
+} from "tsoa";
+import { UserDTO } from "../../../domain/users/UserDTO.domain";
+import { PageData } from "../../Infrastructure.common";
+import { ResultController } from "../Controller";
 
 export const QueryGetUsersSchema = Joi.object({
-  filter: Joi.string().min(1).max(30),
+  filter: Joi.string().min(0).max(30),
   page: Joi.number().min(1).max(99999),
   pageSize: Joi.number().max(100).min(1),
   sortField: Joi.string().valid("id", "username", "name", "email"),
@@ -21,28 +33,63 @@ const defaultPagination: GetUsersFilterCriteria = {
   sortDirection: "desc",
 };
 
+type GetUsersResponseDTO = ResultController<
+  PageData<UserDTO> | ValidationError
+>;
+
+@Route("/users")
+@Tags("Users")
 @controller("/users")
-export class GetUsersController implements interfaces.Controller {
+export class GetUsersController extends Controller {
   constructor(
     @inject(UsersServicesTypes.GetUsersService)
     private getUsersService: GetUsersService
-  ) {}
+  ) {
+    super();
+  }
 
+  /**
+   * Return a list of users with pagination
+   * @param filter
+   * @param page
+   * @param pageSize
+   * @param sortField
+   * @param sortDirection
+   * @returns paginated users
+   * @summary users list
+   */
   @httpGet("/")
-  async handler(req: Request, res: Response): Promise<void> {
-    const query = { ...defaultPagination, ...req.query };
+  @Response<GetUsersResponseDTO>(400, "Bad Request")
+  @SuccessResponse("200", "Users pagination list", "application/json")
+  @Get("/")
+  public async handler(
+    @Query() filter = "",
+    @Query() page = defaultPagination.page,
+    @Query() pageSize = defaultPagination.pageSize,
+    @Query() sortField = defaultPagination.sortField,
+    @Query() sortDirection = defaultPagination.sortDirection
+  ): Promise<GetUsersResponseDTO> {
+    const query: any = {
+      ...defaultPagination,
+      ...{ filter, page, pageSize, sortField, sortDirection },
+    };
+    await QueryGetUsersSchema.validateAsync(query);
+
     const [ok, users] = await this.getUsersService.execute(query);
     if (!ok) {
-      res.status(404).json({
+      this.setStatus(400);
+
+      return {
         status: false,
-        message: "Error en get de usuarios",
-      });
-      return;
+        reason: "Get Users Failed",
+      };
     }
 
-    res.status(200).json({
+    this.setStatus(200);
+    return {
       status: ok,
-      data: { users },
-    });
+      reason: "Get Users Failed",
+      data: users,
+    };
   }
 }

@@ -3,8 +3,8 @@ import { User } from "../../../../../contexts/domain/users/User.domain";
 import { prismaMock } from "../../../../helpers/prisma.mock";
 import { objectWithTheSameFields } from "../../../../helpers/mock.utils";
 import { DeepMockProxy, mockReset } from "jest-mock-extended";
-import InversifyContainer from "../../../../../inversify.config";
-import { LoginUser } from "../../../../../contexts/domain/users/LoginUser.domain";
+import { iocContainer } from "../../../../../inversify.config";
+import { LoginUserDTO } from "../../../../../contexts/domain/users/LoginUser.domain";
 import { LoginUserToken } from "../../../../../contexts/domain/users/LoginUserToken.domain";
 import {
   LoginUserService,
@@ -13,15 +13,13 @@ import {
 import { Service } from "../../../../../contexts/application/services/Services.common";
 
 describe("Tests for LoginUser Service ", () => {
-  let service: Service<LoginUser, LoginUserToken>;
+  let service: Service<LoginUserDTO, LoginUserToken>;
   let prisma: DeepMockProxy<any>;
 
   beforeAll(async () => {
-    InversifyContainer.rebind<any>("PrismaClient").toDynamicValue(
-      () => prismaMock
-    );
-    prisma = InversifyContainer.get<any>("PrismaClient");
-    service = InversifyContainer.get<LoginUserService>(
+    iocContainer.rebind<any>("PrismaClient").toDynamicValue(() => prismaMock);
+    prisma = iocContainer.get<any>("PrismaClient");
+    service = iocContainer.get<LoginUserService>(
       UsersServicesTypes.LoginUserService
     );
   });
