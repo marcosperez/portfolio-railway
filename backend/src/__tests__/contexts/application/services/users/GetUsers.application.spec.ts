@@ -2,7 +2,7 @@ import "reflect-metadata";
 import { User } from "../../../../../contexts/domain/users/User.domain";
 import { GetUsersService } from "../../../../../contexts/application/services/users/GetUsers.application";
 import { objectWithTheSameFields } from "../../../../helpers/mock.utils";
-import InversifyContainer from "../../../../../inversify.config";
+import { iocContainer } from "../../../../../inversify.config";
 import { DeepMockProxy, mockReset } from "jest-mock-extended";
 import { prismaMock } from "../../../../helpers/prisma.mock";
 import { GetUsersFilterCriteria } from "../../../../../contexts/domain/users/GetUsersFilterCriteria.domain";
@@ -16,11 +16,9 @@ describe("Tests for Get Users Service ", () => {
   let prisma: DeepMockProxy<any>;
 
   beforeAll(async () => {
-    InversifyContainer.rebind<any>("PrismaClient").toDynamicValue(
-      () => prismaMock
-    );
-    prisma = InversifyContainer.get<any>("PrismaClient");
-    service = InversifyContainer.get<GetUsersService>(
+    iocContainer.rebind<any>("PrismaClient").toDynamicValue(() => prismaMock);
+    prisma = iocContainer.get<any>("PrismaClient");
+    service = iocContainer.get<GetUsersService>(
       UsersServicesTypes.GetUsersService
     );
   });

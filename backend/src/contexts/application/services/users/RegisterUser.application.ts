@@ -1,11 +1,13 @@
 import { inject, injectable } from "inversify";
-import { RegisterUser } from "../../../domain/users/RegisterUser.domain";
+import { RegisterUserDTO } from "../../../domain/users/RegisterUser.domain";
 import { User } from "../../../domain/users/User.domain";
 import { UserRepositoryInterface } from "../../../infrastructure/repositories/users/User.repository.interface";
 import { Service, ServiceResult } from "../Services.common";
 
+export type RegisterUserServiceResult = ServiceResult<User>;
+
 @injectable()
-export class RegisterUserService implements Service<RegisterUser, User> {
+export class RegisterUserService implements Service<RegisterUserDTO, User> {
   // userRepository: UserRepositoryInterface;
   // constructor(userRepository: UserRepositoryInterface) {
   //   this.userRepository = userRepository;
@@ -14,7 +16,9 @@ export class RegisterUserService implements Service<RegisterUser, User> {
     @inject("UserRepository") private userRepository: UserRepositoryInterface
   ) {}
 
-  async execute(userRegisterData: RegisterUser): Promise<ServiceResult<User>> {
+  async execute(
+    userRegisterData: RegisterUserDTO
+  ): Promise<RegisterUserServiceResult> {
     const passwordHash = await User.hashPassword(userRegisterData.password);
     const newUser = new User({
       id: undefined,

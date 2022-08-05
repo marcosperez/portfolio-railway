@@ -2,22 +2,20 @@ import "reflect-metadata";
 import { DeepMockProxy, mockReset } from "jest-mock-extended";
 import { RegisterUserService } from "../../../../../contexts/application/services/users/RegisterUser.application";
 import { User } from "../../../../../contexts/domain/users/User.domain";
-import InversifyContainer from "../../../../../inversify.config";
+import { iocContainer } from "../../../../../inversify.config";
 import { prismaMock } from "../../../../helpers/prisma.mock";
-import { RegisterUser } from "../../../../../contexts/domain/users/RegisterUser.domain";
 import { UsersServicesTypes } from "../../../../../contexts/application/services/users/users.services";
 import { Service } from "../../../../../contexts/application/services/Services.common";
+import { RegisterUserDTO } from "../../../../../contexts/domain/users/RegisterUser.domain";
 
 describe("Tests for RegisterUser Service ", () => {
-  let service: Service<RegisterUser, User>;
+  let service: Service<RegisterUserDTO, User>;
   let prisma: DeepMockProxy<any>;
 
   beforeAll(async () => {
-    InversifyContainer.rebind<any>("PrismaClient").toDynamicValue(
-      () => prismaMock
-    );
-    prisma = InversifyContainer.get<any>("PrismaClient");
-    service = InversifyContainer.get<RegisterUserService>(
+    iocContainer.rebind<any>("PrismaClient").toDynamicValue(() => prismaMock);
+    prisma = iocContainer.get<any>("PrismaClient");
+    service = iocContainer.get<RegisterUserService>(
       UsersServicesTypes.RegisterUserService
     );
   });

@@ -3,17 +3,15 @@ import { createApp } from "../../../../../app";
 import { prismaMock } from "../../../../helpers/prisma.mock";
 import { User } from "../../../../../contexts/domain/users/User.domain";
 import { DeepMockProxy, mockReset } from "jest-mock-extended";
-import InversifyContainer from "../../../../../inversify.config";
+import { iocContainer } from "../../../../../inversify.config";
 
 describe("Register User Controller", function () {
   let prisma: DeepMockProxy<any>;
   let app: Express.Application;
 
   beforeAll(async () => {
-    InversifyContainer.rebind<any>("PrismaClient").toDynamicValue(
-      () => prismaMock
-    );
-    prisma = InversifyContainer.get<any>("PrismaClient");
+    iocContainer.rebind<any>("PrismaClient").toDynamicValue(() => prismaMock);
+    prisma = iocContainer.get<any>("PrismaClient");
     app = await createApp();
   });
 

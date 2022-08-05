@@ -2,7 +2,7 @@ import { agent as request } from "supertest";
 import { createApp } from "../../../../../app";
 import { prismaMock } from "../../../../helpers/prisma.mock";
 import { objectWithTheSameFields } from "../../../../helpers/mock.utils";
-import InversifyContainer from "../../../../../inversify.config";
+import { iocContainer } from "../../../../../inversify.config";
 import { DeepMockProxy, mockReset } from "jest-mock-extended";
 
 describe("Get Users Controller", function () {
@@ -10,10 +10,8 @@ describe("Get Users Controller", function () {
   let app: Express.Application;
 
   beforeAll(async () => {
-    InversifyContainer.rebind<any>("PrismaClient").toDynamicValue(
-      () => prismaMock
-    );
-    prisma = InversifyContainer.get<any>("PrismaClient");
+    iocContainer.rebind<any>("PrismaClient").toDynamicValue(() => prismaMock);
+    prisma = iocContainer.get<any>("PrismaClient");
     app = await createApp();
   });
 
@@ -46,8 +44,8 @@ describe("Get Users Controller", function () {
       .expect(200)
       .then((response) => {
         expect(response.body.status).toBeTruthy();
-        expect(response.body.data.users.count).toBe(1);
-        expect(response.body.data.users.list[0].id).toBe(666);
+        expect(response.body.data.count).toBe(1);
+        expect(response.body.data.list[0].id).toBe(666);
         done();
       })
       .catch((err) => done(err));
@@ -107,8 +105,8 @@ describe("Get Users Controller", function () {
       .expect(200)
       .then((response) => {
         expect(response.body.status).toBeTruthy();
-        expect(response.body.data.users.count).toBe(2);
-        expect(response.body.data.users.list[0].id).toBe(665);
+        expect(response.body.data.count).toBe(2);
+        expect(response.body.data.list[0].id).toBe(665);
         done();
       })
       .catch((err) => done(err));

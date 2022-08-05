@@ -1,0 +1,619 @@
+{
+	"components": {
+		"examples": {},
+		"headers": {},
+		"parameters": {},
+		"requestBodies": {},
+		"responses": {},
+		"schemas": {
+			"PingResponseBody": {
+				"properties": {
+					"status": {
+						"type": "string"
+					},
+					"message": {
+						"type": "string"
+					},
+					"datetime": {
+						"type": "string",
+						"format": "date-time"
+					}
+				},
+				"required": [
+					"status",
+					"message",
+					"datetime"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"UserDTO": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"name": {
+						"type": "string"
+					},
+					"username": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"street": {
+						"type": "string"
+					},
+					"suite": {
+						"type": "string"
+					},
+					"city": {
+						"type": "string"
+					},
+					"zipcode": {
+						"type": "string"
+					},
+					"phone": {
+						"type": "string"
+					},
+					"website": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"name",
+					"username",
+					"email"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"PageData_UserDTO_": {
+				"properties": {
+					"list": {
+						"items": {
+							"$ref": "#/components/schemas/UserDTO"
+						},
+						"type": "array"
+					},
+					"count": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"list",
+					"count"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Context": {
+				"properties": {
+					"key": {
+						"type": "string"
+					},
+					"label": {
+						"type": "string"
+					},
+					"value": {}
+				},
+				"type": "object",
+				"additionalProperties": {}
+			},
+			"ValidationErrorItem": {
+				"properties": {
+					"message": {
+						"type": "string"
+					},
+					"path": {
+						"items": {
+							"anyOf": [
+								{
+									"type": "string"
+								},
+								{
+									"type": "number",
+									"format": "double"
+								}
+							]
+						},
+						"type": "array"
+					},
+					"type": {
+						"type": "string"
+					},
+					"context": {
+						"$ref": "#/components/schemas/Context"
+					}
+				},
+				"required": [
+					"message",
+					"path",
+					"type"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ValidationError": {
+				"properties": {
+					"name": {
+						"type": "string",
+						"enum": [
+							"ValidationError"
+						],
+						"nullable": false
+					},
+					"message": {
+						"type": "string"
+					},
+					"stack": {
+						"type": "string"
+					},
+					"isJoi": {
+						"type": "boolean"
+					},
+					"details": {
+						"items": {
+							"$ref": "#/components/schemas/ValidationErrorItem"
+						},
+						"type": "array",
+						"description": "array of errors."
+					},
+					"_original": {}
+				},
+				"required": [
+					"name",
+					"message",
+					"isJoi",
+					"details",
+					"_original"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ResultController_PageData_UserDTO_-or-ValidationError_": {
+				"properties": {
+					"status": {
+						"type": "boolean"
+					},
+					"reason": {
+						"type": "string"
+					},
+					"data": {
+						"anyOf": [
+							{
+								"$ref": "#/components/schemas/PageData_UserDTO_"
+							},
+							{
+								"$ref": "#/components/schemas/ValidationError"
+							}
+						]
+					},
+					"error": {
+						"$ref": "#/components/schemas/ValidationError"
+					}
+				},
+				"required": [
+					"status"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"GetUsersResponseDTO": {
+				"$ref": "#/components/schemas/ResultController_PageData_UserDTO_-or-ValidationError_"
+			},
+			"LoginUserToken": {
+				"properties": {
+					"token": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"token"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ResultController_LoginUserToken-or-undefined_": {
+				"properties": {
+					"status": {
+						"type": "boolean"
+					},
+					"reason": {
+						"type": "string"
+					},
+					"data": {
+						"$ref": "#/components/schemas/LoginUserToken"
+					},
+					"error": {
+						"$ref": "#/components/schemas/ValidationError"
+					}
+				},
+				"required": [
+					"status"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"LoginUsersResponseDTO": {
+				"$ref": "#/components/schemas/ResultController_LoginUserToken-or-undefined_"
+			},
+			"LoginUserDTO": {
+				"properties": {
+					"login": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"login",
+					"password"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"UserContactData": {
+				"properties": {
+					"street": {
+						"type": "string"
+					},
+					"suite": {
+						"type": "string"
+					},
+					"city": {
+						"type": "string"
+					},
+					"zipcode": {
+						"type": "string"
+					},
+					"phone": {
+						"type": "string"
+					},
+					"website": {
+						"type": "string"
+					}
+				},
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Partial_User_": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"name": {
+						"type": "string"
+					},
+					"username": {
+						"type": "string"
+					},
+					"passwordHash": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"address": {
+						"$ref": "#/components/schemas/UserContactData"
+					}
+				},
+				"type": "object",
+				"description": "Make all properties in T optional"
+			},
+			"ResultController__user-Partial_User_-or-undefined--__": {
+				"properties": {
+					"status": {
+						"type": "boolean"
+					},
+					"reason": {
+						"type": "string"
+					},
+					"data": {
+						"properties": {
+							"user": {
+								"$ref": "#/components/schemas/Partial_User_"
+							}
+						},
+						"type": "object"
+					},
+					"error": {
+						"$ref": "#/components/schemas/ValidationError"
+					}
+				},
+				"required": [
+					"status"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"RegisterUsersResponseDTO": {
+				"$ref": "#/components/schemas/ResultController__user-Partial_User_-or-undefined--__"
+			},
+			"RegisterUserDTO": {
+				"description": "DTO for register users",
+				"properties": {
+					"username": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					},
+					"passwordConfirmation": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"street": {
+						"type": "string"
+					},
+					"suite": {
+						"type": "string"
+					},
+					"city": {
+						"type": "string"
+					},
+					"zipcode": {
+						"type": "string"
+					},
+					"phone": {
+						"type": "string"
+					},
+					"website": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"username",
+					"password",
+					"passwordConfirmation",
+					"name",
+					"email"
+				],
+				"type": "object",
+				"additionalProperties": false,
+				"example": {
+					"name": "123",
+					"username": "marcos",
+					"email": "marcos@correo.com",
+					"street": "santa els 123",
+					"password": "222222222",
+					"passwordConfirmation": "222222222"
+				}
+			}
+		},
+		"securitySchemes": {}
+	},
+	"info": {
+		"title": "express-ts-videos",
+		"version": "1.0.0",
+		"description": "expressjs with typescript",
+		"license": {
+			"name": "ISC"
+		},
+		"contact": {
+			"name": "Perez, Marcos Daniel"
+		}
+	},
+	"openapi": "3.0.0",
+	"paths": {
+		"/ping": {
+			"get": {
+				"operationId": "Handler",
+				"responses": {
+					"200": {
+						"description": "PingResponseBody",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/PingResponseBody"
+								}
+							}
+						}
+					}
+				},
+				"description": "Health checker",
+				"summary": "Health checker",
+				"tags": [
+					"Health Checker"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/users": {
+			"get": {
+				"operationId": "Handler",
+				"responses": {
+					"200": {
+						"description": "Users pagination list",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/GetUsersResponseDTO"
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Bad Request",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/GetUsersResponseDTO"
+								}
+							}
+						}
+					}
+				},
+				"description": "Return a list of users with pagination",
+				"summary": "users list",
+				"tags": [
+					"Users"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "filter",
+						"required": false,
+						"schema": {
+							"default": "",
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "page",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "pageSize",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "sortField",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "sortDirection",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/users/login": {
+			"post": {
+				"operationId": "Handler",
+				"responses": {
+					"200": {
+						"description": "Users login",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/LoginUsersResponseDTO"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"status": true,
+											"reason": "success",
+											"data": {
+												"token": "asdasdasdasdas%$%&$##"
+											}
+										}
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Bad Request",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/LoginUsersResponseDTO"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Users"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/LoginUserDTO"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/users/register": {
+			"post": {
+				"operationId": "Handler",
+				"responses": {
+					"200": {
+						"description": "Register User",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/RegisterUsersResponseDTO"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"status": true,
+											"reason": "exito"
+										}
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Bad Request",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/RegisterUsersResponseDTO"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Users"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/RegisterUserDTO"
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"servers": [
+		{
+			"url": "/"
+		}
+	]
+}

@@ -1,15 +1,25 @@
-import { Maybe } from "../domain.common";
-
-export interface RegisterUser {
+/**
+ * DTO for register users
+ * @example
+ * {
+ *  "name": "123",
+ *  "username": "marcos",
+ *  "email": "marcos@correo.com",
+ *  "street": "santa els 123",
+ *  "password": "222222222",
+ *  "passwordConfirmation": "222222222"
+ * }
+ */
+export interface RegisterUserDTO {
   username: string;
   password: string;
   passwordConfirmation: string;
   name: string;
   email: string;
-  street: Maybe<string>;
-  suite: Maybe<string>;
-  city: Maybe<string>;
-  zipcode: Maybe<string>;
-  phone: Maybe<string>;
-  website: Maybe<string>;
+  street?: string;
+  suite?: string;
+  city?: string;
+  zipcode?: string;
+  phone?: string;
+  website?: string;
 }

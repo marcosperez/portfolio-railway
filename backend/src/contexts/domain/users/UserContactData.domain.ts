@@ -1,20 +1,18 @@
-import { Maybe } from "../domain.common";
-
 export class UserContactData {
-  street: Maybe<string>;
-  suite: Maybe<string>;
-  city: Maybe<string>;
-  zipcode: Maybe<string>;
-  phone: Maybe<string>;
-  website: Maybe<string>;
+  street?: string;
+  suite?: string;
+  city?: string;
+  zipcode?: string;
+  phone?: string;
+  website?: string;
 
   constructor(
-    street: Maybe<string>,
-    suite: Maybe<string>,
-    city: Maybe<string>,
-    zipcode: Maybe<string>,
-    phone: Maybe<string>,
-    website: Maybe<string>
+    street?: string,
+    suite?: string,
+    city?: string,
+    zipcode?: string,
+    phone?: string,
+    website?: string
   ) {
     this.street = street;
     this.suite = suite;

@@ -1,43 +1,63 @@
-import { Request, Response } from "express";
 import Joi from "joi";
 import { LoginUserService } from "../../../application/services/users/LoginUser.application";
-import { Controller } from "../Controller";
 import { controller, httpPost } from "inversify-express-utils";
 import { inject } from "inversify";
 import { UsersServicesTypes } from "../../../application/services/users/users.services";
+import {
+  Route,
+  Controller,
+  Post,
+  SuccessResponse,
+  Tags,
+  Response,
+  Body,
+  Example,
+} from "tsoa";
+import { ResultController } from "../Controller";
+import { LoginUserDTO } from "../../../domain/users/LoginUser.domain";
+import { LoginUserToken } from "../../../domain/users/LoginUserToken.domain";
 
+type LoginUsersResponseDTO = ResultController<LoginUserToken | undefined>;
+
+@Route("/users")
+@Tags("Users")
 @controller("/users")
-export class LoginUserController implements Controller {
+export class LoginUserController extends Controller {
   constructor(
     @inject(UsersServicesTypes.LoginUserService)
     private loginUserService: LoginUserService
-  ) {}
+  ) {
+    super();
+  }
 
   @httpPost("/login")
-  async handler(req: Request, res: Response): Promise<void> {
-    try {
-      const [ok, token] = await this.loginUserService.execute(req.body);
-      if (!ok) {
-        res.status(401).json({
-          status: false,
-          message: "Error en datos de login",
-        });
-        return;
-      }
-
-      res.status(200).json({
-        status: ok,
-        data: { token },
-      });
-    } catch (err) {
-      console.log("[LoginUsersController][Error]");
-      console.log(err);
-
-      res.status(500).json({
+  @Response<LoginUsersResponseDTO>(400, "Bad Request")
+  @SuccessResponse("200", "Users login", "application/json")
+  @Example<LoginUsersResponseDTO>({
+    status: true,
+    reason: "success",
+    data: { token: "asdasdasdasdas%$%&$##" },
+  })
+  @Post("/login")
+  async handler(
+    @Body() requestBody: LoginUserDTO
+  ): Promise<LoginUsersResponseDTO> {
+    await BodyLoginSchema.validateAsync(requestBody);
+    const [ok, token] = await this.loginUserService.execute(requestBody);
+    if (!ok) {
+      this.setStatus(401);
+      return {
         status: false,
-        message: "Error en creacion de usuario",
-      });
+        reason: "Login Failed",
+      };
     }
+
+    this.setStatus(200);
+    return {
+      status: ok,
+      reason: "success",
+      data: token,
+    };
   }
 }
 
