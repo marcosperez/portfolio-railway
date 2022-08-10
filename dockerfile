@@ -8,14 +8,21 @@ RUN npm install && npm run build
 FROM node:16 AS app-build
 
 WORKDIR /usr/src/app
-COPY ./backend/prisma /usr/src/app/
-COPY ./backend/src /usr/src/app/
-COPY ./backend/package.json /usr/src/app/
-COPY ./backend/tsconfig.json /usr/src/app/
+COPY ./backend/src /usr/src/app/src
+COPY ./backend/package.json /usr/src/app
+RUN npm install 
 
-RUN npm install &&  npm run generate && npm run build
+COPY ./backend/prisma /usr/src/app
+COPY ./backend/start.sh /usr/src/app
+COPY ./backend/nodemon.json /usr/src/app
+COPY ./backend/tsconfig.json /usr/src/app
+COPY ./backend/tsoa.json /usr/src/app/tsoa.json
 
-COPY --from=frontend-build /usr/src/app/build/ /usr/src/app/dist/web/
+RUN npm run swagger-generate 
+RUN npm run generate
+RUN npm run build
+
+COPY --from=frontend-build /usr/src/app/build/ /usr/src/app/dist/src/web/
 
 # Configure environment variables
 ARG PORT  \
@@ -47,4 +54,10 @@ ENV TOKEN_SECRET=$TOKEN_SECRET
 ENV NODE_ENV="DEV"
 
 EXPOSE $PORT
-CMD [ "node", "/usr/src/app/dist/index.js" ]
+CMD [ "node", "/usr/src/app/dist/src/index.js" ]
+
+# RUN echo 'ping localhost &' > /bootstrap.sh
+# RUN echo 'sleep infinity' >> /bootstrap.sh
+# RUN chmod +x /bootstrap.sh
+
+# CMD /bootstrap.sh

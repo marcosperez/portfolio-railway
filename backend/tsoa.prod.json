@@ -1,0 +1,13 @@
+{
+  "entryFile": "index.ts",
+  "noImplicitAdditionalProperties": "throw-on-extras",
+  "controllerPathGlobs": ["**/*.controller.ts"],
+  "spec": {
+    "outputDirectory": "swagger",
+    "specVersion": 3
+  },
+  "routes": {
+    "routesDir": "swagger",
+    "iocModule": "inversify.config"
+  }
+}

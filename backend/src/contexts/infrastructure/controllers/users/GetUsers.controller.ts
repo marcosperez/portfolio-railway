@@ -88,7 +88,6 @@ export class GetUsersController extends Controller {
     this.setStatus(200);
     return {
       status: ok,
-      reason: "Get Users Failed",
       data: users,
     };
   }
