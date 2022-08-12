@@ -1,0 +1,87 @@
+.Login {
+  height: 100vh;
+  position: relative;
+
+  // background: rgb(48, 1, 37);
+  // background: linear-gradient(
+  //   0deg,
+  //   rgba(48, 1, 37, 1) 0%,
+  //   rgba(25, 9, 27, 1) 29%,
+  //   rgba(25, 9, 27, 1) 66%,
+  //   rgba(45, 1, 34, 1) 100%
+  // );
+
+  background: rgb(19, 2, 15);
+  background: linear-gradient(
+    0deg,
+    rgba(19, 2, 15, 1) 0%,
+    rgba(0, 0, 0, 1) 29%,
+    rgba(0, 0, 0, 1) 66%,
+    rgba(20, 2, 16, 1) 100%
+  );
+
+  // background-color: black;
+
+  display: flex;
+}
+
+.LoginContainer {
+  margin: auto;
+  width: 340px;
+  text-align: center;
+  padding: 20px;
+  // border-radius: 8px;
+  border: 2px solid #1fb114;
+
+  .LoginTitle {
+    font-size: 25px;
+    color: #1fb114;
+    margin: 15px;
+  }
+
+  .GuestAccessLink {
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 10px;
+
+    a {
+      color: #1fb114;
+    }
+  }
+
+  .InputLogin {
+    font-size: 20px;
+    margin: 5px;
+  }
+
+  .GlowingBorder {
+    background-color: black;
+    border: 2px solid #1fb114;
+    // border-radius: 7px;
+  }
+
+  .GlowingBorder:focus {
+    outline: none;
+    border-color: #1fb114;
+    box-shadow: 0 0 10px #1fb114;
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px black inset !important;
+  }
+
+  input:-webkit-autofill {
+    -webkit-text-fill-color: #1fb114 !important;
+    border-color: #1fb114;
+  }
+  input {
+    padding: 5px;
+    color: #1fb114;
+  }
+  input::placeholder {
+    color: #165511;
+  }
+}

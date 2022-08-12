@@ -1,9 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Fredoka&display=swap");
 @import "./theme/mixins";
+@import url("http://localhost:3000/Console.ttf");
 
 .App {
   text-align: center;
-  font-family: "Fredoka", sans-serif;
+  font-family: "Console", "Fredoka", sans-serif;
   overflow: hidden;
   @include theme-aware("border-color", "primary-color");
   z-index: 4;

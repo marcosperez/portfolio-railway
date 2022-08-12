@@ -16,11 +16,13 @@ docker-compose up  --build
 - [x] Translate all frontend
 - [x] Remove all warnings in frontend
 - [x] Add swagger
-- [ ] Add helmet
-- [ ] Add Simple Home Page for Videos
+- [x] Add helmet
+- [x] Add react router
+- [x] Add basic login page
+- [ ] Add basic endpoint for temporary admin user (cache)
+- [ ] Add basic Home Page for Videos
 - [ ] Add Basic users roles (Admin/Guest)
 - [ ] Add Cache with redis/memcache
-- [ ] Add simple endpoint for temporary admin user (cache)
 - [ ] Add middleware or something to limit temp admin users
 - [ ] Add Admin Page
   - [ ] List Users
