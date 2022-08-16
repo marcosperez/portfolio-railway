@@ -1,0 +1,30 @@
+.VideoList {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+
+  padding: 15px;
+}
+
+@media (max-width: 1200px) {
+  .VideoList {
+    grid-template-columns: 25% 25% 25% 25%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .VideoList {
+    grid-template-columns: 50% 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .VideoList {
+    grid-template-columns: 100%;
+  }
+}
+
+// @media (max-width: 480px) {
+//   .VideoList {
+//     grid-template-columns: auto;
+//   }
+// }

@@ -7,6 +7,8 @@ import { store } from "./features/store";
 import { Provider } from "react-redux";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
+import SearchVideos from "./pages/SearchVideos";
+import { NotFound } from "./components/shared/NotFound";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -16,8 +18,12 @@ root.render(
     <Provider store={store}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<App />} />
-          <Route path="/admin" element={<Login />} />
+          <Route index element={<App />} />
+          {/* <Route path="/" element={<App />} /> */}
+          <Route path="videos" element={<SearchVideos />} />
+          <Route path="admin/login" element={<Login />} />
+
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </Provider>

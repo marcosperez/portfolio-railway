@@ -1,0 +1,35 @@
+.SearchBar {
+  display: flex;
+  border-bottom: 1px solid rgb(229 229 229);
+
+  .Logo {
+    height: 80px;
+    width: 150px;
+    text-align: center;
+  }
+
+  .InputSearch {
+    margin: auto auto auto 20px;
+
+    input {
+      display: flex;
+      height: 40px;
+      z-index: 3;
+      border: 1px solid transparent;
+      border-radius: 24px;
+      box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%);
+      background: #fff;
+      width: 400px;
+      border-radius: 24px;
+      margin: 0 auto;
+      padding: 0px 15px;
+    }
+  }
+
+  .Actions {
+    margin: auto 20px;
+    svg {
+      cursor: pointer;
+    }
+  }
+}
