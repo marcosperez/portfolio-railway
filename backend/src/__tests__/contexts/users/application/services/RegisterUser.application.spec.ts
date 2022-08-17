@@ -5,7 +5,7 @@ import { prismaMock } from "../../../../helpers/prisma.mock";
 import { Service } from "../../../../../contexts/users/application/Services.common";
 import { RegisterUserService } from "../../../../../contexts/users/application/services/RegisterUser.application";
 import { UsersServicesTypes } from "../../../../../contexts/users/application/services/users.services";
-import { RegisterUserDTO } from "../../../../../contexts/users/domain/dto/RegisterUser.domain";
+import { RegisterUserDTO } from "../../../../../contexts/users/domain/dto/RegisterUser.dto";
 import { User } from "../../../../../contexts/users/domain/models/User.domain";
 
 describe("Tests for RegisterUser Service ", () => {

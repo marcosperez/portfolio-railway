@@ -1,5 +1,5 @@
 import { inject, injectable } from "inversify";
-import { RegisterUserDTO } from "../../domain/dto/RegisterUser.domain";
+import { RegisterUserDTO } from "../../domain/dto/RegisterUser.dto";
 import { User } from "../../domain/models/User.domain";
 import { UserRepositoryInterface } from "../../infrastructure/repositories/User.repository.interface";
 import { Service, ServiceResult } from "../Services.common";

@@ -12,11 +12,11 @@ import prisma from "./contexts/shared/infrastructure/dbClient";
 import { User } from "./contexts/users/domain/models/User.domain";
 
 // DTO
-import { GetUsersFilterCriteria } from "./contexts/users/domain/dto/GetUsersFilterCriteria.domain";
-import { LoginUserDTO } from "./contexts/users/domain/dto/LoginUser.domain";
-import { LoginUserToken } from "./contexts/users/domain/dto/LoginUserToken.domain";
-import { RegisterUserDTO } from "./contexts/users/domain/dto/RegisterUser.domain";
-import { UserDTO } from "./contexts/users/domain/dto/UserDTO.domain";
+import { GetUsersFilterCriteria } from "./contexts/users/domain/dto/GetUsersFilterCriteria.dto";
+import { LoginUserDTO } from "./contexts/users/domain/dto/LoginUser.dto";
+import { LoginUserToken } from "./contexts/users/domain/dto/LoginUserToken.dto";
+import { RegisterUserDTO } from "./contexts/users/domain/dto/RegisterUser.dto";
+import { UserDTO } from "./contexts/users/domain/dto/User.dto";
 
 // Services
 import { PageData } from "./contexts/shared/infrastructure/Infrastructure.common";

@@ -8,8 +8,8 @@ import { PageData } from "../../../../../contexts/shared/infrastructure/Infrastr
 import { Service } from "../../../../../contexts/users/application/Services.common";
 import { GetUsersService } from "../../../../../contexts/users/application/services/GetUsers.application";
 import { UsersServicesTypes } from "../../../../../contexts/users/application/services/users.services";
-import { GetUsersFilterCriteria } from "../../../../../contexts/users/domain/dto/GetUsersFilterCriteria.domain";
-import { UserDTO } from "../../../../../contexts/users/domain/dto/UserDTO.domain";
+import { GetUsersFilterCriteria } from "../../../../../contexts/users/domain/dto/GetUsersFilterCriteria.dto";
+import { UserDTO } from "../../../../../contexts/users/domain/dto/User.dto";
 import { User } from "../../../../../contexts/users/domain/models/User.domain";
 
 describe("Tests for Get Users Service ", () => {

@@ -1,9 +1,9 @@
-import { GetUsersFilterCriteria } from "../../domain/dto/GetUsersFilterCriteria.domain";
+import { GetUsersFilterCriteria } from "../../domain/dto/GetUsersFilterCriteria.dto";
 import { PageData } from "../../../shared/infrastructure/Infrastructure.common";
 import { Service, ServiceResult } from "../Services.common";
 import { UserRepositoryInterface } from "../../infrastructure/repositories/User.repository.interface";
 import { inject, injectable } from "inversify";
-import { UserDTO } from "../../domain/dto/UserDTO.domain";
+import { UserDTO } from "../../domain/dto/User.dto";
 import { User } from "../../domain/models/User.domain";
 
 @injectable()

@@ -14,7 +14,7 @@ import {
 import { ResultController } from "../../../shared/infrastructure/controllers/Controller";
 import { RegisterUserService } from "../../application/services/RegisterUser.application";
 import { UsersServicesTypes } from "../../application/services/users.services";
-import { RegisterUserDTO } from "../../domain/dto/RegisterUser.domain";
+import { RegisterUserDTO } from "../../domain/dto/RegisterUser.dto";
 import { User } from "../../domain/models/User.domain";
 
 type RegisterUsersResponseDTO = ResultController<{

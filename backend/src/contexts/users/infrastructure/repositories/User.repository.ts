@@ -1,5 +1,5 @@
 import { Prisma, PrismaClient } from "@prisma/client";
-import { GetUsersFilterCriteria } from "../../../users/domain/dto/GetUsersFilterCriteria.domain";
+import { GetUsersFilterCriteria } from "../../domain/dto/GetUsersFilterCriteria.dto";
 import { UserRepositoryInterface } from "./User.repository.interface";
 import { inject, injectable } from "inversify";
 import { User } from "../../domain/models/User.domain";

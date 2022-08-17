@@ -6,8 +6,8 @@ import { iocContainer } from "../../../../../inversify.config";
 import { Service } from "../../../../../contexts/users/application/Services.common";
 import { LoginUserService } from "../../../../../contexts/users/application/services/LoginUser.application";
 import { UsersServicesTypes } from "../../../../../contexts/users/application/services/users.services";
-import { LoginUserDTO } from "../../../../../contexts/users/domain/dto/LoginUser.domain";
-import { LoginUserToken } from "../../../../../contexts/users/domain/dto/LoginUserToken.domain";
+import { LoginUserDTO } from "../../../../../contexts/users/domain/dto/LoginUser.dto";
+import { LoginUserToken } from "../../../../../contexts/users/domain/dto/LoginUserToken.dto";
 import { User } from "../../../../../contexts/users/domain/models/User.domain";
 
 describe("Tests for LoginUser Service ", () => {
