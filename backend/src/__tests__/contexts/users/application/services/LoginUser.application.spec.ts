@@ -1,6 +1,6 @@
 import "reflect-metadata";
-import { prismaMock } from "../../../../helpers/prisma.mock";
-import { objectWithTheSameFields } from "../../../../helpers/mock.utils";
+import { prismaMock } from "../../helpers/prisma.mock";
+import { objectWithTheSameFields } from "../../helpers/mock.utils";
 import { DeepMockProxy, mockReset } from "jest-mock-extended";
 import { iocContainer } from "../../../../../inversify.config";
 import { Service } from "../../../../../contexts/users/application/Services.common";

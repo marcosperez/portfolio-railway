@@ -6,7 +6,7 @@ import { Controller } from "tsoa";
 
 // Prisma DB Client
 import { PrismaClient } from "@prisma/client";
-import prisma from "./contexts/shared/infrastructure/dbClient";
+import UsersPrismaClient from "./contexts/users/infrastructure/repositories/prisma/UsersPrismaClient";
 
 // Domain Models
 import { User } from "./contexts/users/domain/models/User.domain";
@@ -42,7 +42,9 @@ import { RegisterUserController } from "./contexts/users/infrastructure/controll
 const iocContainer = new Container();
 
 // Prisma Client
-iocContainer.bind<PrismaClient>("PrismaClient").toDynamicValue(() => prisma);
+iocContainer
+  .bind<typeof UsersPrismaClient>("PrismaClient")
+  .toDynamicValue(() => UsersPrismaClient);
 
 // Repositories
 iocContainer.bind<UserRepositoryInterface>("UserRepository").to(UserRepository);

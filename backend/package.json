@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npx tsc",
     "start": "node dist/index.js",
-    "generate": "npx prisma generate",
+    "generate-users": "npx prisma generate --schema src/contexts/users/infrastructure/repositories/prisma/schema.users.prisma",
     "db-push": "npx prisma db push",
     "swagger-generate": "tsoa spec-and-routes",
     "dev": "concurrently \"nodemon\" \"nodemon -x tsoa spec-and-routes\"",
