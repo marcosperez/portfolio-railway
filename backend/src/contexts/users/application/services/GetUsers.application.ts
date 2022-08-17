@@ -1,10 +1,10 @@
-import { GetUsersFilterCriteria } from "../../../domain/users/GetUsersFilterCriteria.domain";
-import { User } from "../../../domain/users/User.domain";
-import { PageData } from "../../../infrastructure/Infrastructure.common";
-import { UserDTO } from "../../../domain/users/UserDTO.domain";
+import { GetUsersFilterCriteria } from "../../domain/dto/GetUsersFilterCriteria.domain";
+import { PageData } from "../../../shared/infrastructure/Infrastructure.common";
 import { Service, ServiceResult } from "../Services.common";
-import { UserRepositoryInterface } from "../../../infrastructure/repositories/users/User.repository.interface";
+import { UserRepositoryInterface } from "../../infrastructure/repositories/User.repository.interface";
 import { inject, injectable } from "inversify";
+import { UserDTO } from "../../domain/dto/UserDTO.domain";
+import { User } from "../../domain/models/User.domain";
 
 @injectable()
 export class GetUsersService

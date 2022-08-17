@@ -3,13 +3,13 @@
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 import { Controller, ValidationService, FieldErrors, ValidateError, TsoaRoute, HttpStatusCodeLiteral, TsoaResponse, fetchMiddlewares } from '@tsoa/runtime';
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-import { PingController } from './../src/contexts/infrastructure/controllers/healthCheck/Ping.controller';
+import { PingController } from './../src/contexts/shared/infrastructure/controllers/healthCheck/Ping.controller';
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-import { GetUsersController } from './../src/contexts/infrastructure/controllers/users/GetUsers.controller';
+import { GetUsersController } from './../src/contexts/users/infrastructure/controllers/GetUsers.controller';
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-import { LoginUserController } from './../src/contexts/infrastructure/controllers/users/LoginUser.controller';
+import { LoginUserController } from './../src/contexts/users/infrastructure/controllers/LoginUser.controller';
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-import { RegisterUserController } from './../src/contexts/infrastructure/controllers/users/RegisterUser.controller';
+import { RegisterUserController } from './../src/contexts/users/infrastructure/controllers/RegisterUser.controller';
 import { iocContainer } from './../src/inversify.config';
 import { IocContainer, IocContainerFactory } from '@tsoa/runtime';
 import type { RequestHandler } from 'express';

@@ -17,7 +17,7 @@ import { RegisterRoutes } from "../swagger/routes";
 import swaggerUi from "swagger-ui-express";
 import { ValidateError } from "tsoa";
 import { ValidationError } from "joi";
-import { ErrorController } from "./contexts/infrastructure/controllers/Controller";
+import { ErrorController } from "./contexts/shared/infrastructure/controllers/Controller";
 
 dotenv.config();
 

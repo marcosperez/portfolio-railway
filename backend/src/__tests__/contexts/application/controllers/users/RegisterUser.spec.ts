@@ -1,9 +1,9 @@
 import { agent as request } from "supertest";
 import { createApp } from "../../../../../app";
 import { prismaMock } from "../../../../helpers/prisma.mock";
-import { User } from "../../../../../contexts/domain/users/User.domain";
 import { DeepMockProxy, mockReset } from "jest-mock-extended";
 import { iocContainer } from "../../../../../inversify.config";
+import { User } from "../../../../../contexts/users/domain/models/User.domain";
 
 describe("Register User Controller", function () {
   let prisma: DeepMockProxy<any>;

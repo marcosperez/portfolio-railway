@@ -1,8 +1,6 @@
 import Joi from "joi";
-import { LoginUserService } from "../../../application/services/users/LoginUser.application";
 import { controller, httpPost } from "inversify-express-utils";
 import { inject } from "inversify";
-import { UsersServicesTypes } from "../../../application/services/users/users.services";
 import {
   Route,
   Controller,
@@ -13,9 +11,11 @@ import {
   Body,
   Example,
 } from "tsoa";
-import { ResultController } from "../Controller";
-import { LoginUserDTO } from "../../../domain/users/LoginUser.domain";
-import { LoginUserToken } from "../../../domain/users/LoginUserToken.domain";
+import { ResultController } from "../../../shared/infrastructure/controllers/Controller";
+import { LoginUserService } from "../../application/services/LoginUser.application";
+import { UsersServicesTypes } from "../../application/services/users.services";
+import { LoginUserDTO } from "../../domain/dto/LoginUser.domain";
+import { LoginUserToken } from "../../domain/dto/LoginUserToken.domain";
 
 type LoginUsersResponseDTO = ResultController<LoginUserToken | undefined>;
 

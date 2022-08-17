@@ -1,10 +1,9 @@
 import Joi from "joi";
 import { ValidationError } from "joi";
-import { GetUsersFilterCriteria } from "../../../domain/users/GetUsersFilterCriteria.domain";
-import { GetUsersService } from "../../../application/services/users/GetUsers.application";
+import { GetUsersFilterCriteria } from "../../domain/dto/GetUsersFilterCriteria.domain";
+import { GetUsersService } from "../../application/services/GetUsers.application";
 import { controller, httpGet } from "inversify-express-utils";
 import { inject } from "inversify";
-import { UsersServicesTypes } from "../../../application/services/users/users.services";
 import {
   Route,
   Controller,
@@ -14,9 +13,10 @@ import {
   SuccessResponse,
   Tags,
 } from "tsoa";
-import { UserDTO } from "../../../domain/users/UserDTO.domain";
-import { PageData } from "../../Infrastructure.common";
-import { ResultController } from "../Controller";
+import { PageData } from "../../../shared/infrastructure/Infrastructure.common";
+import { ResultController } from "../../../shared/infrastructure/controllers/Controller";
+import { UsersServicesTypes } from "../../application/services/users.services";
+import { UserDTO } from "../../domain/dto/UserDTO.domain";
 
 export const QueryGetUsersSchema = Joi.object({
   filter: Joi.string().min(0).max(30),

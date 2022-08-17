@@ -1,12 +1,12 @@
 import "reflect-metadata";
 import { DeepMockProxy, mockReset } from "jest-mock-extended";
-import { RegisterUserService } from "../../../../../contexts/application/services/users/RegisterUser.application";
-import { User } from "../../../../../contexts/domain/users/User.domain";
 import { iocContainer } from "../../../../../inversify.config";
 import { prismaMock } from "../../../../helpers/prisma.mock";
-import { UsersServicesTypes } from "../../../../../contexts/application/services/users/users.services";
-import { Service } from "../../../../../contexts/application/services/Services.common";
-import { RegisterUserDTO } from "../../../../../contexts/domain/users/RegisterUser.domain";
+import { Service } from "../../../../../contexts/users/application/Services.common";
+import { RegisterUserService } from "../../../../../contexts/users/application/services/RegisterUser.application";
+import { UsersServicesTypes } from "../../../../../contexts/users/application/services/users.services";
+import { RegisterUserDTO } from "../../../../../contexts/users/domain/dto/RegisterUser.domain";
+import { User } from "../../../../../contexts/users/domain/models/User.domain";
 
 describe("Tests for RegisterUser Service ", () => {
   let service: Service<RegisterUserDTO, User>;

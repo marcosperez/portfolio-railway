@@ -1,7 +1,7 @@
 import { inject, injectable } from "inversify";
-import { RegisterUserDTO } from "../../../domain/users/RegisterUser.domain";
-import { User } from "../../../domain/users/User.domain";
-import { UserRepositoryInterface } from "../../../infrastructure/repositories/users/User.repository.interface";
+import { RegisterUserDTO } from "../../domain/dto/RegisterUser.domain";
+import { User } from "../../domain/models/User.domain";
+import { UserRepositoryInterface } from "../../infrastructure/repositories/User.repository.interface";
 import { Service, ServiceResult } from "../Services.common";
 
 export type RegisterUserServiceResult = ServiceResult<User>;

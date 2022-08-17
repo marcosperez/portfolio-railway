@@ -1,8 +1,8 @@
 import { UserContactData } from "./UserContactData.domain";
 import bcrypt from "bcrypt";
-import { UserDTO } from "./UserDTO.domain";
+import { UserDTO } from "../dto/UserDTO.domain";
 import { sign } from "jsonwebtoken";
-import { JWTPayload } from "./JWTPayload.domain";
+import { JWTPayload } from "../dto/JWTPayload.domain";
 const tokenSecret = process.env.TOKEN_SECRET || "secreto123?@";
 
 export class User {

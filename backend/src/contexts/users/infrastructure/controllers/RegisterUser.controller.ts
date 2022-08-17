@@ -1,8 +1,6 @@
 import Joi from "joi";
-import { RegisterUserService } from "../../../application/services/users/RegisterUser.application";
 import { controller, httpPost } from "inversify-express-utils";
 import { inject } from "inversify";
-import { UsersServicesTypes } from "../../../application/services/users/users.services";
 import {
   Route,
   Controller,
@@ -13,9 +11,11 @@ import {
   Body,
   Example,
 } from "tsoa";
-import { ResultController } from "../Controller";
-import { User } from "../../../domain/users/User.domain";
-import { RegisterUserDTO } from "../../../domain/users/RegisterUser.domain";
+import { ResultController } from "../../../shared/infrastructure/controllers/Controller";
+import { RegisterUserService } from "../../application/services/RegisterUser.application";
+import { UsersServicesTypes } from "../../application/services/users.services";
+import { RegisterUserDTO } from "../../domain/dto/RegisterUser.domain";
+import { User } from "../../domain/models/User.domain";
 
 type RegisterUsersResponseDTO = ResultController<{
   user: Partial<User> | undefined;

@@ -1,15 +1,16 @@
 import "reflect-metadata";
-import { User } from "../../../../../contexts/domain/users/User.domain";
-import { GetUsersService } from "../../../../../contexts/application/services/users/GetUsers.application";
+
 import { objectWithTheSameFields } from "../../../../helpers/mock.utils";
 import { iocContainer } from "../../../../../inversify.config";
 import { DeepMockProxy, mockReset } from "jest-mock-extended";
 import { prismaMock } from "../../../../helpers/prisma.mock";
-import { GetUsersFilterCriteria } from "../../../../../contexts/domain/users/GetUsersFilterCriteria.domain";
-import { UserDTO } from "../../../../../contexts/domain/users/UserDTO.domain";
-import { PageData } from "../../../../../contexts/infrastructure/Infrastructure.common";
-import { UsersServicesTypes } from "../../../../../contexts/application/services/users/users.services";
-import { Service } from "../../../../../contexts/application/services/Services.common";
+import { PageData } from "../../../../../contexts/shared/infrastructure/Infrastructure.common";
+import { Service } from "../../../../../contexts/users/application/Services.common";
+import { GetUsersService } from "../../../../../contexts/users/application/services/GetUsers.application";
+import { UsersServicesTypes } from "../../../../../contexts/users/application/services/users.services";
+import { GetUsersFilterCriteria } from "../../../../../contexts/users/domain/dto/GetUsersFilterCriteria.domain";
+import { UserDTO } from "../../../../../contexts/users/domain/dto/UserDTO.domain";
+import { User } from "../../../../../contexts/users/domain/models/User.domain";
 
 describe("Tests for Get Users Service ", () => {
   let service: Service<GetUsersFilterCriteria, PageData<UserDTO>>;
