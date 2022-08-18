@@ -1,7 +1,7 @@
 import { UserContactData } from "./UserContactData.domain";
 import bcrypt from "bcrypt";
 import { UserDTO } from "../dto/User.dto";
-import { sign } from "jsonwebtoken";
+import { sign, verify } from "jsonwebtoken";
 import { JWTPayload } from "../dto/JWTPayload.dto";
 const tokenSecret = process.env.TOKEN_SECRET || "secreto123?@";
 
@@ -83,5 +83,18 @@ export class User {
 
   static generateJWT(payload: JWTPayload) {
     return sign(payload, tokenSecret, { expiresIn: "1800s" });
+  }
+
+  static validateJWT(token: string) {
+    return new Promise((resolve, reject) => {
+      verify(token, tokenSecret, (err: any, decoded: any) => {
+        if (err) {
+          reject(err);
+          return;
+        }
+        // TODO: Define scopes if is required
+        resolve(decoded);
+      });
+    });
   }
 }

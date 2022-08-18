@@ -11,7 +11,9 @@ export class UserRepository implements UserRepositoryInterface {
   //   this.prisma = client;
   // }
 
-  constructor(@inject("PrismaClient") private readonly prisma: PrismaClient) {}
+  constructor(
+    @inject("UserPrismaClient") private readonly prisma: PrismaClient
+  ) {}
 
   // Default repository methods
 

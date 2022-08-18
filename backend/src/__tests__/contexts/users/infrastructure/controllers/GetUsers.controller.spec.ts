@@ -4,14 +4,17 @@ import { prismaMock } from "../../helpers/prisma.mock";
 import { objectWithTheSameFields } from "../../helpers/mock.utils";
 import { iocContainer } from "../../../../../inversify.config";
 import { DeepMockProxy, mockReset } from "jest-mock-extended";
+import { generateMockToken } from "../../helpers/getToken.mock";
 
 describe("Get Users Controller", function () {
   let prisma: DeepMockProxy<any>;
   let app: Express.Application;
 
   beforeAll(async () => {
-    iocContainer.rebind<any>("PrismaClient").toDynamicValue(() => prismaMock);
-    prisma = iocContainer.get<any>("PrismaClient");
+    iocContainer
+      .rebind<any>("UserPrismaClient")
+      .toDynamicValue(() => prismaMock);
+    prisma = iocContainer.get<any>("UserPrismaClient");
     app = await createApp();
   });
 
@@ -37,9 +40,10 @@ describe("Get Users Controller", function () {
       },
     ]);
     prisma.users.count.mockResolvedValue(1);
-
+    const token = generateMockToken();
     request(app)
       .get("/users")
+      .set("authorization", `Bearer ${token}`)
       .expect("Content-Type", /json/)
       .expect(200)
       .then((response) => {
@@ -97,9 +101,10 @@ describe("Get Users Controller", function () {
         },
       ]);
     prisma.users.count.mockResolvedValue(2);
-
+    const token = generateMockToken();
     request(app)
       .get("/users")
+      .set("authorization", `Bearer ${token}`)
       .query({ filter: "1234" })
       .expect("Content-Type", /json/)
       .expect(200)

@@ -12,6 +12,7 @@ import {
   Response,
   SuccessResponse,
   Tags,
+  Security,
 } from "tsoa";
 import { PageData } from "../../../shared/infrastructure/Infrastructure.common";
 import { ResultController } from "../../../shared/infrastructure/controllers/Controller";
@@ -61,6 +62,7 @@ export class GetUsersController extends Controller {
   @httpGet("/")
   @Response<GetUsersResponseDTO>(400, "Bad Request")
   @SuccessResponse("200", "Users pagination list", "application/json")
+  @Security("bearer_token", ["admin"])
   @Get("/")
   public async handler(
     @Query() filter = "",

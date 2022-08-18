@@ -4,10 +4,20 @@
   "controllerPathGlobs": ["src/**/*.controller.ts"],
   "spec": {
     "outputDirectory": "swagger",
-    "specVersion": 3
+    "specVersion": 3,
+    "securityDefinitions": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "name": "bearer_token",
+        "in": "header"
+      }
+    }
   },
   "routes": {
     "routesDir": "swagger",
+    "authenticationModule": "src/contexts/shared/infrastructure/middleware/authentication.ts",
     "iocModule": "src/inversify.config"
   }
 }

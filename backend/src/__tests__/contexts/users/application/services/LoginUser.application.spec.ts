@@ -15,8 +15,10 @@ describe("Tests for LoginUser Service ", () => {
   let prisma: DeepMockProxy<any>;
 
   beforeAll(async () => {
-    iocContainer.rebind<any>("PrismaClient").toDynamicValue(() => prismaMock);
-    prisma = iocContainer.get<any>("PrismaClient");
+    iocContainer
+      .rebind<any>("UserPrismaClient")
+      .toDynamicValue(() => prismaMock);
+    prisma = iocContainer.get<any>("UserPrismaClient");
     service = iocContainer.get<LoginUserService>(
       UsersServicesTypes.LoginUserService
     );

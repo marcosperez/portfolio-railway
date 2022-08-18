@@ -10,8 +10,10 @@ describe("Register User Controller", function () {
   let app: Express.Application;
 
   beforeAll(async () => {
-    iocContainer.rebind<any>("PrismaClient").toDynamicValue(() => prismaMock);
-    prisma = iocContainer.get<any>("PrismaClient");
+    iocContainer
+      .rebind<any>("UserPrismaClient")
+      .toDynamicValue(() => prismaMock);
+    prisma = iocContainer.get<any>("UserPrismaClient");
     app = await createApp();
   });
 

@@ -5,8 +5,8 @@ import { buildProviderModule } from "inversify-binding-decorators";
 import { Controller } from "tsoa";
 
 // Prisma DB Client
-import { PrismaClient } from "@prisma/client";
-import UsersPrismaClient from "./contexts/users/infrastructure/repositories/prisma/UsersPrismaClient";
+// import { PrismaClient } from "@prisma/client";
+import { PrismaClient as UserPrismaClient } from "../node_modules/@internal/prisma/users-client";
 
 // Domain Models
 import { User } from "./contexts/users/domain/models/User.domain";
@@ -35,6 +35,7 @@ import { PingController } from "./contexts/shared/infrastructure/controllers/hea
 import { GetUsersController } from "./contexts/users/infrastructure/controllers/GetUsers.controller";
 import { LoginUserController } from "./contexts/users/infrastructure/controllers/LoginUser.controller";
 import { RegisterUserController } from "./contexts/users/infrastructure/controllers/RegisterUser.controller";
+import userPrismaClient from "./contexts/users/infrastructure/repositories/prisma/UsersPrismaClient";
 
 //*************************************************************************************** */
 // TODO: split code?
@@ -43,8 +44,8 @@ const iocContainer = new Container();
 
 // Prisma Client
 iocContainer
-  .bind<typeof UsersPrismaClient>("PrismaClient")
-  .toDynamicValue(() => UsersPrismaClient);
+  .bind<UserPrismaClient>("UserPrismaClient")
+  .toDynamicValue(() => userPrismaClient);
 
 // Repositories
 iocContainer.bind<UserRepositoryInterface>("UserRepository").to(UserRepository);

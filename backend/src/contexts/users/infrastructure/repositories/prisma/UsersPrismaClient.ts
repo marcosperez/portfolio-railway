@@ -1,4 +1,4 @@
-import { PrismaClient } from "@internal/prisma/users-client";
+import { PrismaClient as UserPrismaClient } from "../../../../../../node_modules/@internal/prisma/users-client";
 
-const UsersPrismaClient = new PrismaClient();
-export default UsersPrismaClient;
+const userPrismaClient = new UserPrismaClient();
+export default userPrismaClient;

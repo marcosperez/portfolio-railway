@@ -18,7 +18,9 @@ import swaggerUi from "swagger-ui-express";
 import { ValidateError } from "tsoa";
 import { ValidationError } from "joi";
 import { ErrorController } from "./contexts/shared/infrastructure/controllers/Controller";
-
+class ResponseError extends Error {
+  status?: number;
+}
 dotenv.config();
 
 export async function createApp(container: Container = iocContainer) {
@@ -61,9 +63,9 @@ export async function createApp(container: Container = iocContainer) {
       }
 
       if (err instanceof Error) {
-        return res.status(500).json({
+        return res.status((err as ResponseError).status || 500).json({
           status: false,
-          reason: "Error desconocido",
+          reason: err.message,
         });
       }
 

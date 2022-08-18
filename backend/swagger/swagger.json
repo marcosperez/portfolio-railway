@@ -390,7 +390,15 @@
 				}
 			}
 		},
-		"securitySchemes": {}
+		"securitySchemes": {
+			"bearerAuth": {
+				"type": "http",
+				"scheme": "bearer",
+				"bearerFormat": "JWT",
+				"name": "bearer_token",
+				"in": "header"
+			}
+		}
 	},
 	"info": {
 		"title": "express-ts-videos",
@@ -459,7 +467,13 @@
 				"tags": [
 					"Users"
 				],
-				"security": [],
+				"security": [
+					{
+						"bearer_token": [
+							"admin"
+						]
+					}
+				],
 				"parameters": [
 					{
 						"in": "query",
