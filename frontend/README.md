@@ -29,3 +29,11 @@ https://react-icons.github.io/react-icons/icons?name=io5
 ## Toastify
 
 https://fkhadra.github.io/react-toastify/positioning-toast
+
+## Terminal Theme
+
+https://terminalcss.xyz/dark/#Buttons
+
+## Fluent UI
+
+https://developer.microsoft.com/en-us/fluentui#/controls/web/activityitem

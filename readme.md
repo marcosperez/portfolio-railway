@@ -19,9 +19,10 @@ docker-compose up  --build
 - [x] Add helmet
 - [x] Add react router
 - [x] Add basic login page
-- [ ] Add basic endpoint for temporary admin user (cache)
-- [ ] Add basic Home Page for Videos
-- [ ] Add Basic users roles (Admin/Guest)
+- [x] Add basic auth
+- [x] Add basic Home Page for Videos
+- [x] Add Basic (Admin)
+- [ ] Add Roles to auth
 - [ ] Add Cache with redis/memcache
 - [ ] Add middleware or something to limit temp admin users
 - [ ] Add Admin Page

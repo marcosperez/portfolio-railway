@@ -5,6 +5,7 @@ import { GetUser, useLoginUser } from "../features/User/hooks";
 import * as yup from "yup";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 let LoginSchema = yup.object().shape({
   login: yup.string().required(),
@@ -14,6 +15,7 @@ let LoginSchema = yup.object().shape({
 function Login() {
   const loginUser = useLoginUser();
   const { isFetching, isError, isSuccess, reason } = GetUser();
+  const navigate = useNavigate();
 
   const onSubmit = (data: UserLogin) => {
     loginUser(data);
@@ -22,8 +24,9 @@ function Login() {
   useEffect(() => {
     if (isSuccess) {
       toast.success("Loggin Success", { position: toast.POSITION.TOP_RIGHT });
+      navigate(`/admin/dashboard`);
     }
-  }, [isSuccess]);
+  }, [isSuccess, navigate]);
 
   return (
     <div className="Login">

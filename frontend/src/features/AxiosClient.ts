@@ -39,9 +39,23 @@ const onResponseError = (error: AxiosError): Promise<AxiosError> => {
 };
 
 function setupInterceptorsTo(axiosInstance: AxiosInstance): AxiosInstance {
+  const token = localStorage.getItem("token") || "";
+
   axiosInstance.interceptors.request.use(onRequest, undefined);
 
   axiosInstance.interceptors.response.use(undefined, onResponseError);
+
+  axiosInstance.interceptors.request.use(
+    async (config) => {
+      config.headers = {
+        Authorization: `Bearer ${token}`,
+      };
+      return config;
+    },
+    (error) => {
+      Promise.reject(error);
+    }
+  );
 
   return axiosInstance;
 }

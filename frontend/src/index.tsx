@@ -12,6 +12,7 @@ import Login from "./pages/Login";
 import SearchVideos from "./pages/SearchVideos";
 import { NotFound } from "./components/shared/NotFound";
 import { ToastContainer } from "react-toastify";
+import Dashboard from "./pages/Dashboard";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -26,6 +27,7 @@ root.render(
             {/* <Route path="/" element={<App />} /> */}
             <Route path="videos" element={<SearchVideos />} />
             <Route path="login" element={<Login />} />
+            <Route path="admin/dashboard" element={<Dashboard />} />
 
             <Route path="*" element={<NotFound />} />
           </Routes>

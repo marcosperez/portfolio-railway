@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
 import { User } from "./models/User";
 import { UserLogin } from "./models/UserLogin";
 import { login } from "./user.api";
@@ -21,16 +20,13 @@ export const loginUser = createAsyncThunk(
   async (userLoginParams: UserLogin, thunkAPI) => {
     try {
       const loginResponse = await login(userLoginParams);
-      console.log("response", loginResponse);
       if (loginResponse.status === 200) {
         localStorage.setItem("token", loginResponse.data.data.token);
         return loginResponse.data.data;
       } else {
-        console.log("Error prev", loginResponse.data);
         return thunkAPI.rejectWithValue(loginResponse.data);
       }
     } catch (e: any) {
-      console.log("Error", e.response.data);
       return thunkAPI.rejectWithValue(e.response.data);
     }
   }
@@ -45,12 +41,10 @@ export const UserSlice = createSlice({
         state.isFetching = false;
         state.isSuccess = true;
         state.user = { token: payload?.token || "" };
-        console.log("payload", payload);
 
         return state;
       })
       .addCase(loginUser.rejected, (state, { payload }: any) => {
-        console.log("payload", payload);
         state.isFetching = false;
         state.isError = true;
         state.reason = payload.reason;
