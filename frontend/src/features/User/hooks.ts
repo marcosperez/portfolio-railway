@@ -1,16 +1,16 @@
-import { setUser } from "./UserSlice";
+import { loginUser } from "./UserSlice";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
 import { useAppDispatch } from "../hooks";
-import { User } from "./models/User";
+import { UserLogin } from "./models/UserLogin";
 
-export const useSetUser = () => {
+export const useLoginUser = () => {
   const dispatch = useAppDispatch();
-  return (user: User) => {
-    dispatch(setUser(user));
+  return (user: UserLogin) => {
+    dispatch(loginUser(user));
   };
 };
 
 export const GetUser = () => {
-  return useSelector((state: RootState) => state.user.user);
+  return useSelector((state: RootState) => state.user);
 };

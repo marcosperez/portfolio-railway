@@ -1,31 +1,39 @@
-import { useDispatch } from "react-redux";
-import { loginUser } from "../features/User/UserSlice";
 import "./Login.scss";
 import { Formik } from "formik";
-import { AppDispatch } from "../features/store";
+import { UserLogin } from "../features/User/models/UserLogin";
+import { GetUser, useLoginUser } from "../features/User/hooks";
+import * as yup from "yup";
+import { useEffect } from "react";
+import { toast } from "react-toastify";
+
+let LoginSchema = yup.object().shape({
+  login: yup.string().required(),
+  password: yup.string().required(),
+});
 
 function Login() {
-  const dispatch = useDispatch<AppDispatch>();
+  const loginUser = useLoginUser();
+  const { isFetching, isError, isSuccess, reason } = GetUser();
 
-  const onSubmit = (data: { username: string; password: string }) => {
-    dispatch(loginUser(data));
+  const onSubmit = (data: UserLogin) => {
+    loginUser(data);
   };
+
+  useEffect(() => {
+    if (isSuccess) {
+      toast.success("Loggin Success", { position: toast.POSITION.TOP_RIGHT });
+    }
+  }, [isSuccess]);
 
   return (
     <div className="Login">
       <div className="LoginContainer">
+        <div></div>
+        <div></div>
+        <div></div>
         <Formik
-          initialValues={{ username: "marcos", password: "testtest" }}
-          validate={(values) => {
-            const errors = {} as any;
-            if (!values.username) {
-              errors.username = "Field Required";
-            }
-            if (!values.password) {
-              errors.password = "Field Required";
-            }
-            return errors;
-          }}
+          initialValues={{ login: "admin", password: "testtest" }}
+          validationSchema={LoginSchema}
           onSubmit={(values, { setSubmitting }) => {
             onSubmit(values);
             setSubmitting(false);
@@ -46,17 +54,31 @@ function Login() {
               <input
                 placeholder="Username"
                 type="text"
+                name="login"
                 className="InputLogin GlowingBorder"
-                defaultValue="marcos"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.login}
               ></input>
-              {!!errors.username && <div>errors.username</div>}
+              {!!errors.login && (
+                <div className="terminal-alert terminal-alert-error">
+                  {errors.login}
+                </div>
+              )}
               <input
                 placeholder="Password"
+                name="password"
                 className="InputLogin GlowingBorder"
                 type="password"
-                defaultValue="testtest"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.password}
               ></input>
-              {!!errors.password && <div>errors.password</div>}
+              {!!errors.password && (
+                <div className="terminal-alert terminal-alert-error">
+                  {errors.password}
+                </div>
+              )}
               {/* <div className="GuestAccessLink">
           <button>Guest buttonccess...</button>
         </div> */}
@@ -64,9 +86,15 @@ function Login() {
               <button
                 type="submit"
                 className="btn btn-primary btn-ghost LoginButton"
+                disabled={isSubmitting && isFetching}
               >
                 Login
               </button>
+              {isError && (
+                <div className="terminal-alert terminal-alert-error  LoginError">
+                  Upps - {reason}
+                </div>
+              )}
             </form>
           )}
         </Formik>

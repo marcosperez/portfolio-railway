@@ -1,4 +1,5 @@
 import { Users, Roles } from "@internal/prisma/users-client";
+import { User } from "../../../domain/models/User.domain";
 import userPrismaClient from "./UsersPrismaClient";
 
 export class UserSeed {
@@ -15,13 +16,14 @@ export class UserSeed {
   }
 
   private async createAdminUser() {
+    const passwordHash = await User.hashPassword("testtest");
+
     return await userPrismaClient.users.upsert({
       where: { username: "admin" },
       create: {
         name: "admin",
         username: "admin",
-        passwordHash:
-          "$2b$10$o1kaIFMhEtqmfVH.dwB4ReZlvGDfKHoZoWoX524fpW.J1SikRxJni",
+        passwordHash: passwordHash,
         email: "marcos.d.perez@gmail.com",
         address: "Falso 1233",
         street: "Falsa",
