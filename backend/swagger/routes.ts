@@ -34,7 +34,7 @@ const models: TsoaRoute.Models = {
     "UserDTO": {
         "dataType": "refObject",
         "properties": {
-            "id": {"dataType":"double"},
+            "id": {"dataType":"string"},
             "name": {"dataType":"string","required":true},
             "username": {"dataType":"string","required":true},
             "email": {"dataType":"string","required":true},
@@ -155,7 +155,7 @@ const models: TsoaRoute.Models = {
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "Partial_User_": {
         "dataType": "refAlias",
-        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"id":{"dataType":"double"},"name":{"dataType":"string"},"username":{"dataType":"string"},"passwordHash":{"dataType":"string"},"email":{"dataType":"string"},"address":{"ref":"UserContactData"}},"validators":{}},
+        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"id":{"dataType":"string"},"name":{"dataType":"string"},"username":{"dataType":"string"},"passwordHash":{"dataType":"string"},"email":{"dataType":"string"},"address":{"ref":"UserContactData"}},"validators":{}},
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "ResultController__user-Partial_User_-or-undefined--__": {
@@ -202,7 +202,7 @@ export function RegisterRoutes(app: express.Router) {
     //  NOTE: If you do not see routes for all of your controllers in this file, then you might not have informed tsoa of where to look
     //      Please look into the "controllerPathGlobs" config option described in the readme: https://github.com/lukeautry/tsoa
     // ###########################################################################################################
-        app.get('/ping',
+        app.get('/api/ping',
             ...(fetchMiddlewares<RequestHandler>(PingController)),
             ...(fetchMiddlewares<RequestHandler>(PingController.prototype.handler)),
 
@@ -231,7 +231,7 @@ export function RegisterRoutes(app: express.Router) {
             }
         });
         // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-        app.get('/users',
+        app.get('/api/users',
             authenticateMiddleware([{"bearer_token":["admin"]}]),
             ...(fetchMiddlewares<RequestHandler>(GetUsersController)),
             ...(fetchMiddlewares<RequestHandler>(GetUsersController.prototype.handler)),
@@ -266,7 +266,7 @@ export function RegisterRoutes(app: express.Router) {
             }
         });
         // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-        app.post('/users/login',
+        app.post('/api/users/login',
             ...(fetchMiddlewares<RequestHandler>(LoginUserController)),
             ...(fetchMiddlewares<RequestHandler>(LoginUserController.prototype.handler)),
 
@@ -296,7 +296,7 @@ export function RegisterRoutes(app: express.Router) {
             }
         });
         // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-        app.post('/users/register',
+        app.post('/api/users/register',
             ...(fetchMiddlewares<RequestHandler>(RegisterUserController)),
             ...(fetchMiddlewares<RequestHandler>(RegisterUserController.prototype.handler)),
 

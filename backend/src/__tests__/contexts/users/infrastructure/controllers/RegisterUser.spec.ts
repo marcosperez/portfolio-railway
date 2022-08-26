@@ -24,7 +24,7 @@ describe("Register User Controller", function () {
   test("Register successful user registration", async () => {
     const passwordHash = await User.hashPassword("12345678");
     const newUser = {
-      id: 1000,
+      id: "1000",
       username: "marcosp222",
       passwordHash: passwordHash,
       email: "marcos.d.perez@gmail.com",
@@ -56,7 +56,7 @@ describe("Register User Controller", function () {
     };
 
     const response = await request(app)
-      .post("/users/register")
+      .post("/api/users/register")
       .send(registerUser)
       .expect("Content-Type", /json/)
       .expect(200);

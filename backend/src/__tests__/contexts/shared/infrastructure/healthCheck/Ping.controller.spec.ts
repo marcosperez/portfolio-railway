@@ -9,7 +9,7 @@ describe("Ping Controller", () => {
 
   test("Ping succeful", (done) => {
     request(app)
-      .get("/ping")
+      .get("/api/ping")
       .expect("Content-Type", /json/)
       .expect(200)
       .then((response) => {

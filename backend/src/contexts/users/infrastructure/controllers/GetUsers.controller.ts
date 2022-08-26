@@ -38,9 +38,9 @@ type GetUsersResponseDTO = ResultController<
   PageData<UserDTO> | ValidationError
 >;
 
-@Route("/users")
+@Route("/api/users")
 @Tags("Users")
-@controller("/users")
+@controller("/api/users")
 export class GetUsersController extends Controller {
   constructor(
     @inject(UsersServicesTypes.GetUsersService)

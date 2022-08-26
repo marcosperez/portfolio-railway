@@ -1,16 +1,6 @@
 .Login {
   height: 100vh;
   position: relative;
-
-  // background: rgb(48, 1, 37);
-  // background: linear-gradient(
-  //   0deg,
-  //   rgba(48, 1, 37, 1) 0%,
-  //   rgba(25, 9, 27, 1) 29%,
-  //   rgba(25, 9, 27, 1) 66%,
-  //   rgba(45, 1, 34, 1) 100%
-  // );
-
   background: rgb(19, 2, 15);
   background: linear-gradient(
     0deg,
@@ -20,17 +10,14 @@
     rgba(20, 2, 16, 1) 100%
   );
 
-  // background-color: black;
-
   display: flex;
 }
 
 .LoginContainer {
   margin: auto;
-  width: 340px;
+  width: 360px;
   text-align: center;
-  padding: 20px;
-  // border-radius: 8px;
+  padding: 40px;
   border: 2px solid #1fb114;
 
   .LoginTitle {
@@ -83,5 +70,10 @@
   }
   input::placeholder {
     color: #165511;
+  }
+
+  .LoginButton {
+    width: 100%;
+    margin: 15px 5px 5px 5px;
   }
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import "terminal.css";
 import "./index.scss";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
@@ -21,7 +22,7 @@ root.render(
           <Route index element={<App />} />
           {/* <Route path="/" element={<App />} /> */}
           <Route path="videos" element={<SearchVideos />} />
-          <Route path="admin/login" element={<Login />} />
+          <Route path="login" element={<Login />} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>

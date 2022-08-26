@@ -19,9 +19,9 @@ import { LoginUserToken } from "../../domain/dto/LoginUserToken.dto";
 
 type LoginUsersResponseDTO = ResultController<LoginUserToken | undefined>;
 
-@Route("/users")
+@Route("/api/users")
 @Tags("Users")
-@controller("/users")
+@controller("/api/users")
 export class LoginUserController extends Controller {
   constructor(
     @inject(UsersServicesTypes.LoginUserService)

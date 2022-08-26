@@ -8,9 +8,12 @@ import DownloadCV from "../components/shared/DownloadCV";
 import Slider from "../components/shared/Slider";
 import { motion } from "framer-motion";
 import i18n from "../features/translations/locales/i18n";
-import { GetTheme, useSetTheme } from "../features/theme/hooks";
+import { GetTheme, useSetTheme } from "../features/portfolio/theme/hooks";
 import { useLanguajeState } from "../features/translations/hooks";
-import { useAutoState, useStepState } from "../features/animations/hooks";
+import {
+  useAutoState,
+  useStepState,
+} from "../features/portfolio/animations/hooks";
 
 function Home() {
   const [auto, setAuto] = useAutoState();

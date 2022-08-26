@@ -1,10 +1,10 @@
 .SearchBar {
-  display: flex;
+  display: grid;
+  grid-template-columns: 150px auto 150px;
   border-bottom: 1px solid rgb(229 229 229);
 
   .Logo {
     height: 80px;
-    width: 150px;
     text-align: center;
   }
 
@@ -27,7 +27,11 @@
   }
 
   .Actions {
+    display: flex;
+    justify-content: space-between;
     margin: auto 20px;
+    padding: 0px 15px;
+    text-align: right;
     svg {
       cursor: pointer;
     }

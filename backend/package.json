@@ -3,11 +3,17 @@
   "version": "1.0.0",
   "description": "expressjs with typescript",
   "main": "index.js",
+  "prisma": {
+    "seed": "ts-node src/contexts/users/infrastructure/repositories/prisma/seed.ts"
+  },
   "scripts": {
     "build": "npx tsc",
     "start": "node dist/index.js",
+    "generate": "npm run generate-users",
     "generate-users": "npx prisma generate --schema src/contexts/users/infrastructure/repositories/prisma/schema.users.prisma",
-    "db-push": "npx prisma db push",
+    "db-push": "npm run db-push-users",
+    "db-push-users": "npx prisma db push --schema src/contexts/users/infrastructure/repositories/prisma/schema.users.prisma && npm run db-seed-users",
+    "db-seed-users": "npx prisma db seed",
     "swagger-generate": "tsoa spec-and-routes",
     "dev": "concurrently \"nodemon\" \"nodemon -x tsoa spec-and-routes\"",
     "test": "jest --silent",
@@ -39,6 +45,7 @@
     "youtube-v3-api": "^1.1.1"
   },
   "devDependencies": {
+    "@getbigger-io/prisma-fixtures-cli": "^2.0.1",
     "@types/bcrypt": "^5.0.0",
     "@types/cors": "^2.8.12",
     "@types/express": "^4.17.13",

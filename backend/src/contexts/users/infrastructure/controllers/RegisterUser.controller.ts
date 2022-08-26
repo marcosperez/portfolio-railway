@@ -21,9 +21,9 @@ type RegisterUsersResponseDTO = ResultController<{
   user: Partial<User> | undefined;
 }>;
 
-@Route("/users")
+@Route("/api/users")
 @Tags("Users")
-@controller("/users")
+@controller("/api/users")
 export class RegisterUserController extends Controller {
   constructor(
     @inject(UsersServicesTypes.RegisterUserService)

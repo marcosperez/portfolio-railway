@@ -7,9 +7,9 @@ interface PingResponseBody {
   datetime: Date;
 }
 
-@controller("/ping")
+@controller("/api/ping")
 @Tags("Health Checker")
-@Route("/ping")
+@Route("/api/ping")
 export class PingController implements interfaces.Controller {
   /**
    * Health checker

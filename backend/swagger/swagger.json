@@ -30,8 +30,7 @@
 			"UserDTO": {
 				"properties": {
 					"id": {
-						"type": "number",
-						"format": "double"
+						"type": "string"
 					},
 					"name": {
 						"type": "string"
@@ -283,8 +282,7 @@
 			"Partial_User_": {
 				"properties": {
 					"id": {
-						"type": "number",
-						"format": "double"
+						"type": "string"
 					},
 					"name": {
 						"type": "string"
@@ -413,7 +411,7 @@
 	},
 	"openapi": "3.0.0",
 	"paths": {
-		"/ping": {
+		"/api/ping": {
 			"get": {
 				"operationId": "Handler",
 				"responses": {
@@ -437,7 +435,7 @@
 				"parameters": []
 			}
 		},
-		"/users": {
+		"/api/users": {
 			"get": {
 				"operationId": "Handler",
 				"responses": {
@@ -521,7 +519,7 @@
 				]
 			}
 		},
-		"/users/login": {
+		"/api/users/login": {
 			"post": {
 				"operationId": "Handler",
 				"responses": {
@@ -574,7 +572,7 @@
 				}
 			}
 		},
-		"/users/register": {
+		"/api/users/register": {
 			"post": {
 				"operationId": "Handler",
 				"responses": {

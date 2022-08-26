@@ -5,9 +5,9 @@ export interface PageData<T> {
 
 export interface DefaultRepository<T, U> {
   create(user: T): Promise<T>;
-  findById(id: number): Promise<T | null>;
+  findById(id: string): Promise<T | null>;
   find(where: U): Promise<Array<T>>;
   count(where: U): Promise<number>;
-  update(id: number, user: T): Promise<T>;
-  delete(id: number): Promise<void>;
+  update(id: string, user: T): Promise<T>;
+  delete(id: string): Promise<void>;
 }

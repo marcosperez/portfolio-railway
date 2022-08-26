@@ -6,7 +6,7 @@ import { JWTPayload } from "../dto/JWTPayload.dto";
 const tokenSecret = process.env.TOKEN_SECRET || "secreto123?@";
 
 export class User {
-  id?: number;
+  id?: string;
   name: string;
   username: string;
   passwordHash: string;
@@ -14,7 +14,7 @@ export class User {
   address?: UserContactData;
 
   constructor(params: {
-    id?: number | null;
+    id?: string | null;
     name: string;
     username: string;
     email: string;
@@ -26,7 +26,7 @@ export class User {
     phone?: string | null;
     website?: string | null;
   }) {
-    this.id = params.id || 0;
+    this.id = params.id || "";
     this.name = params.name;
     this.passwordHash = params.passwordHash;
     this.username = params.username;

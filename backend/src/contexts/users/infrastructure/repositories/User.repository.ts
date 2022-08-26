@@ -1,4 +1,7 @@
-import { Prisma, PrismaClient } from "@prisma/client";
+import {
+  PrismaClient as UserPrismaClient,
+  Prisma,
+} from "@internal/prisma/users-client";
 import { GetUsersFilterCriteria } from "../../domain/dto/GetUsersFilterCriteria.dto";
 import { UserRepositoryInterface } from "./User.repository.interface";
 import { inject, injectable } from "inversify";
@@ -12,12 +15,12 @@ export class UserRepository implements UserRepositoryInterface {
   // }
 
   constructor(
-    @inject("UserPrismaClient") private readonly prisma: PrismaClient
+    @inject("UserPrismaClient") private readonly prisma: UserPrismaClient
   ) {}
 
   // Default repository methods
 
-  async findById(id: number): Promise<User | null> {
+  async findById(id: string): Promise<User | null> {
     const user = await this.prisma.users.findFirst({ where: { id: id } });
     return user ? new User(user) : null;
   }
@@ -43,10 +46,10 @@ export class UserRepository implements UserRepositoryInterface {
     return totalUsers;
   }
 
-  update(id: number, user: User): Promise<User> {
+  update(id: string, user: User): Promise<User> {
     throw new Error("Method not implemented.");
   }
-  delete(id: number): Promise<void> {
+  delete(id: string): Promise<void> {
     throw new Error("Method not implemented.");
   }
   async create(user: User): Promise<User> {

@@ -1,10 +1,10 @@
 import { motion, useAnimation } from "framer-motion";
 import { useEffect } from "react";
 import "./App.scss";
-import { useStep } from "./features/animations/hooks";
+import { useStep } from "./features/portfolio/animations/hooks";
 import { GetSizes, useSetWindowSizes } from "./features/config/hooks";
-import { GetTheme, useSetTheme } from "./features/theme/hooks";
-import { Themes } from "./features/theme/ThemeSlice";
+import { GetTheme, useSetTheme } from "./features/portfolio/theme/hooks";
+import { Themes } from "./features/portfolio/theme/ThemeSlice";
 import { GetLanguaje, useSetLanguaje } from "./features/translations/hooks";
 import i18n from "./features/translations/locales/i18n";
 import { Languajes } from "./features/translations/TranslationSlice";

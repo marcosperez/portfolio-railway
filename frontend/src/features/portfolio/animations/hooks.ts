@@ -1,7 +1,7 @@
 import { setAuto, setStep } from "./AnimationSlice";
 import { useSelector } from "react-redux";
-import { RootState } from "../store";
-import { useAppDispatch } from "../hooks";
+import { RootState } from "../../store";
+import { useAppDispatch } from "../../hooks";
 
 export const useSetAuto = () => {
   const dispatch = useAppDispatch();

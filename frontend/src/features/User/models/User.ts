@@ -1,5 +1,5 @@
-export interface UserDTO {
-  id?: string;
+export interface User {
+  id: string;
   name: string;
   username: string;
   email: string;
@@ -9,4 +9,7 @@ export interface UserDTO {
   zipcode?: string;
   phone?: string;
   website?: string;
+
+  roles: string[];
+  token: string;
 }

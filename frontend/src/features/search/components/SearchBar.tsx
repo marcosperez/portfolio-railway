@@ -1,6 +1,9 @@
 import logo from "./logo-placeholder-image.png";
 import "./SearchBar.scss";
 import { IoAppsSharp } from "react-icons/io5";
+import { IoLogInSharp } from "react-icons/io5";
+import { Link } from "react-router-dom";
+
 export function SearchBar() {
   return (
     <div className="SearchBar">
@@ -12,6 +15,10 @@ export function SearchBar() {
       </div>
       <div className="Actions">
         <IoAppsSharp size={30}></IoAppsSharp>
+
+        <Link to="/login">
+          <IoLogInSharp size={30}></IoLogInSharp>
+        </Link>
       </div>
     </div>
   );

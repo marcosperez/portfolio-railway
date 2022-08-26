@@ -25,7 +25,7 @@ describe("Get Users Controller", function () {
   test("Get users succefuly without filters", (done) => {
     prisma.users.findMany.mockResolvedValue([
       {
-        id: 666,
+        id: "666",
         username: "pepeeee1234",
         passwordHash: "asdasdasdasd",
         email: "pepeeee@gmail.com",
@@ -42,14 +42,14 @@ describe("Get Users Controller", function () {
     prisma.users.count.mockResolvedValue(1);
     const token = generateMockToken();
     request(app)
-      .get("/users")
+      .get("/api/users")
       .set("authorization", `Bearer ${token}`)
       .expect("Content-Type", /json/)
       .expect(200)
       .then((response) => {
         expect(response.body.status).toBeTruthy();
         expect(response.body.data.count).toBe(1);
-        expect(response.body.data.list[0].id).toBe(666);
+        expect(response.body.data.list[0].id).toBe("666");
         done();
       })
       .catch((err) => done(err));
@@ -72,7 +72,7 @@ describe("Get Users Controller", function () {
       )
       .mockResolvedValue([
         {
-          id: 665,
+          id: "665",
           username: "test1234",
           passwordHash: "12312312",
           email: "test@gmail.com",
@@ -86,7 +86,7 @@ describe("Get Users Controller", function () {
           website: "http://www.paginafalsa.com.ar",
         },
         {
-          id: 666,
+          id: "666",
           username: "pepeeee1234",
           passwordHash: "12345678",
           email: "pepeeee@gmail.com",
@@ -103,7 +103,7 @@ describe("Get Users Controller", function () {
     prisma.users.count.mockResolvedValue(2);
     const token = generateMockToken();
     request(app)
-      .get("/users")
+      .get("/api/users")
       .set("authorization", `Bearer ${token}`)
       .query({ filter: "1234" })
       .expect("Content-Type", /json/)
@@ -111,7 +111,7 @@ describe("Get Users Controller", function () {
       .then((response) => {
         expect(response.body.status).toBeTruthy();
         expect(response.body.data.count).toBe(2);
-        expect(response.body.data.list[0].id).toBe(665);
+        expect(response.body.data.list[0].id).toBe("665");
         done();
       })
       .catch((err) => done(err));

@@ -25,7 +25,7 @@ describe("Login User Controller", function () {
   test("User Login successful", async () => {
     const passwordHash = await User.hashPassword("9876544");
     const testUser = {
-      id: 666,
+      id: "666",
       username: "test1234",
       passwordHash: passwordHash,
       email: "test@gmail.com",
@@ -37,6 +37,9 @@ describe("Login User Controller", function () {
       zipcode: "4401",
       phone: "+54 362 5436815",
       website: "http://www.paginafalsa.com.ar",
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      disabled: true,
     };
 
     prismaMock.users.findFirst
@@ -55,7 +58,7 @@ describe("Login User Controller", function () {
     };
 
     const response = await request(app)
-      .post("/users/login")
+      .post("/api/users/login")
       .send(loginBody)
       .expect("Content-Type", /json/)
       .expect(200);
@@ -68,7 +71,7 @@ describe("Login User Controller", function () {
   test("User Login failed", async () => {
     const passwordHash = await User.hashPassword("9876544");
     const testUser = {
-      id: 666,
+      id: "666",
       username: "test1234",
       passwordHash: passwordHash,
       email: "test@gmail.com",
@@ -80,6 +83,9 @@ describe("Login User Controller", function () {
       zipcode: "4401",
       phone: "+54 362 5436815",
       website: "http://www.paginafalsa.com.ar",
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      disabled: true,
     };
 
     prismaMock.users.findFirst
@@ -98,7 +104,7 @@ describe("Login User Controller", function () {
     };
 
     const response = await request(app)
-      .post("/users/login")
+      .post("/api/users/login")
       .send(loginBody)
       .expect("Content-Type", /json/)
       .expect(401);
