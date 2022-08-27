@@ -1,16 +1,14 @@
-import { useEffect, useState } from "react";
-import { User } from "../features/User/models/User";
-import { getUsers } from "../features/User/user.api";
+import { useGetUsersQuery } from "../features/User/GetUsers.slice";
 import "./Dashboard.scss";
 
 function Dashboard() {
-  const [users, setUsers] = useState<User[]>([]);
+  const { data: users, isFetching, isLoading } = useGetUsersQuery();
 
-  useEffect(() => {
-    getUsers().then((usersResponse) => {
-      setUsers(usersResponse.data.data);
-    });
-  }, []);
+  console.log(users);
+
+  if (isFetching) return <div className="Dashboard">isFetching</div>;
+
+  if (isLoading) return <div className="Dashboard">isLoading</div>;
 
   return <div className="Dashboard">{JSON.stringify(users)}</div>;
 }

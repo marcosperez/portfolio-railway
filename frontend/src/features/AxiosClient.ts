@@ -14,8 +14,12 @@ const instance = axios.create({
 
 const API_DEFAULT_MESSAGE_REQUEST = "The request is invalid";
 
-function handleError(serverError: any) {
-  console.log(serverError);
+function handleError(responseError: any) {
+  const serverError = responseError.data;
+
+  if (responseError.status === 401) {
+    window.location.href = "/login";
+  }
   if (!!serverError.reason) {
     toast.error(`${serverError.reason}`);
     return;
@@ -34,7 +38,7 @@ const onRequest = (config: AxiosRequestConfig): AxiosRequestConfig => {
 };
 
 const onResponseError = (error: AxiosError): Promise<AxiosError> => {
-  handleError(error?.response?.data);
+  handleError(error?.response);
   return Promise.reject(error);
 };
 

@@ -1,4 +1,4 @@
-import { loginUser } from "./UserSlice";
+import { loginUser } from "./LoginUserSlice";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
 import { useAppDispatch } from "../hooks";
