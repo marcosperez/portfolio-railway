@@ -24,7 +24,8 @@ docker-compose up  --build
 - [x] Add Basic (Admin)
 - [x] Add Basic (Admin)
 - [x] Add Basic (Admin)
-- [ ] Add Roles to auth
+- [ ] Add Roles to auth (usuario)
+- [ ] Add Event Drive access log
 - [ ] Add middleware or something to limit temp admin users
 - [ ] Add Admin Page
   - [ ] List Users

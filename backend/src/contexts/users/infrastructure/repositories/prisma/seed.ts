@@ -5,9 +5,7 @@ import userPrismaClient from "./UsersPrismaClient";
 export class UserSeed {
   async seeding() {
     try {
-      const admin = await this.createAdminUser();
-      const [adminRol, _] = await this.createRoles();
-      await this.createAdminRolRelation(admin, adminRol);
+      await this.createUsers();
       console.log(`[users seed] Finish OK`);
     } catch (err) {
       console.log(`[users seed] Failed`);
@@ -15,10 +13,10 @@ export class UserSeed {
     }
   }
 
-  private async createAdminUser() {
+  private async createUsers() {
     const passwordHash = await User.hashPassword("testtest");
 
-    return await userPrismaClient.users.upsert({
+    await userPrismaClient.users.upsert({
       where: { username: "admin" },
       create: {
         name: "admin",
@@ -32,57 +30,57 @@ export class UserSeed {
         phone: "12321321",
         website: "www.marcosperez.com.ar",
         zipcode: "665465",
+        Roles: {
+          create: {
+            assignedAt: new Date(),
+            assignedBy: "admin",
+            rol: {
+              create: {
+                name: "admin",
+              },
+            },
+          },
+        },
       },
       update: {
         updatedAt: new Date(),
       },
     });
-  }
 
-  private async createRoles() {
-    const adminRol = await userPrismaClient.roles.upsert({
-      where: { name: "admin" },
+    const passwordHash2 = await User.hashPassword("userpass");
+
+    await userPrismaClient.users.upsert({
+      where: { username: "user1" },
       create: {
-        name: "admin",
+        name: "user1",
+        username: "user1",
+        passwordHash: passwordHash2,
+        email: "marcos.d.perez@gmail.com",
+        address: "Falso 222",
+        street: "Verdadero",
+        suite: "2222",
+        city: "croacia",
+        phone: "3497453126",
+        website: "www.usercom.com.ar",
+        zipcode: "59786",
+        Roles: {
+          create: {
+            assignedAt: new Date(),
+            assignedBy: "user1",
+            rol: {
+              create: {
+                name: "user",
+              },
+            },
+          },
+        },
       },
       update: {
         updatedAt: new Date(),
       },
     });
 
-    const guestRol = await userPrismaClient.roles.upsert({
-      where: { name: "guest" },
-      create: {
-        name: "guest",
-      },
-      update: {
-        updatedAt: new Date(),
-      },
-    });
-
-    return [adminRol, guestRol];
-
-    //   await userPrismaClient.roles.upsert({
-    //     where: {  },
-    //     create: {
-    //      name: "videotuber"
-    //     },
-    //     update: {
-    //       updatedAt: new Date(),
-    //     },
-    //   });
-  }
-
-  private async createAdminRolRelation(user: Users, rol: Roles) {
-    const usersHasRoles = await userPrismaClient.usersHasRoles.findFirst({
-      where: { rolId: rol.id, userId: user.id, assignedBy: user.id },
-    });
-    if (usersHasRoles) {
-      return;
-    }
-    await userPrismaClient.usersHasRoles.create({
-      data: { rolId: rol.id, userId: user.id, assignedBy: user.id },
-    });
+    return;
   }
 }
 
