@@ -5,8 +5,7 @@ import { buildProviderModule } from "inversify-binding-decorators";
 import { Controller } from "tsoa";
 
 // Prisma DB Client
-// import { PrismaClient } from "@prisma/client";
-import { PrismaClient as UserPrismaClient } from "../node_modules/@internal/prisma/users-client";
+import { PrismaClient as UserPrismaClient } from "@internal/prisma/users-client";
 
 // Domain Models
 import { User } from "./contexts/users/domain/models/User.domain";
