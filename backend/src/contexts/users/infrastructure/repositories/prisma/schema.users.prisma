@@ -1,0 +1,51 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../../../../../../node_modules/@internal/prisma/users-client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Users {
+  // id           Int             @id(map: "id") @default(autoincrement())
+  id           String          @id @default(uuid())
+  name         String
+  username     String          @unique
+  passwordHash String
+  email        String
+  address      String?
+  street       String?
+  suite        String?
+  city         String?
+  zipcode      String?
+  phone        String?
+  website      String?
+  createdAt    DateTime?       @default(now())
+  updatedAt    DateTime?       @default(now()) @updatedAt
+  disabled     Boolean?        @default(false)
+  Roles        UsersHasRoles[]
+}
+
+model UsersHasRoles {
+  user       Users    @relation(fields: [userId], references: [id])
+  userId     String
+  rol        Roles    @relation(fields: [rolId], references: [id])
+  rolId      String
+  assignedAt DateTime @default(now())
+  assignedBy String
+
+  @@id([userId, rolId])
+  @@unique([userId, rolId], map: "users_roles_unique_constraint")
+}
+
+model Roles {
+  // id        Int             @id @default(autoincrement())
+  id        String          @id @default(uuid())
+  name      String          @unique
+  createdAt DateTime?       @default(now())
+  updatedAt DateTime?       @default(now()) @updatedAt
+  expiresAt DateTime?
+  Roles     UsersHasRoles[]
+}

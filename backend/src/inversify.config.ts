@@ -5,38 +5,36 @@ import { buildProviderModule } from "inversify-binding-decorators";
 import { Controller } from "tsoa";
 
 // Prisma DB Client
-import { PrismaClient } from "@prisma/client";
-import prisma from "./contexts/infrastructure/client";
+import { PrismaClient as UserPrismaClient } from "@internal/prisma/users-client";
 
 // Domain Models
-import { Service } from "./contexts/application/services/Services.common";
-import { GetUsersFilterCriteria } from "./contexts/domain/users/GetUsersFilterCriteria.domain";
-import { UserDTO } from "./contexts/domain/users/UserDTO.domain";
-import { PageData } from "./contexts/infrastructure/Infrastructure.common";
-import { LoginUserDTO } from "./contexts/domain/users/LoginUser.domain";
-import { LoginUserToken } from "./contexts/domain/users/LoginUserToken.domain";
-import { RegisterUserDTO } from "./contexts/domain/users/RegisterUser.domain";
-import { User } from "./contexts/domain/users/User.domain";
+import { User } from "./contexts/users/domain/models/User.domain";
+
+// DTO
+import { GetUsersFilterCriteria } from "./contexts/users/domain/dto/GetUsersFilterCriteria.dto";
+import { LoginUserDTO } from "./contexts/users/domain/dto/LoginUser.dto";
+import { LoginUserToken } from "./contexts/users/domain/dto/LoginUserToken.dto";
+import { RegisterUserDTO } from "./contexts/users/domain/dto/RegisterUser.dto";
+import { UserDTO } from "./contexts/users/domain/dto/User.dto";
 
 // Services
-import {
-  GetUsersService,
-  LoginUserService,
-  RegisterUserService,
-  UsersServicesTypes,
-} from "./contexts/application/services/users/users.services";
+import { PageData } from "./contexts/shared/infrastructure/Infrastructure.common";
+import { Service } from "./contexts/users/application/Services.common";
+import { GetUsersService } from "./contexts/users/application/services/GetUsers.application";
+import { LoginUserService } from "./contexts/users/application/services/LoginUser.application";
+import { RegisterUserService } from "./contexts/users/application/services/RegisterUser.application";
+import { UsersServicesTypes } from "./contexts/users/application/services/users.services";
 
 // Repositories
-import { UserRepository } from "./contexts/infrastructure/repositories/users/User.repository";
-import { UserRepositoryInterface } from "./contexts/infrastructure/repositories/users/User.repository.interface";
+import { UserRepositoryInterface } from "./contexts/users/infrastructure/repositories/User.repository.interface";
+import { UserRepository } from "./contexts/users/infrastructure/repositories/User.repository";
 
 // Controllers
-import {
-  PingController,
-  GetUsersController,
-  LoginUserController,
-  RegisterUserController,
-} from "./contexts/infrastructure/controllers";
+import { PingController } from "./contexts/shared/infrastructure/controllers/healthCheck/Ping.controller";
+import { GetUsersController } from "./contexts/users/infrastructure/controllers/GetUsers.controller";
+import { LoginUserController } from "./contexts/users/infrastructure/controllers/LoginUser.controller";
+import { RegisterUserController } from "./contexts/users/infrastructure/controllers/RegisterUser.controller";
+import userPrismaClient from "./contexts/users/infrastructure/repositories/prisma/UsersPrismaClient";
 
 //*************************************************************************************** */
 // TODO: split code?
@@ -44,7 +42,9 @@ import {
 const iocContainer = new Container();
 
 // Prisma Client
-iocContainer.bind<PrismaClient>("PrismaClient").toDynamicValue(() => prisma);
+iocContainer
+  .bind<UserPrismaClient>("UserPrismaClient")
+  .toDynamicValue(() => userPrismaClient);
 
 // Repositories
 iocContainer.bind<UserRepositoryInterface>("UserRepository").to(UserRepository);

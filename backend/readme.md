@@ -36,3 +36,7 @@ https://jestjs.io/docs/getting-started
 ### Integration test with supertest
 
 https://github.com/visionmedia/supertest
+
+## Primsa multi client
+
+https://github.com/prisma/prisma/issues/2443#issuecomment-630679118

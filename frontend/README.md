@@ -1,46 +1,39 @@
-# Getting Started with Create React App
+# React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Run Project
 
-## Available Scripts
+```sh
+npm start
+```
 
-In the project directory, you can run:
+## React Router
 
-### `npm start`
+https://reactrouter.com/en/v6.3.0/getting-started/installation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Redux toolkits
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+https://redux-toolkit.js.org/introduction/getting-started
 
-### `npm test`
+## Formik
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+https://formik.org/docs/guides/validation
 
-### `npm run build`
+## Validation schemas
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+https://www.npmjs.com/package/yup
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Iconos
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+https://react-icons.github.io/react-icons/icons?name=io5
 
-### `npm run eject`
+## Toastify
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+https://fkhadra.github.io/react-toastify/positioning-toast
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Terminal Theme
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+https://terminalcss.xyz/dark/#Buttons
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Fluent UI
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+https://developer.microsoft.com/en-us/fluentui#/controls/web/activityitem

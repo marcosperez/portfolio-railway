@@ -8,9 +8,12 @@ import IAmMobil from "../components/HomeMobile/IAmMobil";
 import ProfileMobil from "../components/HomeMobile/ProfileMobile";
 import AboutMeMobile from "../components/HomeMobile/AboutMeMobile";
 import ExperiencesMobile from "../components/HomeMobile/ExperiencesMobile";
-import { GetTheme, useSetTheme } from "../features/theme/hooks";
+import { GetTheme, useSetTheme } from "../features/portfolio/theme/hooks";
 import { useLanguajeState } from "../features/translations/hooks";
-import { useAutoState, useStepState } from "../features/animations/hooks";
+import {
+  useAutoState,
+  useStepState,
+} from "../features/portfolio/animations/hooks";
 
 const cardVariants: Variants = {
   offscreen: {
