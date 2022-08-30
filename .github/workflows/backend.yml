@@ -48,7 +48,8 @@ jobs:
       - name: (Backend) Install modules
         run: cd backend && npm install
       - name: (Backend) Build Server
-        run: cd backend && npm run build
+        run: cd backend && npm run generate && npm run build
+
   test_backend:
     name: Test Backend
     runs-on: ubuntu-latest
@@ -64,4 +65,4 @@ jobs:
       - name: (Backend) Install modules
         run: cd backend && npm install
       - name: (Backend) Run Jest Backend
-        run: cd backend && npm run test
+        run: cd backend && npm run generate && npm run test

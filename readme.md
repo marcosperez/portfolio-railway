@@ -22,8 +22,9 @@ docker-compose up  --build
 - [x] Add basic auth
 - [x] Add basic Home Page for Videos
 - [x] Add Basic (Admin)
+- [x] Add Basic (Admin)
+- [x] Add Basic (Admin)
 - [ ] Add Roles to auth
-- [ ] Add Cache with redis/memcache
 - [ ] Add middleware or something to limit temp admin users
 - [ ] Add Admin Page
   - [ ] List Users
@@ -31,8 +32,9 @@ docker-compose up  --build
 - [ ] Read about tRPC and implement if its useful
 - [ ] Add Video Page
   - List Videos with basic filters
-- [ ] Add example with GrapQL
+- [ ] Add Cache with redis/memcache
 - [ ] Add example metrics (Standart)
+- [ ] Add example with GrapQL
 
 ## Docker
 
