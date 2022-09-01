@@ -1,0 +1,17 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../../../../../../node_modules/@internal/prisma/notifications-client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL_NOTIFICATIONS")
+}
+
+model AccessLogs {
+  id       String   @id @default(uuid())
+  userId   String
+  user     String
+  date     DateTime @default(now())
+  instance String
+}

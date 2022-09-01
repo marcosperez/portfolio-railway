@@ -17,6 +17,7 @@ import swaggerUi from "swagger-ui-express";
 import { ValidateError } from "tsoa";
 import { ValidationError } from "joi";
 import { ErrorController } from "./contexts/shared/infrastructure/controllers/Controller";
+import { INotificationListener } from "./contexts/notifications/infrastructure/listeners/notification.listener.interface";
 class ResponseError extends Error {
   status?: number;
 }
@@ -91,6 +92,11 @@ export async function createApp(container: Container = iocContainer) {
           );
         }
       );
+
+      const notificationListener = container.get(
+        "NotificationListener"
+      ) as INotificationListener;
+      notificationListener.start();
     }
   });
 

@@ -1,4 +1,4 @@
-import { GetUsersFilterCriteria } from "../../domain/dto/GetUsersFilterCriteria.dto";
+import { GetUsersFilterCriteria } from "../../domain/dtos/GetUsersFilterCriteria.dto";
 import { DefaultRepository } from "../../../shared/infrastructure/Infrastructure.common";
 import { User } from "../../domain/models/User.domain";
 

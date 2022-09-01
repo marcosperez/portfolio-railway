@@ -14,8 +14,8 @@ import {
 import { ResultController } from "../../../shared/infrastructure/controllers/Controller";
 import { LoginUserService } from "../../application/services/LoginUser.application";
 import { UsersServicesTypes } from "../../application/services/users.services";
-import { LoginUserDTO } from "../../domain/dto/LoginUser.dto";
-import { LoginUserToken } from "../../domain/dto/LoginUserToken.dto";
+import { LoginUserDTO } from "../../domain/dtos/LoginUser.dto";
+import { LoginUserToken } from "../../domain/dtos/LoginUserToken.dto";
 
 type LoginUsersResponseDTO = ResultController<LoginUserToken | undefined>;
 

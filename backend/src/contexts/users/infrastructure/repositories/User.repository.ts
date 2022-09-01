@@ -2,7 +2,7 @@ import {
   PrismaClient as UserPrismaClient,
   Prisma,
 } from "@internal/prisma/users-client";
-import { GetUsersFilterCriteria } from "../../domain/dto/GetUsersFilterCriteria.dto";
+import { GetUsersFilterCriteria } from "../../domain/dtos/GetUsersFilterCriteria.dto";
 import { UserRepositoryInterface } from "./User.repository.interface";
 import { inject, injectable } from "inversify";
 import { User } from "../../domain/models/User.domain";

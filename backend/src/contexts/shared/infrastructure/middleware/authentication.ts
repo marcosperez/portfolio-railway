@@ -18,9 +18,9 @@ export function expressAuthentication(
         }
 
         // TODO: Implement scopes
-        console.log(scopes);
+        // console.log(scopes);
         const isValid = await User.validateJWT(token as string);
-        console.log(isValid);
+        // console.log(isValid);
         resolve(isValid);
       }
 
