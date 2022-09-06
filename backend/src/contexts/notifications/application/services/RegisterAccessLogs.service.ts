@@ -25,6 +25,9 @@ export class RegisterAccessLogs
   async execute(
     data: AccessLogData
   ): Promise<ServiceResult<AccessLog | undefined>> {
+    console.log(`[RegisterAccessLogs][execute] Save Access Log `);
+    console.log(data);
+
     const accessLog = new AccessLog(data);
     const log = await this.accessLogRepository.save(accessLog);
     if (!log) return [false, undefined];

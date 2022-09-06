@@ -1,5 +1,6 @@
 import { inject, injectable } from "inversify";
 import { IEventPubSub } from "../../../shared/infrastructure/eventEmiterPubSub.interface";
+import { IProducer } from "../../../shared/infrastructure/producer/producer.interface";
 import { LoginEvent } from "../../domain/domainEvents/LoginEvent";
 import { LoginUserDTO } from "../../domain/dtos/LoginUser.dto";
 import { LoginUserToken } from "../../domain/dtos/LoginUserToken.dto";
@@ -11,7 +12,7 @@ import { Service, ServiceResult } from "../Services.common";
 export class LoginUserService implements Service<LoginUserDTO, LoginUserToken> {
   constructor(
     @inject("UserRepository") private userRepository: UserRepositoryInterface,
-    @inject("EventPubSub") private basicEventPubSub: IEventPubSub
+    @inject("Producer") private producer: IProducer<string, any>
   ) {}
 
   async execute(
@@ -36,7 +37,7 @@ export class LoginUserService implements Service<LoginUserDTO, LoginUserToken> {
       userId: user.id,
       instance: "app1",
     });
-    this.basicEventPubSub.pub("LoginEvent", loginEvent);
+    this.producer.pub("LoginEvent", loginEvent);
     return [true, { token: tokenJWT }];
   }
 }

@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { User } from "./models/User";
 import { UserLogin } from "./models/UserLogin";
 import { login } from "./user.api";
@@ -35,6 +35,13 @@ export const loginUser = createAsyncThunk(
 export const UserSlice = createSlice({
   name: "user",
   initialState,
+  reducers: {
+    logoutUser: (state: UserState, action: PayloadAction<any>) => {
+      localStorage.removeItem("token");
+      state.user = null;
+      return state;
+    },
+  },
   extraReducers: (builder) =>
     builder
       .addCase(loginUser.fulfilled, (state, { payload }) => {
@@ -52,9 +59,7 @@ export const UserSlice = createSlice({
       .addCase(loginUser.pending, (state) => {
         state.isFetching = true;
       }),
-
-  reducers: {},
 });
 
-// export const { setUser } = UserSlice.actions;
 export default UserSlice.reducer;
+export const { logoutUser } = UserSlice.actions;

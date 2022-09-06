@@ -49,11 +49,15 @@ import {
 } from "./contexts/notifications/application/services/RegisterAccessLogs.service";
 import { AccessLog } from "./contexts/notifications/domain/models/AccessLog.model";
 import { NotificationsServicesTypes } from "./contexts/notifications/application/services/notifications.services";
-import { NotificationListener } from "./contexts/notifications/infrastructure/listeners/notification.listener";
+// import { NotificationListener } from "./contexts/notifications/infrastructure/listeners/notification.listener";
 import notificationsPrismaClient from "./contexts/notifications/infrastructure/repositories/prisma/NotificationsPrismaClient";
-import { IEventPubSub } from "./contexts/shared/infrastructure/eventEmiterPubSub.interface";
-
-// EventDrive
+import { IProducer } from "./contexts/shared/infrastructure/producer/producer.interface";
+import { NatsProducer } from "./contexts/shared/infrastructure/producer/producer.nats";
+import { IConsumer } from "./contexts/shared/infrastructure/consumer/consumer.interface";
+import { NatsConsumer } from "./contexts/shared/infrastructure/consumer/consumer.nats";
+import { NotificationListener } from "./contexts/notifications/infrastructure/listeners/notification.listener";
+// import { IEventPubSub } from "./contexts/shared/infrastructure/eventEmiterPubSub.interface";
+// import natsEventPubSub from "./contexts/shared/infrastructure/producer/producer.nats";
 
 //*************************************************************************************** */
 // TODO: split code?
@@ -115,9 +119,18 @@ iocContainer
 
 // EventDrive
 iocContainer
-  .bind<IEventPubSub>("EventPubSub")
-  .toDynamicValue(() => basicEventPubSub);
+  .bind<IProducer<string, any>>("Producer")
+  .to(NatsProducer)
+  .inSingletonScope();
+iocContainer
+  .bind<IConsumer<string, any>>("Consumer")
+  .to(NatsConsumer)
+  .inSingletonScope();
+// iocContainer
+//   .bind<IEventPubSub>("EventPubSub")
+//   .toDynamicValue(() => natsEventPubSub);
 
+// NOTIFICATIONS
 iocContainer
   .bind<INotificationListener>("NotificationListener")
   .to(NotificationListener);

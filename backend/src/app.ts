@@ -18,6 +18,8 @@ import { ValidateError } from "tsoa";
 import { ValidationError } from "joi";
 import { ErrorController } from "./contexts/shared/infrastructure/controllers/Controller";
 import { INotificationListener } from "./contexts/notifications/infrastructure/listeners/notification.listener.interface";
+import { IConsumer } from "./contexts/shared/infrastructure/consumer/consumer.interface";
+import { IProducer } from "./contexts/shared/infrastructure/producer/producer.interface";
 class ResponseError extends Error {
   status?: number;
 }
@@ -93,10 +95,20 @@ export async function createApp(container: Container = iocContainer) {
         }
       );
 
-      const notificationListener = container.get(
-        "NotificationListener"
-      ) as INotificationListener;
-      notificationListener.start();
+      // PUB SUB EVENT DRIVE
+      // TODO: Pasar a un service
+      const consumer = container.get("Consumer") as IConsumer<string, any>;
+      const producer = container.get("Producer") as IProducer<string, any>;
+      Promise.all([consumer.connect(), producer.connect()])
+        .then(() => {
+          const notificationListener = container.get(
+            "NotificationListener"
+          ) as INotificationListener;
+          notificationListener.start();
+        })
+        .catch((err) => {
+          console.log("Notification Connection Failed ", err);
+        });
     }
   });
 

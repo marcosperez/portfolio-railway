@@ -14,7 +14,7 @@ let LoginSchema = yup.object().shape({
 
 function Login() {
   const loginUser = useLoginUser();
-  const { isFetching, isError, isSuccess, reason } = GetUser();
+  const { isFetching, isError, isSuccess, reason, user } = GetUser();
   const navigate = useNavigate();
 
   const onSubmit = (data: UserLogin) => {
@@ -22,11 +22,13 @@ function Login() {
   };
 
   useEffect(() => {
-    if (isSuccess) {
+    console.log("Efecto");
+
+    if (isSuccess && user) {
       toast.success("Loggin Success", { position: toast.POSITION.TOP_RIGHT });
       navigate(`/admin/dashboard`);
     }
-  }, [isSuccess, navigate]);
+  }, [isSuccess, user, navigate]);
 
   return (
     <div className="Login">

@@ -1,2 +1,16 @@
 .Dashboard {
+  display: flex;
+  flex-direction: column;
+
+  .logout-btn {
+    padding: 20px;
+    width: 200px;
+    margin: auto;
+    margin-top: 50px;
+    color: white;
+    background-color: cornflowerblue;
+    cursor: pointer;
+    font-weight: 600;
+    text-align: center;
+  }
 }
