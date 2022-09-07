@@ -2,6 +2,8 @@ import { IEventPubSub } from "./eventEmiterPubSub.interface";
 
 import { connect, NatsConnection, Subscription, JSONCodec } from "nats";
 
+const NATS_SERVER_URL = process.env.NATS_SERVER_URL || "127.0.0.1:4222";
+
 class NatsEventPubSub implements IEventPubSub {
   private natsConnection: NatsConnection | undefined;
   private subscriptions = new Array<Subscription>();
@@ -9,7 +11,7 @@ class NatsEventPubSub implements IEventPubSub {
   private processors = [];
 
   async connect() {
-    this.natsConnection = await connect({ servers: "127.0.0.1:4222" });
+    this.natsConnection = await connect({ servers: NATS_SERVER_URL });
     this.connected = true;
     console.log("NATS Connected");
   }

@@ -12,6 +12,7 @@ services:
         - PGUSER=postgres
         - PGPASSWORD=postgres
         - PGDATABASE=video-docker
+        - NATS_SERVER_URL=nats:4222
       context: .
     environment:
       - NODE_ENV=DEV
@@ -20,9 +21,11 @@ services:
       - "9000:9000"
     depends_on:
       - db
+      - nats
     command: ["./start.sh"]
     links:
       - db
+      - nats
 
   db:
     image: postgres:14.1-alpine
