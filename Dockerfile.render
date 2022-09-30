@@ -24,15 +24,14 @@ RUN npm run build
 COPY --from=frontend-build /usr/src/app/build/ /usr/src/app/dist/src/web/
 
 # Configure environment variables
-ARG PORT  \
-    RENDER_EXTERNAL_URL  \
+ARG RENDER_EXTERNAL_URL  \
     RENDER_GIT_COMMIT  \
     RENDER_GIT_BRANCH  \
     RENDER_GIT_REPO_SLUG  \
     DATABASE_URL \
     TOKEN_SECRET 
 
-ENV PORT=${PORT:+5555}
+ENV PORT=60100
 ENV STATIC_URL=$RENDER_EXTERNAL_URL
 ENV GIT_COMMIT_SHA=$RENDER_GIT_COMMIT
 ENV GIT_BRANCH=$RENDER_GIT_BRANCH
@@ -42,5 +41,5 @@ ENV TOKEN_SECRET=$TOKEN_SECRET
 
 ENV NODE_ENV="PROD"
 
-EXPOSE $PORT
+EXPOSE 60100
 CMD [ "node", "/usr/src/app/dist/src/index.js" ]
