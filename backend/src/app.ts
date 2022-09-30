@@ -39,59 +39,56 @@ export async function createApp(container: Container = iocContainer) {
     console.log(`☁️ [Web] on ${protocole}://${url}:${port}/`);
 
     // DISABLED FOR PRODUCTION - add ratelimit before enabled
-    if (env !== "PROD") {
-      RegisterRoutes(app);
-      // TODO: thinking about error handling
-      app.use(function errorHandler(
-        err: unknown,
-        req: ExRequest,
-        res: ExResponse,
-        next: NextFunction
-      ): ErrorController | ExResponse | void {
-        if (err instanceof ValidateError) {
-          console.warn(
-            `🤯 Caught Validation Error for ${req.path}:`,
-            err.fields
-          );
-          return res.status(422).json({
-            message: "Validation Failed",
-            details: err?.fields,
-          });
-        }
+    // if (env !== "PROD") {
+    RegisterRoutes(app);
+    // TODO: thinking about error handling
+    app.use(function errorHandler(
+      err: unknown,
+      req: ExRequest,
+      res: ExResponse,
+      next: NextFunction
+    ): ErrorController | ExResponse | void {
+      if (err instanceof ValidateError) {
+        console.warn(`🤯 Caught Validation Error for ${req.path}:`, err.fields);
+        return res.status(422).json({
+          message: "Validation Failed",
+          details: err?.fields,
+        });
+      }
 
-        console.warn(`🤯 [ErrorHandler][Error][${req.path}]`);
-        console.warn(err);
+      console.warn(`🤯 [ErrorHandler][Error][${req.path}]`);
+      console.warn(err);
 
-        if (err instanceof ValidationError) {
-          return res.status(422).json({
-            status: false,
-            reason: err.message,
-            error: err,
-          });
-        }
+      if (err instanceof ValidationError) {
+        return res.status(422).json({
+          status: false,
+          reason: err.message,
+          error: err,
+        });
+      }
 
-        if (err instanceof Error) {
-          return res.status((err as ResponseError).status || 500).json({
-            status: false,
-            reason: err.message,
-          });
-        }
+      if (err instanceof Error) {
+        return res.status((err as ResponseError).status || 500).json({
+          status: false,
+          reason: err.message,
+        });
+      }
 
-        next();
-      });
+      next();
+    });
 
-      console.log(`🎮 [Open API] on ${protocole}://${url}:${port}/docs`);
+    console.log(`🎮 [Open API] on ${protocole}://${url}:${port}/docs`);
 
-      app.use(
-        "/docs",
-        swaggerUi.serve,
-        async (_req: ExRequest, res: ExResponse) => {
-          return res.send(
-            swaggerUi.generateHTML(await import("../swagger/swagger.json"))
-          );
-        }
-      );
-    }
+    app.use(
+      "/docs",
+      swaggerUi.serve,
+      async (_req: ExRequest, res: ExResponse) => {
+        return res.send(
+          swaggerUi.generateHTML(await import("../swagger/swagger.json"))
+        );
+      }
+    );
+    // }
   });
 
   return server.build();

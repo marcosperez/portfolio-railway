@@ -17,6 +17,8 @@ COPY ./backend/nodemon.json /usr/src/app
 COPY ./backend/tsconfig.json /usr/src/app
 COPY ./backend/tsoa.json /usr/src/app/tsoa.json
 
+RUN --mount=type=secret,id=_env,dst=/etc/secrets/.env cat /etc/secrets/.env
+
 RUN npm run swagger-generate 
 RUN npm run generate 
 RUN npm run build
@@ -31,16 +33,16 @@ COPY --from=frontend-build /usr/src/app/build/ /usr/src/app/dist/src/web/
 #     DATABASE_URL \
 #     TOKEN_SECRET 
 
-ENV PORT=10000
 # ENV STATIC_URL=$RENDER_EXTERNAL_URL
-ENV STATIC_URL=https://portfolio-mdperez.onrender.com:10000
-# ENV GIT_COMMIT_SHA=$RENDER_GIT_COMMIT
-ENV GIT_BRANCH="main"
 # ENV GIT_REPO_NAME=$RENDER_GIT_REPO_SLUG
+# ENV GIT_COMMIT_SHA=$RENDER_GIT_COMMIT
+ENV NODE_ENV="PROD"
+ENV PORT=10000
+ENV STATIC_URL="portfolio-mdperez.onrender.com"
+ENV GIT_BRANCH="main"
 ENV DATABASE_URL="postgres://portfolio_8srv_user:8qaLtpd1yji4fA98PNHpfA1wwyAgdCNM@dpg-ccrgkl2rrk08u0lsk9t0-a/portfolio_8srv"
 ENV TOKEN_SECRET="asdasdasdsadsadas"
 
-ENV NODE_ENV="PROD"
 
 EXPOSE 10000
 CMD [ "node", "/usr/src/app/dist/src/index.js" ]
