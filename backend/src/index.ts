@@ -5,7 +5,7 @@ dotenv.config();
 
 const env = process.env.NODE_ENV;
 const port = process.env.PORT;
-const url = process.env.RAILWAY_STATIC_URL || "localhost";
+const url = process.env.STATIC_URL || "localhost";
 
 (async () => {
   const App = await createApp();

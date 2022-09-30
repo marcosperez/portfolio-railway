@@ -12,7 +12,6 @@ COPY ./backend/src /usr/src/app/src
 COPY ./backend/package.json /usr/src/app
 RUN npm install 
 
-COPY ./backend/prisma /usr/src/app
 COPY ./backend/start.sh /usr/src/app
 COPY ./backend/nodemon.json /usr/src/app
 COPY ./backend/tsconfig.json /usr/src/app

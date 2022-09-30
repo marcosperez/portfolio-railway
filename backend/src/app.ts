@@ -23,7 +23,7 @@ class ResponseError extends Error {
 
 const env = process.env.NODE_ENV;
 const port = process.env.PORT;
-const url = process.env.RAILWAY_STATIC_URL || "localhost";
+const url = process.env.STATIC_URL || "localhost";
 const protocole = env === "PROD" ? "https" : "http";
 
 export async function createApp(container: Container = iocContainer) {
