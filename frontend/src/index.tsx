@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "terminal.css";
 import "react-toastify/dist/ReactToastify.css";
 import "./index.scss";
+
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { store } from "./features/store";
