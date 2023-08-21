@@ -41,14 +41,16 @@
 .social-buttons {
   margin-top: 30px;
   text-align: center;
+  display: flex;
+  justify-items: center;
 }
 
 .social-icon {
   border: 1px #df2a2a solid;
   // border-radius: 17px;
   // filter: brightness(0) invert(1);
-  @include theme-aware("filter", "filter-social-icon");
+  // @include theme-aware("filter", "filter-social-icon");
   height: 40px;
   padding: 8px;
-  margin: 0px 8px;
+  margin: 0px 0px;
 }

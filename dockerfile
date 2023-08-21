@@ -26,7 +26,7 @@ COPY --from=frontend-build /usr/src/app/build/ /usr/src/app/dist/src/web/
 # Configure environment variables
 ENV NODE_ENV="PROD"
 ENV PORT=10000
-ENV STATIC_URL="https://portfolio-mdperez.onrender.com:10000"
+ENV STATIC_URL="localhost"
 ENV GIT_BRANCH="main"
 ENV DATABASE_URL="postgres://portfolio_8srv_user:8qaLtpd1yji4fA98PNHpfA1wwyAgdCNM@dpg-ccrgkl2rrk08u0lsk9t0-a/portfolio_8srv"
 ENV TOKEN_SECRET="asdasdasdsadsadas"

@@ -111,6 +111,7 @@ function Profile({ next, auto }: ProfileProps) {
                 transition={{ ease: "easeOut", duration: 0.5, delay: 2.5 }}
                 className="social-icon"
                 src={linkedin}
+                width={50}
               ></motion.img>
             </a>
             <a
@@ -123,6 +124,7 @@ function Profile({ next, auto }: ProfileProps) {
                   scale: 1.2,
                   transition: { ease: "easeOut", duration: 0.5 },
                 }}
+                width={50}
                 animate={{ y: [50, 0], opacity: [0, 0.2, 1] }}
                 transition={{ ease: "easeOut", duration: 0.5, delay: 2.7 }}
                 className="social-icon"
