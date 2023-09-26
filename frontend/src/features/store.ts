@@ -1,10 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import themeReducers from "./portfolio/theme/ThemeSlice";
-import TranslationSlice from "./translations/TranslationSlice";
 import ConfigState from "./config/ConfigSlice";
 import AnimationSlice from "./portfolio/animations/AnimationSlice";
-import UserSlice from "./User/LoginUserSlice";
-import getUsersApi from "./User/GetUsers.slice";
+import themeReducers from "./portfolio/theme/ThemeSlice";
+import TranslationSlice from "./translations/TranslationSlice";
 
 export const store = configureStore({
   reducer: {
@@ -12,8 +10,6 @@ export const store = configureStore({
     translation: TranslationSlice,
     config: ConfigState,
     animation: AnimationSlice,
-    user: UserSlice,
-    [getUsersApi.reducerPath]: getUsersApi.reducer,
   },
 });
 
