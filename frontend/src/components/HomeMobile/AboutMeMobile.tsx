@@ -1,9 +1,9 @@
-import "./AboutMeMobile.scss";
 import { motion } from "framer-motion";
-import Badge from "../shared/Badge";
 import i18n from "../../features/translations/locales/i18n";
-import linkedin from "./img/linkedin_icon.png";
+import Badge from "../shared/Badge";
+import "./AboutMeMobile.scss";
 import github from "./img/git_icono.png";
+import linkedin from "./img/linkedin_icon.png";
 
 interface AboutMeMobileProps {
   next: (nextValue: number) => void;
@@ -104,7 +104,7 @@ function AboutMeMobile({ next, auto }: AboutMeMobileProps) {
                 >
                   <motion.img
                     whileHover={{
-                      scale: 1.2,
+                      scale: 1,
                       transition: { ease: "easeOut", duration: 0.5 },
                     }}
                     animate={{ y: [50, 0], opacity: [0, 0.2, 1] }}
@@ -120,7 +120,7 @@ function AboutMeMobile({ next, auto }: AboutMeMobileProps) {
                 >
                   <motion.img
                     whileHover={{
-                      scale: 1.2,
+                      scale: 1,
                       transition: { ease: "easeOut", duration: 0.5 },
                     }}
                     animate={{ y: [50, 0], opacity: [0, 0.2, 1] }}
